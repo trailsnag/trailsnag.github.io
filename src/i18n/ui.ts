@@ -45,6 +45,7 @@ const fr = {
         body: 'Pas de signal en forêt ? Le signalement est gardé sur le téléphone et part tout seul au retour du réseau.',
       },
     ],
+    note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application — facultatif, pour toujours. L’anonymat reste la voie par défaut.',
   },
   stewards: {
     kicker: 'Côté gestionnaire',
@@ -167,6 +168,7 @@ const en: Dict = {
         body: 'No signal in the woods? The report is kept on the phone and sends itself when the network comes back.',
       },
     ],
+    note: 'Want your points to follow you across devices? Create an account in the app — optional, forever. Anonymous stays the default.',
   },
   stewards: {
     kicker: 'For stewards',
