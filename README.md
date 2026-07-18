@@ -31,16 +31,16 @@ pnpm only (same doctrine as the monorepo).
 `.github/workflows/deploy.yml` builds with `withastro/action` and publishes via
 `actions/deploy-pages`. No secrets involved.
 
-## Go-live checklist (trailsnag.com)
+## Custom domain (trailsnag.com)
 
-The site serves from `https://trailsnag.github.io` until DNS is switched. To move to
-`trailsnag.com`:
+Live since 2026-07-18. The pieces, should any of them ever need to be rebuilt:
 
-1. Namecheap DNS: `A` records on the apex → `185.199.108.153`, `185.199.109.153`,
-   `185.199.110.153`, `185.199.111.153`; `CNAME` on `www` → `trailsnag.github.io`.
-2. Repo settings → Pages → custom domain `trailsnag.com`, then enforce HTTPS once the
-   certificate is issued.
-3. Add `public/CNAME` containing `trailsnag.com`, set `SITE_URL: https://trailsnag.com` in
-   the deploy workflow env, and update the `Sitemap:` URL in `public/robots.txt`.
-4. Namecheap email forwarding: `bonjour@trailsnag.com` → a real inbox (the site and both
-   legal pages advertise this address).
+- Namecheap DNS: four apex `A` records → `185.199.108–111.153` (plus the matching
+  `2606:50c0:800x::153` AAAA records), `CNAME` on `www` → `trailsnag.github.io`, and
+  Mail Settings on Email Forwarding (`bonjour@trailsnag.com` forwards via
+  `eforward*.registrar-servers.com`).
+- Repo settings → Pages → custom domain `trailsnag.com`, HTTPS enforced. No `CNAME`
+  file in `public/` — workflow-built Pages ignores it; the domain lives in repo
+  settings.
+- Canonical URLs come from `SITE_URL: https://trailsnag.com` in the deploy workflow
+  env; `public/robots.txt` points at the same host.

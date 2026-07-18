@@ -20,8 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v3
-        # Once trailsnag.com DNS points here: add `SITE_URL: https://trailsnag.com`
-        # under env, plus a public/CNAME file, and update public/robots.txt.
+        env:
+          SITE_URL: https://trailsnag.com
 
   deploy:
     needs: build
