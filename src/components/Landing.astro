@@ -116,7 +116,7 @@ const t = useTranslations(lang);
         <h2 class="mt-3 font-display text-3xl font-extrabold tracking-[-0.02em] text-(--ink) sm:text-4xl">
           {t.audiences.title}<span class="text-(--blaze)">.</span>
         </h2>
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {
             t.audiences.cards.map((card) => (
               <article class="flex flex-col rounded-(--radius-card) border border-(--line) bg-(--card) p-6">

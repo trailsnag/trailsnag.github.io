@@ -79,6 +79,11 @@ const fr = {
         body: 'Vos sentiers, votre file de signalements, vos bénévoles reconnus. Le forfait bénévole ne coûte rien et ne coûtera jamais rien.',
       },
       {
+        title: 'Propriétaires de terres et de boisés',
+        badge: 'Votre carnet de terrain',
+        body: 'Votre terrain, votre registre : marquez le chicot à abattre, le ponceau bouché, la clôture à réparer. Vous êtes votre propre équipe — et rien ne se perd, même sans réseau.',
+      },
+      {
         title: 'Centres de plein air et parcs régionaux',
         badge: 'Par territoire',
         body: 'Un canal d’intake visiteur qui documente votre diligence, saison après saison. Forfait par territoire — écrivez-nous pour un projet pilote.',
@@ -194,6 +199,11 @@ const en: Dict = {
         title: 'Volunteer clubs and committees',
         badge: 'Free, forever',
         body: 'Your trails, your report queue, your volunteers recognized. The volunteer plan costs nothing and never will.',
+      },
+      {
+        title: 'Private landowners',
+        badge: 'Your land log',
+        body: 'Your land, your log: mark the dead snag to fell, the plugged culvert, the fence to mend. You are your own crew — and nothing gets lost, even offline.',
       },
       {
         title: 'Outdoor centres and regional parks',
