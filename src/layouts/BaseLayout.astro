@@ -1,0 +1,50 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/public-sans';
+import '../styles/global.css';
+import { alternatePath, type Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+}
+
+const { lang, title, description } = Astro.props;
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+const frUrl = new URL(alternatePath(path, 'fr'), Astro.site);
+const enUrl = new URL(alternatePath(path, 'en'), Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={frUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#2e5a4c" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#10150f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TrailSnag" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_CA' : 'en_CA'} />
+    <meta property="og:locale:alternate" content={lang === 'fr' ? 'en_CA' : 'fr_CA'} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="min-h-screen font-body antialiased">
+    <slot />
+  </body>
+</html>

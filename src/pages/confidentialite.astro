@@ -1,0 +1,64 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contactEmail } from '../i18n/utils';
+---
+
+<LegalLayout
+  lang="fr"
+  title="Confidentialité"
+  description="Politique de confidentialité de TrailSnag : ce que contient un signalement, où vivent les données, et vos droits."
+  updated="Version du 18 juillet 2026"
+>
+  <p>
+    TrailSnag est une plateforme de signalement de problèmes de sentiers. Cette politique couvre le
+    présent site et l'application (<a href="https://trailsnag.app">trailsnag.app</a>). Elle est
+    volontairement courte : nous recueillons peu, et nous le disons clairement.
+  </p>
+
+  <h2>Ce site web</h2>
+  <p>
+    Ce site est entièrement statique. Il n'utilise aucun témoin (cookie), aucun outil d'analyse
+    d'audience et aucun traceur publicitaire. Il est hébergé par GitHub Pages, dont les serveurs
+    peuvent tenir des journaux techniques (adresses IP) à des fins de sécurité.
+  </p>
+
+  <h2>Ce qu'un signalement contient</h2>
+  <ul>
+    <li>la position GPS du problème (ou, à défaut, celle de l'autocollant scanné) ;</li>
+    <li>une catégorie et, si vous le souhaitez, une description et des photos ;</li>
+    <li>un identifiant technique généré par votre appareil, qui évite les doublons.</li>
+  </ul>
+  <p>
+    Aucun compte n'est requis et le signalement est anonyme par défaut. La position et les photos
+    peuvent constituer des renseignements personnels : nous les traitons comme tels.
+  </p>
+
+  <h2>Ce que nous en faisons</h2>
+  <p>
+    Un signalement est transmis uniquement à l'organisme qui gère le territoire concerné, pour
+    qu'il puisse le trier et le corriger. Un organisme peut publier une carte publique de ses
+    signalements : elle montre la nature, la position et le statut du problème — jamais l'identité
+    de la personne qui l'a signalé. Nous ne vendons aucune donnée, à personne.
+  </p>
+
+  <h2>Où vivent les données</h2>
+  <p>
+    La base de données et le stockage des photos sont au Canada (Montréal) ; l'API est hébergée à
+    Toronto. Certains de nos fournisseurs techniques (hébergement, stockage) sont des entreprises
+    américaines soumises à leurs propres lois.
+  </p>
+
+  <h2>Vos droits</h2>
+  <p>
+    Conformément à la Loi 25 (Québec), vous pouvez demander l'accès, la rectification ou la
+    suppression des renseignements personnels liés à un signalement que vous avez fait. Écrivez au
+    responsable de la protection des renseignements personnels :
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+
+  <h2>Évolution de cette politique</h2>
+  <p>
+    Le service évolue et cette politique évoluera avec lui. Chaque version est datée ; la version
+    en vigueur est celle publiée sur cette page.
+  </p>
+</LegalLayout>

@@ -1,0 +1,20 @@
+---
+import { alternatePath, type Lang } from '../i18n/routes';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const target: Lang = lang === 'fr' ? 'en' : 'fr';
+const href = alternatePath(Astro.url.pathname, target);
+---
+
+<a
+  href={href}
+  rel="alternate"
+  hreflang={target}
+  class="rounded-(--radius-control) border border-(--line) px-3 py-1.5 text-sm font-semibold text-(--sub) transition-colors duration-200 hover:border-(--pine) hover:text-(--ink)"
+  >{t.langSwitch.label}</a
+>

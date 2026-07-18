@@ -1,0 +1,36 @@
+---
+// GitHub Pages serves this for any unknown path, so the visitor's language is
+// unknown — French leads, English follows, per the site's language order.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations } from '../i18n/utils';
+
+const fr = useTranslations('fr');
+const en = useTranslations('en');
+---
+
+<BaseLayout lang="fr" title="Hors sentier — TrailSnag" description={fr.notFound.body}>
+  <Header lang="fr" />
+  <main class="mx-auto max-w-3xl px-5 py-24 text-center">
+    <p class="font-mono text-sm font-semibold tracking-wide text-(--sub) uppercase">404</p>
+    <h1 class="mt-4 font-display text-5xl font-extrabold tracking-[-0.03em] text-(--ink)">
+      {fr.notFound.title}<span class="text-(--blaze)">.</span>
+    </h1>
+    <p class="mt-4 text-lg text-(--sub)">{fr.notFound.body}</p>
+    <p class="mt-1 text-(--sub)">{en.notFound.body}</p>
+    <div class="mt-8 flex items-center justify-center gap-4">
+      <a
+        href="/"
+        class="rounded-(--radius-control) bg-(--blaze) px-5 py-3 font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover)"
+        >{fr.notFound.back}</a
+      >
+      <a
+        href="/en/"
+        class="rounded-(--radius-control) border border-(--line) px-5 py-3 font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine)"
+        >{en.notFound.back}</a
+      >
+    </div>
+  </main>
+  <Footer lang="fr" />
+</BaseLayout>

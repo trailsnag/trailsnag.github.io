@@ -1,0 +1,53 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { contactEmail } from '../../i18n/utils';
+---
+
+<LegalLayout
+  lang="en"
+  title="Terms of use"
+  description="TrailSnag's terms of use: the service, acceptable use, and everyone's responsibilities."
+  updated="Version of July 18, 2026"
+>
+  <h2>The service</h2>
+  <p>
+    TrailSnag transmits trail-issue reports to the organizations that manage the land in question,
+    and gives them tools to triage, fix, and document those issues. The service is provided as is,
+    with no guarantee of continuous availability.
+  </p>
+
+  <h2>Not an emergency channel</h2>
+  <p>
+    TrailSnag never replaces emergency services. If someone is injured, lost, or in danger: call
+    911. A TrailSnag report is not monitored in real time.
+  </p>
+
+  <h2>Acceptable use</h2>
+  <ul>
+    <li>Report real problems, observed by you, at the location indicated.</li>
+    <li>
+      Do not include other people's personal information in photos or descriptions (recognizable
+      faces, licence plates, addresses).
+    </li>
+    <li>Do not use the service to harass an organization or flood its triage queue.</li>
+  </ul>
+
+  <h2>Submitted content</h2>
+  <p>
+    You keep ownership of your photos and descriptions. By submitting them, you grant TrailSnag and
+    the managing organization the right to use them to process the report, document the fix, and —
+    if the organization publishes its map — display the report publicly.
+  </p>
+
+  <h2>The role of managing organizations</h2>
+  <p>
+    Each organization remains solely responsible for the maintenance of its land, its priorities,
+    and its response times. TrailSnag transmits and documents reports; it does not guarantee any
+    intervention on the ground.
+  </p>
+
+  <h2>Questions</h2>
+  <p>
+    Write to us: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+</LegalLayout>

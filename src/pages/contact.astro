@@ -1,0 +1,21 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contactEmail, githubUrl } from '../i18n/utils';
+---
+
+<LegalLayout
+  lang="fr"
+  title="Contact"
+  description="Écrivez à l'équipe TrailSnag — projets pilotes, clubs de bénévoles, questions."
+>
+  <p>
+    Un territoire à réclamer, un projet pilote pour votre centre ou votre MRC, un club de bénévoles
+    qui veut sa file de signalements — écrivez-nous. On répond en français ou en anglais.
+  </p>
+  <p class="!mt-8">
+    <a href={`mailto:${contactEmail}`} class="font-mono text-xl font-semibold">{contactEmail}</a>
+  </p>
+  <p>
+    Le développement se passe sur <a href={githubUrl}>github.com/trailsnag</a>.
+  </p>
+</LegalLayout>

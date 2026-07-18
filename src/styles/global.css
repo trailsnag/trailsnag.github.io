@@ -1,0 +1,119 @@
+/* Trail Sign design system — tokens mirrored from apps/web/app/globals.css in the
+   product monorepo (source of truth: vault "Snag Design System & Brand Proposal v1").
+   Solid surfaces look like trail signage: paper, ink, paint. The blaze is an
+   object, never a tint. */
+
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Public Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-trail-50: #f1f4ee;
+  --color-trail-100: #e4ead9;
+  --color-pine-100: #d5e0d3;
+  --color-pine-600: #2e5a4c;
+  --color-pine-700: #24483d;
+  --color-pine-950: #0f1f1a;
+  --color-blaze-500: #e0611f;
+  --color-blaze-600: #cb561f;
+  --color-blaze-700: #a84518;
+
+  --radius-control: 12px;
+  --radius-card: 16px;
+  --radius-sheet: 22px;
+
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0.25, 1);
+}
+
+/* Semantic surfaces. Dark mapping comes from the design doc (site/docs surfaces
+   go dark; the printed sticker artifact stays paper — it is a physical object). */
+:root {
+  --paper: #f1f4ee;
+  --card: #ffffff;
+  --quiet: #e4ead9;
+  --line: #d5e0d3;
+  --ink: #0f1f1a;
+  --sub: #24483d;
+  --pine: #2e5a4c;
+  --blaze: #cb561f;
+  --blaze-hover: #e0611f;
+  --blaze-press: #a84518;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #10150f;
+    --card: #161d16;
+    --quiet: #1a221a;
+    --line: #263124;
+    --ink: #e8ede4;
+    --sub: #b7c4b2;
+    --pine: #7fb59d;
+    --blaze: #e2703a;
+    --blaze-hover: #ee8250;
+    --blaze-press: #c95f2e;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Blaze marks selection + primary action only. */
+::selection {
+  background: var(--blaze);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blaze);
+  outline-offset: 2px;
+}
+
+/* The painted trail marker. Spec: 10px wide, 60% height, radius 2/3/2/2, −1.5°. */
+.blaze-stripe {
+  display: inline-block;
+  width: 10px;
+  height: 60%;
+  min-height: 1.5rem;
+  background: var(--blaze);
+  border-radius: 2px 3px 2px 2px;
+  transform: rotate(-1.5deg);
+}
+
+/* The one orchestrated moment: the trailhead sticker settles into place. */
+@keyframes sticker-settle {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(0.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.5deg);
+  }
+}
+
+.sticker-tilt {
+  transform: rotate(-1.5deg);
+}
+
+.sticker-enter {
+  animation: sticker-settle 280ms var(--ease-sheet) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .sticker-enter {
+    animation: none;
+  }
+}

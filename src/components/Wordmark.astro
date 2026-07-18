@@ -1,0 +1,12 @@
+---
+// The wordmark: TrailSnag in signage voice, the period painted blaze.
+// The period is the snag.
+interface Props {
+  class?: string;
+}
+const { class: className = 'text-2xl' } = Astro.props;
+---
+
+<span class:list={['font-display font-extrabold tracking-[-0.03em]', className]}
+  >TrailSnag<span class="text-(--blaze)">.</span></span
+>

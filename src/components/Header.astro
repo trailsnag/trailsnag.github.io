@@ -1,0 +1,41 @@
+---
+import Wordmark from './Wordmark.astro';
+import LangSwitch from './LangSwitch.astro';
+import { useTranslations, claimUrl } from '../i18n/utils';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+  /** Landing pages show the section anchors; legal pages keep the chrome only. */
+  anchors?: boolean;
+}
+const { lang, anchors = false } = Astro.props;
+const t = useTranslations(lang);
+const home = lang === 'fr' ? '/' : '/en/';
+---
+
+<header class="border-b border-(--line)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+    <a href={home} class="text-(--ink) no-underline"><Wordmark class="text-xl sm:text-2xl" /></a>
+    <div class="flex items-center gap-3 sm:gap-5">
+      {
+        anchors && (
+          <nav class="hidden items-center gap-5 md:flex" aria-label={t.nav.how}>
+            <a href="#how" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
+              {t.nav.how}
+            </a>
+            <a href="#stewards" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
+              {t.nav.stewards}
+            </a>
+          </nav>
+        )
+      }
+      <LangSwitch lang={lang} />
+      <a
+        href={claimUrl}
+        class="hidden rounded-(--radius-control) bg-(--blaze) px-4 py-2 text-sm font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press) sm:inline-block"
+        >{t.nav.claim}</a
+      >
+    </div>
+  </div>
+</header>

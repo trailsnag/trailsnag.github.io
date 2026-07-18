@@ -1,0 +1,21 @@
+---
+// The Blazed Pin mark (logo direction A): the map-pin teardrop with the tilted
+// blaze stripe knocked out in negative space. Same evenodd path as the app icon.
+interface Props {
+  class?: string;
+}
+const { class: className = 'h-8 w-auto' } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 80"
+  class={className}
+  aria-hidden="true"
+  fill="currentColor"
+>
+  <path
+    fill-rule="evenodd"
+    d="M32 77C32 77 6 46.5 6 29 6 14.6 17.6 3 32 3c14.4 0 26 11.6 26 26 0 17.5-26 48-26 48Z M28.16 13.28 33.14 12.84 A3.5 3.5 0 0 1 36.93 16.02 L39.02 39.93 A3.5 3.5 0 0 1 35.84 43.72 L30.86 44.16 A3.5 3.5 0 0 1 27.07 40.98 L24.98 17.07 A3.5 3.5 0 0 1 28.16 13.28 Z"
+  ></path>
+</svg>

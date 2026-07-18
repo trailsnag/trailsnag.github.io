@@ -1,0 +1,54 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { contactEmail } from '../i18n/utils';
+---
+
+<LegalLayout
+  lang="fr"
+  title="Conditions d'utilisation"
+  description="Conditions d'utilisation de TrailSnag : le service, l'usage acceptable, et les responsabilités de chacun."
+  updated="Version du 18 juillet 2026"
+>
+  <h2>Le service</h2>
+  <p>
+    TrailSnag transmet des signalements de problèmes de sentiers aux organismes qui gèrent les
+    territoires concernés, et leur donne des outils pour les trier, les corriger et les documenter.
+    Le service est fourni tel quel, sans garantie de disponibilité continue.
+  </p>
+
+  <h2>Pas un canal d'urgence</h2>
+  <p>
+    TrailSnag ne remplace jamais les services d'urgence. Une personne blessée, perdue ou en danger :
+    composez le 911. Un signalement TrailSnag n'est pas surveillé en temps réel.
+  </p>
+
+  <h2>Usage acceptable</h2>
+  <ul>
+    <li>Signalez des problèmes réels, observés par vous, à l'endroit indiqué.</li>
+    <li>
+      Ne mettez pas de renseignements personnels de tiers dans les photos ou descriptions (visages
+      reconnaissables, plaques d'immatriculation, adresses).
+    </li>
+    <li>N'utilisez pas le service pour harceler un organisme ou saturer sa file de triage.</li>
+  </ul>
+
+  <h2>Contenu soumis</h2>
+  <p>
+    Vous restez propriétaire de vos photos et descriptions. En les soumettant, vous accordez à
+    TrailSnag et à l'organisme gestionnaire le droit de les utiliser pour traiter le signalement,
+    documenter la correction et, si l'organisme publie sa carte, afficher le signalement
+    publiquement.
+  </p>
+
+  <h2>Rôle des organismes gestionnaires</h2>
+  <p>
+    Chaque organisme demeure seul responsable de l'entretien de son territoire, de ses priorités et
+    de ses délais d'intervention. TrailSnag transmet et documente les signalements ; il ne garantit
+    aucune intervention sur le terrain.
+  </p>
+
+  <h2>Questions</h2>
+  <p>
+    Écrivez-nous : <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+</LegalLayout>

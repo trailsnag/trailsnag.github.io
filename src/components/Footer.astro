@@ -1,0 +1,37 @@
+---
+import Wordmark from './Wordmark.astro';
+import LangSwitch from './LangSwitch.astro';
+import { useTranslations, githubUrl } from '../i18n/utils';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const paths =
+  lang === 'fr'
+    ? { privacy: '/confidentialite/', terms: '/conditions/', contact: '/contact/' }
+    : { privacy: '/en/privacy/', terms: '/en/terms/', contact: '/en/contact/' };
+---
+
+<footer class="border-t border-(--line)">
+  <div class="mx-auto max-w-6xl px-5 py-10">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <Wordmark class="text-xl" />
+        <p class="mt-2 max-w-xs text-sm text-(--sub)">{t.footer.tagline}</p>
+      </div>
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-(--sub)">
+        <a href={paths.privacy} class="hover:text-(--ink)">{t.footer.privacy}</a>
+        <a href={paths.terms} class="hover:text-(--ink)">{t.footer.terms}</a>
+        <a href={paths.contact} class="hover:text-(--ink)">{t.footer.contact}</a>
+        <a href={githubUrl} class="hover:text-(--ink)">GitHub</a>
+        <LangSwitch lang={lang} />
+      </nav>
+    </div>
+    <p class="mt-8 font-mono text-xs text-(--sub)">
+      © {new Date().getFullYear()} TrailSnag — {t.footer.madeIn}
+    </p>
+  </div>
+</footer>
