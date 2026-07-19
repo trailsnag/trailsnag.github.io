@@ -52,7 +52,6 @@ const fr = {
     kicker: 'La boucle des récompenses',
     title: 'Vos points deviennent des récompenses',
     lead: 'Chaque signalement confirmé et chaque correctif validé donne des points. Les équipes vérifiées les transforment en vraies récompenses — offertes par ceux qui gèrent le terrain.',
-    badge: 'Bientôt',
     cards: [
       {
         title: 'Gagnés sur le terrain',
@@ -67,7 +66,7 @@ const fr = {
         body: 'La récompense vient du gestionnaire du territoire que vous avez aidé — le centre, le club, le propriétaire. Votre effort revient à la communauté du sentier, et elle vous le rend.',
       },
     ],
-    note: 'Le catalogue de récompenses arrive avec la vérification des territoires. Les points, eux, se cumulent déjà.',
+    note: 'Chaque équipe vérifiée décide de son catalogue ; les points se cumulent dès le premier signalement.',
   },
   stewards: {
     kicker: 'Côté gestionnaire',
@@ -197,7 +196,6 @@ const en: Dict = {
     kicker: 'The reward loop',
     title: 'Your points become rewards',
     lead: 'Every confirmed report and every validated fix earns points. Verified stewards turn them into real rewards — funded by the people who run the land.',
-    badge: 'Coming soon',
     cards: [
       {
         title: 'Earned on the trail',
@@ -212,7 +210,7 @@ const en: Dict = {
         body: 'The reward comes from the steward of the territory you helped — the centre, the club, the landowner. Your effort goes back to the trail’s community, and it gives back.',
       },
     ],
-    note: 'The rewards catalog arrives with territory verification. The points already add up today.',
+    note: 'Each verified steward decides its own catalog; the points add up from the first report.',
   },
   stewards: {
     kicker: 'For stewards',
