@@ -98,7 +98,7 @@ const fr = {
   },
   ctaBand: {
     title: 'Prêt à garder vos sentiers ouverts ?',
-    body: 'Réclamez votre territoire, imprimez vos autocollants, et chaque visiteur devient une paire d’yeux pour votre équipe.',
+    body: 'Réclamez votre territoire et chaque visiteur devient une paire d’yeux pour votre équipe — travaillez dès aujourd’hui, la vérification vient ensuite.',
     cta: 'Réclamez votre territoire',
     mailLead: 'ou écrivez-nous :',
   },
@@ -221,7 +221,7 @@ const en: Dict = {
   },
   ctaBand: {
     title: 'Ready to keep your trails open?',
-    body: 'Claim your land, print your stickers, and every visitor becomes a pair of eyes for your crew.',
+    body: 'Claim your land and every visitor becomes a pair of eyes for your crew — work from today, verification comes after.',
     cta: 'Claim your land',
     mailLead: 'or write to us:',
   },
