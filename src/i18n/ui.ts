@@ -12,6 +12,7 @@ const fr = {
   },
   nav: {
     how: 'Comment ça marche',
+    rewards: 'Récompenses',
     stewards: 'Pour les gestionnaires',
     contact: 'Contact',
     claim: 'Réclamez votre territoire',
@@ -47,6 +48,27 @@ const fr = {
     ],
     note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application — facultatif, pour toujours. L’anonymat reste la voie par défaut.',
   },
+  rewards: {
+    kicker: 'La boucle des récompenses',
+    title: 'Vos points deviennent des récompenses',
+    lead: 'Chaque signalement confirmé et chaque correctif validé donne des points. Les équipes vérifiées les transforment en vraies récompenses — offertes par ceux qui gèrent le terrain.',
+    badge: 'Bientôt',
+    cards: [
+      {
+        title: 'Gagnés sur le terrain',
+        body: 'Les points viennent du vrai travail de sentier : un signalement confirmé par la communauté, un correctif validé par l’équipe. Pas de quiz, pas de tirage.',
+      },
+      {
+        title: 'Échangés avec le gestionnaire',
+        body: 'Un laissez-passer d’une journée, un rabais sur la passe de saison, le t-shirt du club : chaque équipe vérifiée publie ses propres récompenses et les honore elle-même.',
+      },
+      {
+        title: 'Du terrain, pas d’une banque de points',
+        body: 'La récompense vient du gestionnaire du territoire que vous avez aidé — le centre, le club, le propriétaire. Votre effort revient à la communauté du sentier, et elle vous le rend.',
+      },
+    ],
+    note: 'Le catalogue de récompenses arrive avec la vérification des territoires. Les points, eux, se cumulent déjà.',
+  },
   stewards: {
     kicker: 'Côté gestionnaire',
     title: 'Votre terrain, vos signalements, vos bénévoles',
@@ -62,7 +84,7 @@ const fr = {
       },
       {
         title: 'Des bénévoles récompensés',
-        body: 'Les correctifs validés donnent des points à vos bénévoles. Le travail invisible devient visible — et reconnu.',
+        body: 'Les correctifs validés donnent des points à vos bénévoles — et votre équipe décide de ce qu’ils valent : un accès gratuit, un rabais, un morceau à vos couleurs. Vous fixez le catalogue, TrailSnag tient le registre.',
       },
       {
         title: 'Des autocollants QR, un par départ de sentier',
@@ -135,6 +157,7 @@ const en: Dict = {
   },
   nav: {
     how: 'How it works',
+    rewards: 'Rewards',
     stewards: 'For stewards',
     contact: 'Contact',
     claim: 'Claim your land',
@@ -170,6 +193,27 @@ const en: Dict = {
     ],
     note: 'Want your points to follow you across devices? Create an account in the app — optional, forever. Anonymous stays the default.',
   },
+  rewards: {
+    kicker: 'The reward loop',
+    title: 'Your points become rewards',
+    lead: 'Every confirmed report and every validated fix earns points. Verified stewards turn them into real rewards — funded by the people who run the land.',
+    badge: 'Coming soon',
+    cards: [
+      {
+        title: 'Earned on the trail',
+        body: 'Points come from real trail work: a report confirmed by the community, a fix validated by the crew. No quizzes, no draws.',
+      },
+      {
+        title: 'Redeemed with the land owner',
+        body: 'A free day pass, a season-pass discount, the club t-shirt: each verified steward publishes its own rewards and honours them itself.',
+      },
+      {
+        title: 'From the land, not a points bank',
+        body: 'The reward comes from the steward of the territory you helped — the centre, the club, the landowner. Your effort goes back to the trail’s community, and it gives back.',
+      },
+    ],
+    note: 'The rewards catalog arrives with territory verification. The points already add up today.',
+  },
   stewards: {
     kicker: 'For stewards',
     title: 'Your land, your snags, your volunteers',
@@ -185,7 +229,7 @@ const en: Dict = {
       },
       {
         title: 'Volunteers, rewarded',
-        body: 'Validated fixes earn your volunteers points. Invisible work becomes visible — and recognized.',
+        body: 'Validated fixes earn your volunteers points — and your crew decides what they’re worth: a free pass, a discount, gear in your colours. You set the catalog, TrailSnag keeps the ledger.',
       },
       {
         title: 'QR stickers, one per trailhead',
