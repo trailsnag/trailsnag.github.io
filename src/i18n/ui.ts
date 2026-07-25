@@ -128,7 +128,6 @@ const fr = {
     privacy: 'Confidentialité',
     terms: 'Conditions',
     contact: 'Contact',
-    madeIn: 'Conçu au Québec',
   },
   langSwitch: { label: 'English', short: 'EN' },
   notFound: {
@@ -272,7 +271,6 @@ const en: Dict = {
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',
-    madeIn: 'Made in Québec',
   },
   langSwitch: { label: 'Français', short: 'FR' },
   notFound: {
