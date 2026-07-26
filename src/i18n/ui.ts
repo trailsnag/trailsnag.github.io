@@ -16,18 +16,24 @@ const fr = {
     stewards: 'Pour les gestionnaires',
     contact: 'Contact',
     claim: 'Réclamez votre territoire',
+    // The two doors into the app, short enough for the header on a phone.
+    open: 'Signaler',
+    desk: 'Gestionnaires',
   },
   hero: {
     kicker: 'Signalement de sentiers, sans friction',
     h1a: 'Un arbre tombé, un sentier lessivé, une pancarte brisée ?',
     h1b: 'Signalé en 30 secondes',
-    lead: 'Le visiteur scanne le code QR au départ du sentier, décrit le problème, et l’équipe du sentier le reçoit — géolocalisé, photographié, prêt à trier. Aucun compte. Aucune application à installer. Même sans réseau.',
-    ctaPrimary: 'Réclamez votre territoire',
-    ctaSecondary: 'Comment ça marche',
-    ctaNote: 'Gratuit pour les clubs de bénévoles.',
+    lead: 'Ouvrez l’application, ou scannez le code QR au départ du sentier : décrivez le problème et l’équipe du sentier le reçoit — géolocalisé, photographié, prêt à trier. Aucun compte. Aucune application à installer. Même sans réseau.',
+    ctaPrimary: 'Signaler un problème',
+    ctaSecondary: 'Réclamez votre territoire',
+    ctaNote: 'Aucun compte requis. Votre position trouve à qui appartient le terrain — placez-la à la main si le GPS ne répond pas. Gratuit pour les clubs de bénévoles.',
   },
   sticker: {
     caption: 'L’autocollant au départ du sentier — c’est toute l’installation.',
+    // The QR needs a printed sticker in reach; the app never does.
+    orLead: 'Pas d’autocollant à portée ?',
+    orCta: 'Ouvrir l’application',
   },
   how: {
     kicker: 'Côté visiteur',
@@ -72,6 +78,8 @@ const fr = {
     kicker: 'Côté gestionnaire',
     title: 'Votre terrain, vos signalements, vos bénévoles',
     lead: 'TrailSnag donne à votre équipe des yeux sur le téléphone de chaque visiteur — et une file de triage pour agir.',
+    cta: 'Ouvrir le poste de garde',
+    ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
     features: [
       {
         title: 'Une file de triage, pas une boîte courriel',
@@ -121,6 +129,8 @@ const fr = {
     title: 'Prêt à garder vos sentiers ouverts ?',
     body: 'Réclamez votre territoire et chaque visiteur devient une paire d’yeux pour votre équipe — travaillez dès aujourd’hui, la vérification vient ensuite.',
     cta: 'Réclamez votre territoire',
+    reportLead: 'Simple visiteur ?',
+    reportCta: 'Signalez un problème maintenant',
     mailLead: 'ou écrivez-nous :',
   },
   footer: {
@@ -159,18 +169,22 @@ const en: Dict = {
     stewards: 'For stewards',
     contact: 'Contact',
     claim: 'Claim your land',
+    open: 'Report',
+    desk: 'Stewards',
   },
   hero: {
     kicker: 'Trail reporting, without the friction',
     h1a: 'A downed tree, a washed-out trail, a broken sign?',
     h1b: 'Reported in 30 seconds',
-    lead: 'A visitor scans the QR code at the trailhead, describes the problem, and the trail crew has it — geolocated, photographed, ready to triage. No account. No app to install. Even with no signal.',
-    ctaPrimary: 'Claim your land',
-    ctaSecondary: 'How it works',
-    ctaNote: 'Free for volunteer clubs.',
+    lead: 'Open the app, or scan the QR code at the trailhead: describe the problem and the trail crew has it — geolocated, photographed, ready to triage. No account. No app to install. Even with no signal.',
+    ctaPrimary: 'Report an issue',
+    ctaSecondary: 'Claim your land',
+    ctaNote: 'No account needed. Your position finds whose land you are on — place it by hand if GPS will not answer. Free for volunteer clubs.',
   },
   sticker: {
     caption: 'The sticker at the trailhead — that is the whole install.',
+    orLead: 'No sticker in reach?',
+    orCta: 'Open the app',
   },
   how: {
     kicker: 'For visitors',
@@ -215,6 +229,8 @@ const en: Dict = {
     kicker: 'For stewards',
     title: 'Your land, your snags, your volunteers',
     lead: 'TrailSnag gives your crew eyes on every visitor’s phone — and a triage queue to act on what they see.',
+    cta: 'Open the steward desk',
+    ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
     features: [
       {
         title: 'A triage queue, not an inbox',
@@ -264,6 +280,8 @@ const en: Dict = {
     title: 'Ready to keep your trails open?',
     body: 'Claim your land and every visitor becomes a pair of eyes for your crew — work from today, verification comes after.',
     cta: 'Claim your land',
+    reportLead: 'Just visiting?',
+    reportCta: 'Report an issue now',
     mailLead: 'or write to us:',
   },
   footer: {

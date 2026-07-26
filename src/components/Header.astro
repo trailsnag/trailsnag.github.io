@@ -1,7 +1,7 @@
 ---
 import Wordmark from './Wordmark.astro';
 import LangSwitch from './LangSwitch.astro';
-import { useTranslations, claimUrl } from '../i18n/utils';
+import { useTranslations, appUrl, claimUrl } from '../i18n/utils';
 import type { Lang } from '../i18n/routes';
 
 interface Props {
@@ -34,10 +34,19 @@ const home = lang === 'fr' ? '/' : '/en/';
         )
       }
       <LangSwitch lang={lang} />
+      {/* Both doors into the app, on every screen size: the reporter opens the
+          map (position routes the snag), the steward opens the desk (which is
+          also the sign-in). Hiding these on phones left the visitor who is
+          standing on the trail with no way in. */}
       <a
         href={claimUrl}
-        class="hidden rounded-(--radius-control) bg-(--blaze) px-4 py-2 text-sm font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press) sm:inline-block"
-        >{t.nav.claim}</a
+        class="rounded-(--radius-control) border border-(--line) px-3 py-2 text-sm font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine)"
+        >{t.nav.desk}</a
+      >
+      <a
+        href={appUrl}
+        class="rounded-(--radius-control) bg-(--blaze) px-4 py-2 text-sm font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
+        >{t.nav.open}</a
       >
     </div>
   </div>

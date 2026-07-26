@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import QrSticker from './QrSticker.astro';
-import { useTranslations, claimUrl, contactEmail } from '../i18n/utils';
+import { useTranslations, appUrl, claimUrl, contactEmail } from '../i18n/utils';
 import type { Lang } from '../i18n/routes';
 
 interface Props {
@@ -33,14 +33,17 @@ const t = useTranslations(lang);
             </span>
           </h1>
           <p class="mt-6 max-w-xl text-lg leading-relaxed text-(--sub)">{t.hero.lead}</p>
+          {/* Reporting leads: the app routes a snag from the visitor's own
+              position, so no sticker has to be within reach. Claiming land is
+              the strong second — it is the buyer's path, not the visitor's. */}
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href={claimUrl}
+              href={appUrl}
               class="rounded-(--radius-control) bg-(--blaze) px-6 py-3.5 text-base font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
               >{t.hero.ctaPrimary}</a
             >
             <a
-              href="#how"
+              href={claimUrl}
               class="rounded-(--radius-control) border border-(--line) px-6 py-3.5 text-base font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine)"
               >{t.hero.ctaSecondary}</a
             >
@@ -50,6 +53,14 @@ const t = useTranslations(lang);
         <div>
           <QrSticker />
           <p class="mt-5 text-center text-sm text-(--sub)">{t.sticker.caption}</p>
+          <p class="mt-2 text-center text-sm text-(--sub)">
+            {t.sticker.orLead}{' '}
+            <a
+              href={appUrl}
+              class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+              >{t.sticker.orCta}</a
+            >
+          </p>
         </div>
       </div>
     </section>
@@ -134,6 +145,16 @@ const t = useTranslations(lang);
             ))
           }
         </div>
+        {/* The steward section described the desk without opening it — this is
+            the sign-in door for a crew that already has an account. */}
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href={claimUrl}
+            class="rounded-(--radius-control) bg-[#e2703a] px-6 py-3.5 text-base font-bold text-[#0f1f1a] transition-opacity duration-200 hover:opacity-90"
+            >{t.stewards.cta}</a
+          >
+          <p class="font-mono text-sm text-[#b7c4b2]">{t.stewards.ctaNote}</p>
+        </div>
       </div>
     </section>
 
@@ -177,6 +198,16 @@ const t = useTranslations(lang);
             class="rounded-(--radius-control) bg-(--blaze) px-7 py-4 text-base font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
             >{t.ctaBand.cta}</a
           >
+          {/* The closing band asked only the buyer to act; a visitor who read
+              this far deserves the reporting door too. */}
+          <p class="text-sm text-(--sub)">
+            {t.ctaBand.reportLead}{' '}
+            <a
+              href={appUrl}
+              class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+              >{t.ctaBand.reportCta}</a
+            >
+          </p>
           <p class="text-sm text-(--sub)">
             {t.ctaBand.mailLead}
             <a href={`mailto:${contactEmail}`} class="font-mono font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)">{contactEmail}</a>
