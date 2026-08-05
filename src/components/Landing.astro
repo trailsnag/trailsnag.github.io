@@ -137,8 +137,15 @@ const t = useTranslations(lang);
           {
             t.stewards.features.map((f) => (
               <div class="border-t border-[#2e5a4c] pt-5">
-                <h3 class="font-display text-lg font-bold tracking-[-0.02em] text-[#f1f4ee]">
+                <h3 class="flex flex-wrap items-center gap-2.5 font-display text-lg font-bold tracking-[-0.02em] text-[#f1f4ee]">
                   {f.title}
+                  {'soon' in f && f.soon && (
+                    /* « Bientôt » is the honesty rule: an unshipped surface
+                       never reads as live. Drop the flag when it deploys. */
+                    <span class="rounded-full border border-[#a8831f] px-2.5 py-0.5 font-mono text-[11px] font-semibold tracking-wide text-[#d9b64a] uppercase">
+                      {t.stewards.soonBadge}
+                    </span>
+                  )}
                 </h3>
                 <p class="mt-2 leading-relaxed text-[#b7c4b2]">{f.body}</p>
               </div>

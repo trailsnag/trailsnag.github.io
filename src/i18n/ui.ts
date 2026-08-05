@@ -52,7 +52,7 @@ const fr = {
         body: 'Pas de signal en forêt ? Le signalement est gardé sur le téléphone et part tout seul au retour du réseau.',
       },
     ],
-    note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application — facultatif, pour toujours. L’anonymat reste la voie par défaut.',
+    note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application — facultatif, pour toujours. L’anonymat reste la voie par défaut. Et vos photos sont nettoyées de leurs métadonnées cachées (position, appareil) avant même de quitter votre téléphone.',
   },
   rewards: {
     kicker: 'La boucle des récompenses',
@@ -80,14 +80,15 @@ const fr = {
     lead: 'TrailSnag donne à votre équipe des yeux sur le téléphone de chaque visiteur — et une file de triage pour agir.',
     cta: 'Ouvrir le poste de garde',
     ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
+    soonBadge: 'Bientôt',
     features: [
       {
         title: 'Une file de triage, pas une boîte courriel',
-        body: 'Chaque signalement arrive géolocalisé et photographié sur la carte de votre territoire. Validez, corrigez, fermez — l’historique reste.',
+        body: 'Chaque signalement arrive géolocalisé et photographié sur la carte de votre territoire. Validez, corrigez, fermez — l’historique reste, et un résumé horaire par courriel prévient chaque membre qui le veut.',
       },
       {
         title: 'La preuve que vous avez répondu',
-        body: 'La carte publique montre ce qui est signalé et ce qui est réglé. Votre registre documente la réponse de votre équipe, problème par problème.',
+        body: 'La carte publique montre ce qui est signalé et ce qui est réglé. Exportez le registre en CSV, GPX ou KML pour vos demandes de subvention — et produisez un rapport d’intervention PDF, problème par problème.',
       },
       {
         title: 'Des bénévoles récompensés',
@@ -95,7 +96,16 @@ const fr = {
       },
       {
         title: 'Des autocollants QR, un par départ de sentier',
-        body: 'Votre installation, c’est des autocollants résistants aux intempéries. Pas de borne, pas de matériel, pas de formation des visiteurs.',
+        body: 'Imprimez-les vous-même depuis le poste de garde : des autocollants résistants aux intempéries, c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
+      },
+      {
+        title: 'Se branche à vos outils existants',
+        body: 'Chaque étape du cycle de vie d’un signalement peut alimenter votre 311 ou votre système de bons de travail — un flux signé, testable en un clic, plus l’import CSV avec les mêmes noms de champs.',
+      },
+      {
+        title: 'L’état de vos sentiers, affiché partout',
+        body: 'Déclarez chaque sentier ouvert, en prudence ou fermé : la carte publique colore le tracé, et une carte intégrable en une ligne montre le tout sur votre propre site web.',
+        soon: true,
       },
     ],
   },
@@ -153,9 +163,11 @@ type Dict = {
 
 type DeepString<T> = T extends string
   ? string
-  : T extends ReadonlyArray<infer U>
-    ? ReadonlyArray<DeepString<U>>
-    : { [K in keyof T]: DeepString<T[K]> };
+  : T extends boolean
+    ? boolean
+    : T extends ReadonlyArray<infer U>
+      ? ReadonlyArray<DeepString<U>>
+      : { [K in keyof T]: DeepString<T[K]> };
 
 const en: Dict = {
   meta: {
@@ -203,7 +215,7 @@ const en: Dict = {
         body: 'No signal in the woods? The report is kept on the phone and sends itself when the network comes back.',
       },
     ],
-    note: 'Want your points to follow you across devices? Create an account in the app — optional, forever. Anonymous stays the default.',
+    note: 'Want your points to follow you across devices? Create an account in the app — optional, forever. Anonymous stays the default. And your photos are scrubbed of their hidden metadata (position, device) before they even leave your phone.',
   },
   rewards: {
     kicker: 'The reward loop',
@@ -231,14 +243,15 @@ const en: Dict = {
     lead: 'TrailSnag gives your crew eyes on every visitor’s phone — and a triage queue to act on what they see.',
     cta: 'Open the steward desk',
     ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
+    soonBadge: 'Coming soon',
     features: [
       {
         title: 'A triage queue, not an inbox',
-        body: 'Every report lands geolocated and photographed on your territory’s map. Validate, fix, close — the history stays.',
+        body: 'Every report lands geolocated and photographed on your territory’s map. Validate, fix, close — the history stays, and an hourly email digest keeps every member who wants it in the loop.',
       },
       {
         title: 'Proof you responded',
-        body: 'The public map shows what’s reported and what’s resolved. Your log documents your crew’s response, problem by problem.',
+        body: 'The public map shows what’s reported and what’s resolved. Export the log as CSV, GPX or KML for your grant files — and produce an intervention-report PDF, problem by problem.',
       },
       {
         title: 'Volunteers, rewarded',
@@ -246,7 +259,16 @@ const en: Dict = {
       },
       {
         title: 'QR stickers, one per trailhead',
-        body: 'Your install is weatherproof stickers. No kiosk, no hardware, no visitor training.',
+        body: 'Print them yourself from the steward desk: weatherproof stickers are the whole install. No kiosk, no hardware, no visitor training.',
+      },
+      {
+        title: 'Feeds the tools you already run',
+        body: 'Every step of a report’s lifecycle can feed your 311 or work-order system — a signed feed you can test in one click, plus CSV import with the same field names.',
+      },
+      {
+        title: 'Your trails’ status, shown everywhere',
+        body: 'Declare each trail open, caution or closed: the public map colors the line, and a one-line embeddable map shows it all on your own website.',
+        soon: true,
       },
     ],
   },
