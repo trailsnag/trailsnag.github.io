@@ -1,0 +1,146 @@
+<!doctype html>
+<!--
+  Source for public/og.png — the card every share of trailsnag.com renders.
+
+  It is a page rather than generated SVG because a social card is a raster in the
+  end, and a browser is the only thing that lays out these two fonts at these two
+  weights the way the site does. The lockup is not redrawn here: it is <img>-ed
+  straight from the brand kit, so the card cannot drift from the official logo.
+
+  To regenerate after editing:
+    1. pnpm brand                       (refreshes the lockup this file embeds)
+    2. open scripts/og-card.html in a browser at exactly 1200×630, DPR 1
+    3. screenshot the viewport to public/og.png
+-->
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <title>TrailSnag — carte de partage</title>
+    <style>
+      @font-face {
+        font-family: 'Bricolage Grotesque Variable';
+        src: url('../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2')
+          format('woff2-variations');
+        font-weight: 200 800;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Public Sans Variable';
+        src: url('../node_modules/@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2')
+          format('woff2-variations');
+        font-weight: 100 900;
+        font-style: normal;
+      }
+
+      /* Tokens mirrored from src/styles/global.css. */
+      :root {
+        --paper: #f1f4ee;
+        --ink: #0f1f1a;
+        --sub: #24483d;
+        --pine: #2e5a4c;
+        --blaze: #cb561f;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        background: var(--paper);
+        font-family: 'Public Sans Variable', system-ui, sans-serif;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* The same faint topo contours the app icon carries, off two centres so
+         the arcs read as terrain rather than as a pattern. */
+      .contours {
+        position: absolute;
+        inset: 0;
+      }
+
+      .plate {
+        position: absolute;
+        inset: 0;
+        padding: 88px 90px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* align-self matters: a stretched flex item would widen the <img> box and
+         the SVG would centre itself inside it, drifting off the text margin. */
+      .lockup {
+        align-self: flex-start;
+        height: 132px;
+        width: auto;
+        display: block;
+      }
+
+      .headline {
+        margin-top: 58px;
+        font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 46px;
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+      }
+
+      .subhead {
+        margin-top: 18px;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1.3;
+        color: var(--sub);
+      }
+
+      .domain {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 28px;
+        letter-spacing: -0.02em;
+        color: var(--pine);
+      }
+
+      /* The blaze as an object — a painted stroke, never a tint behind text. */
+      .blaze-stripe {
+        width: 10px;
+        height: 34px;
+        border-radius: 2px;
+        background: var(--blaze);
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="contours" viewBox="0 0 1200 630" fill="none" aria-hidden="true">
+      <g stroke="#2e5a4c" stroke-opacity="0.1" stroke-width="3">
+        <circle cx="1268" cy="-96" r="330" />
+        <circle cx="1268" cy="-96" r="420" />
+        <circle cx="1268" cy="-96" r="510" />
+        <circle cx="-120" cy="700" r="300" />
+        <circle cx="-120" cy="700" r="395" />
+      </g>
+    </svg>
+
+    <div class="plate">
+      <img class="lockup" src="../public/brand/svg/trailsnag-lockup-ink.svg" alt="TrailSnag" />
+      <p class="headline">Un obstacle&nbsp;? Signalez-le en 30&nbsp;secondes.</p>
+      <p class="subhead">See a snag? Report it in 30 seconds — no account.</p>
+      <div class="domain"><span class="blaze-stripe"></span>trailsnag.com</div>
+    </div>
+  </body>
+</html>
