@@ -2,42 +2,66 @@
 <!--
   Source for the LinkedIn company-page banner (public/brand/social/).
 
-  LinkedIn's slot is 1128×191. The page's round logo overlaps the banner's
-  lower-left on the public view, so the left third stays quiet — contours only —
-  and the lockup sits centre-right. Regenerate like the og card: open at exactly
-  1128×191, screenshot the viewport, downscale the 2× capture to 1128×191.
+  LinkedIn DISPLAYS the org banner around 1128×191, but its upload cropper
+  demands a taller frame — a 191-tall band letterboxes between black bars
+  (observed 2026-08-17). So the artwork is 1584×396 (4:1) with the lockup
+  centred and generous quiet background: any centre crop LinkedIn takes,
+  from 4:1 down to ~6:1, keeps the lockup whole. The left stays quieter
+  because the round page logo overlaps there on the public view.
+
+  Regenerate: open at 1584×396, screenshot the viewport, downscale the 2×
+  capture to 1584×396 (centre-crop if the viewport padded the height).
 -->
 <html lang="fr-CA">
   <head>
     <meta charset="utf-8" />
     <title>TrailSnag — bannière LinkedIn</title>
     <style>
+      @font-face {
+        font-family: 'Bricolage Grotesque Variable';
+        src: url('../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2')
+          format('woff2-variations');
+        font-weight: 200 800;
+        font-style: normal;
+      }
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      /* Content centres in the REAL viewport so a centre-crop of any capture
-         height lands the 1128×191 band exactly. */
-      html, body { width: 1128px; height: 100vh; overflow: hidden; }
+      html, body { width: 1584px; height: 100vh; overflow: hidden; }
       body { position: relative; background: #f1f4ee; }
       .contours { position: absolute; inset: 0; }
-      .lockup {
+      /* Lockup + steward line as one centred block, kept inside the middle
+         ~260px so even a 6:1 display crop shows both whole. */
+      .block {
         position: absolute;
-        top: 50%;
-        left: 420px;
-        transform: translateY(-50%);
-        height: 88px;
-        width: auto;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+      }
+      .lockup { height: 104px; width: auto; display: block; }
+      .line {
+        font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 34px;
+        letter-spacing: -0.015em;
+        color: #24483d;
       }
     </style>
   </head>
   <body>
-    <svg class="contours" viewBox="0 0 1128 191" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+    <svg class="contours" viewBox="0 0 1584 396" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
       <g stroke="#2e5a4c" stroke-opacity="0.1" stroke-width="3">
-        <circle cx="60" cy="260" r="180" />
-        <circle cx="60" cy="260" r="245" />
-        <circle cx="60" cy="260" r="310" />
-        <circle cx="1160" cy="-80" r="200" />
-        <circle cx="1160" cy="-80" r="270" />
+        <circle cx="90" cy="480" r="300" />
+        <circle cx="90" cy="480" r="400" />
+        <circle cx="90" cy="480" r="500" />
+        <circle cx="1620" cy="-120" r="330" />
+        <circle cx="1620" cy="-120" r="440" />
       </g>
     </svg>
-    <img class="lockup" src="../public/brand/svg/trailsnag-lockup-ink.svg" alt="TrailSnag" />
+    <div class="block">
+      <img class="lockup" src="../public/brand/svg/trailsnag-lockup-ink.svg" alt="TrailSnag" />
+      <p class="line">Pour les équipes qui gardent les sentiers ouverts.</p>
+    </div>
   </body>
 </html>
