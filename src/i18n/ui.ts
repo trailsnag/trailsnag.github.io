@@ -152,7 +152,7 @@ const fr = {
     mailLead: 'ou écrivez-nous :',
   },
   footer: {
-    tagline: 'Pour les équipes qui gardent les sentiers ouverts.',
+    tagline: 'Pour ceux qui gardent leurs sentiers ouverts.',
     privacy: 'Confidentialité',
     terms: 'Conditions',
     contact: 'Contact',
@@ -323,7 +323,7 @@ const en: Dict = {
     mailLead: 'or write to us:',
   },
   footer: {
-    tagline: 'For the crews that keep trails open.',
+    tagline: 'For those who keep their trails open.',
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',
