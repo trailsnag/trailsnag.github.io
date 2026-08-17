@@ -78,7 +78,7 @@ const fr = {
     kicker: 'Côté gestionnaire',
     title: 'Votre terrain, vos signalements, vos bénévoles',
     lead: 'TrailSnag fait de chaque visiteur une paire d’yeux sur le terrain — et donne à votre équipe une file de triage pour agir.',
-    cta: 'Ouvrir le poste de garde',
+    cta: 'Ouvrir le tableau de bord',
     ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
     soonBadge: 'Bientôt',
     features: [
@@ -88,7 +88,7 @@ const fr = {
       },
       {
         title: 'Vos sentiers, tracés par vous',
-        body: 'Marchez un sentier, le téléphone en capte le tracé — même sans réseau. Au poste de garde, faites-en le tracé officiel ou dessinez-le à la main, publiez-le sur la carte publique quand il est prêt — et un rapport vous dit ce qui manque.',
+        body: 'Marchez un sentier, le téléphone en capte le tracé — même sans réseau. Dans le tableau de bord, faites-en le tracé officiel ou dessinez-le à la main, publiez-le sur la carte publique quand il est prêt — et un rapport vous dit ce qui manque.',
       },
       {
         title: 'Vos catégories, jusqu’à l’essence d’arbre',
@@ -104,7 +104,7 @@ const fr = {
       },
       {
         title: 'Des autocollants QR, un par départ de sentier',
-        body: 'Imprimez-les vous-même depuis le poste de garde : un fichier prêt à imprimer, dimensionné pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
+        body: 'Imprimez-les vous-même depuis le tableau de bord : un fichier prêt à imprimer, dimensionné pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
       },
       {
         title: 'Se branche à vos outils existants',
