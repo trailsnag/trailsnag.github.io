@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="TrailSnag — square avatar">
+  <title>TrailSnag — square avatar</title>
+  <rect width="512" height="512" fill="#f1f4ee"/>
+  <g fill="none" stroke="#2e5a4c" stroke-opacity=".09" stroke-width="3"><circle cx="588" cy="-52" r="230"/><circle cx="588" cy="-52" r="300"/><circle cx="588" cy="-52" r="370"/><circle cx="-70" cy="560" r="240"/><circle cx="-70" cy="560" r="315"/></g>
+  <path fill="#0f1f1a" fill-rule="evenodd" transform="translate(136 106) scale(3.75)" d="M32 77C32 77 6 46.5 6 29 6 14.6 17.6 3 32 3c14.4 0 26 11.6 26 26 0 17.5-26 48-26 48Z M28.16 13.28 33.14 12.84 A3.5 3.5 0 0 1 36.93 16.02 L39.02 39.93 A3.5 3.5 0 0 1 35.84 43.72 L30.86 44.16 A3.5 3.5 0 0 1 27.07 40.98 L24.98 17.07 A3.5 3.5 0 0 1 28.16 13.28 Z"/>
+</svg>
