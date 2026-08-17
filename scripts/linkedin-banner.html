@@ -1,0 +1,43 @@
+<!doctype html>
+<!--
+  Source for the LinkedIn company-page banner (public/brand/social/).
+
+  LinkedIn's slot is 1128×191. The page's round logo overlaps the banner's
+  lower-left on the public view, so the left third stays quiet — contours only —
+  and the lockup sits centre-right. Regenerate like the og card: open at exactly
+  1128×191, screenshot the viewport, downscale the 2× capture to 1128×191.
+-->
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <title>TrailSnag — bannière LinkedIn</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      /* Content centres in the REAL viewport so a centre-crop of any capture
+         height lands the 1128×191 band exactly. */
+      html, body { width: 1128px; height: 100vh; overflow: hidden; }
+      body { position: relative; background: #f1f4ee; }
+      .contours { position: absolute; inset: 0; }
+      .lockup {
+        position: absolute;
+        top: 50%;
+        left: 420px;
+        transform: translateY(-50%);
+        height: 88px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="contours" viewBox="0 0 1128 191" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      <g stroke="#2e5a4c" stroke-opacity="0.1" stroke-width="3">
+        <circle cx="60" cy="260" r="180" />
+        <circle cx="60" cy="260" r="245" />
+        <circle cx="60" cy="260" r="310" />
+        <circle cx="1160" cy="-80" r="200" />
+        <circle cx="1160" cy="-80" r="270" />
+      </g>
+    </svg>
+    <img class="lockup" src="../public/brand/svg/trailsnag-lockup-ink.svg" alt="TrailSnag" />
+  </body>
+</html>
