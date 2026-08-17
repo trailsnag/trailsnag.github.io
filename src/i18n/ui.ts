@@ -77,7 +77,7 @@ const fr = {
   stewards: {
     kicker: 'Côté gestionnaire',
     title: 'Votre terrain, vos signalements, vos bénévoles',
-    lead: 'TrailSnag donne à votre équipe des yeux sur le téléphone de chaque visiteur — et une file de triage pour agir.',
+    lead: 'TrailSnag fait de chaque visiteur une paire d’yeux sur le terrain — et donne à votre équipe une file de triage pour agir.',
     cta: 'Ouvrir le poste de garde',
     ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
     soonBadge: 'Bientôt',
@@ -85,6 +85,14 @@ const fr = {
       {
         title: 'Une file de triage, pas une boîte courriel',
         body: 'Chaque signalement arrive géolocalisé et photographié sur la carte de votre territoire. Validez, corrigez, fermez — l’historique reste, et un résumé horaire par courriel prévient chaque membre qui le veut.',
+      },
+      {
+        title: 'Vos sentiers, tracés par vous',
+        body: 'Marchez un sentier, le téléphone en capte le tracé — même sans réseau. Au poste de garde, faites-en le tracé officiel ou dessinez-le à la main, publiez-le sur la carte publique quand il est prêt — et un rapport vous dit ce qui manque.',
+      },
+      {
+        title: 'Vos catégories, jusqu’à l’essence d’arbre',
+        body: 'Le menu de signalement est le vôtre : ajoutez vos propres catégories — frêne atteint par l’agrile, chicot à abattre, balise arrachée — en français et en anglais. Les visiteurs signalent dans vos mots, et retirer une catégorie n’efface jamais l’historique.',
       },
       {
         title: 'La preuve que vous avez répondu',
@@ -96,7 +104,7 @@ const fr = {
       },
       {
         title: 'Des autocollants QR, un par départ de sentier',
-        body: 'Imprimez-les vous-même depuis le poste de garde : des autocollants résistants aux intempéries, c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
+        body: 'Imprimez-les vous-même depuis le poste de garde : un fichier prêt à imprimer, dimensionné pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
       },
       {
         title: 'Se branche à vos outils existants',
@@ -121,12 +129,12 @@ const fr = {
       {
         title: 'Propriétaires de terres et de boisés',
         badge: 'Votre carnet de terrain',
-        body: 'Votre terrain, votre registre : marquez le chicot à abattre, le ponceau bouché, la clôture à réparer. Vous êtes votre propre équipe — et rien ne se perd, même sans réseau.',
+        body: 'Votre terrain, votre registre, vos mots : tracez vos propres sentiers, marquez le frêne atteint par l’agrile, le chicot à abattre, la clôture à réparer. Vous êtes votre propre équipe — et rien ne se perd, même sans réseau.',
       },
       {
         title: 'Centres de plein air et parcs régionaux',
         badge: 'Par territoire',
-        body: 'Un canal d’intake visiteur qui documente votre diligence, saison après saison. Forfait par territoire — écrivez-nous pour un projet pilote.',
+        body: 'Un canal qui reçoit les signalements de vos visiteurs et documente votre diligence, saison après saison. Forfait par territoire — écrivez-nous pour un projet pilote.',
       },
       {
         title: 'Municipalités et MRC',
@@ -240,7 +248,7 @@ const en: Dict = {
   stewards: {
     kicker: 'For stewards',
     title: 'Your land, your snags, your volunteers',
-    lead: 'TrailSnag gives your crew eyes on every visitor’s phone — and a triage queue to act on what they see.',
+    lead: 'TrailSnag turns every visitor into a pair of eyes on the ground — and gives your crew a triage queue to act.',
     cta: 'Open the steward desk',
     ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
     soonBadge: 'Coming soon',
@@ -248,6 +256,14 @@ const en: Dict = {
       {
         title: 'A triage queue, not an inbox',
         body: 'Every report lands geolocated and photographed on your territory’s map. Validate, fix, close — the history stays, and an hourly email digest keeps every member who wants it in the loop.',
+      },
+      {
+        title: 'Your trails, traced by you',
+        body: 'Walk a trail and the phone captures the line — even with no signal. At the steward desk, make it the official route or draw it by hand, publish it to the public map when it is ready — and a report tells you what is missing.',
+      },
+      {
+        title: 'Your categories, down to the tree species',
+        body: 'The report menu is yours: add your own categories — an ash hit by the emerald borer, a dead snag to fell, a torn-off blaze — in French and English. Visitors report in your words, and retiring a category never erases the history.',
       },
       {
         title: 'Proof you responded',
@@ -259,7 +275,7 @@ const en: Dict = {
       },
       {
         title: 'QR stickers, one per trailhead',
-        body: 'Print them yourself from the steward desk: weatherproof stickers are the whole install. No kiosk, no hardware, no visitor training.',
+        body: 'Print them yourself from the steward desk: a print-ready file sized for adhesive vinyl, one code per trailhead — that is the whole install. No kiosk, no hardware, no visitor training.',
       },
       {
         title: 'Feeds the tools you already run',
@@ -284,12 +300,12 @@ const en: Dict = {
       {
         title: 'Private landowners',
         badge: 'Your land log',
-        body: 'Your land, your log: mark the dead snag to fell, the plugged culvert, the fence to mend. You are your own crew — and nothing gets lost, even offline.',
+        body: 'Your land, your log, your words: trace your own trails, mark the ash hit by the borer, the dead snag to fell, the fence to mend. You are your own crew — and nothing gets lost, even offline.',
       },
       {
         title: 'Outdoor centres and regional parks',
         badge: 'Per territory',
-        body: 'A visitor intake channel that documents your diligence, season after season. Per-territory plans — write to us about a pilot.',
+        body: 'A channel that receives your visitors’ reports and documents your diligence, season after season. Per-territory plans — write to us about a pilot.',
       },
       {
         title: 'Municipalities and RCMs',
