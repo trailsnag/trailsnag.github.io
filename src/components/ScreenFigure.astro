@@ -1,0 +1,150 @@
+---
+// One screenshot of the real steward desk, framed. Used on the landing band and
+// on the steward tour page, on paper and on the dark band alike.
+//
+// The frame is a plain chrome rail carrying the route the screen actually lives
+// at — the org id elided, because a UUID is noise. It says "this is the running
+// product", which is the whole claim these images make.
+import { Picture } from 'astro:assets';
+import { screenImage, PHONE_SCREENS, type ScreenKey } from '../lib/screens';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  screen: ScreenKey;
+  lang: Lang;
+  /** Required. Localized, and part of the FR/EN parity contract in ui.ts. */
+  alt: string;
+  caption?: string;
+  /** `ink` sits on the dark steward band; `paper` on the light sections. */
+  tone?: 'paper' | 'ink';
+  /** Only the first screen on a page should be eager — the rest are below the fold. */
+  eager?: boolean;
+  class?: string;
+}
+
+const { screen, lang, alt, caption, tone = 'paper', eager = false, class: klass = '' } = Astro.props;
+
+const img = screenImage(screen, lang);
+const isPhone = PHONE_SCREENS.has(screen);
+
+/** The real route, with the org id elided. */
+const ROUTES: Record<ScreenKey, string> = {
+  triage: 'trailsnag.app/steward/…',
+  trails: 'trailsnag.app/steward/…/trails',
+  'field-trace': 'trailsnag.app',
+  stats: 'trailsnag.app/steward/…/stats',
+  categories: 'trailsnag.app/steward/…/categories',
+  rewards: 'trailsnag.app/steward/…/rewards',
+  integrations: 'trailsnag.app/steward/…/settings',
+  territory: 'trailsnag.app/steward/…/settings',
+};
+
+// Widths the layout actually uses: a full-width tour row on a wide screen, a
+// half-column on the landing band, and a phone. Sizes keeps the browser from
+// fetching the 1440 for a 390-wide slot.
+const widths = isPhone ? [320, 390, 780] : [640, 960, 1440];
+const sizes = isPhone
+  ? '(min-width: 640px) 320px, 60vw'
+  : '(min-width: 1024px) 720px, calc(100vw - 2.5rem)';
+---
+
+<figure class={`not-prose ${klass}`} data-tone={tone}>
+  <div class="screen-frame" data-phone={isPhone ? 'true' : undefined}>
+    {
+      !isPhone && (
+        <div class="screen-rail">
+          <span class="screen-dots" aria-hidden="true">
+            <i /><i /><i />
+          </span>
+          <span class="screen-path">{ROUTES[screen]}</span>
+        </div>
+      )
+    }
+    <Picture
+      src={img}
+      formats={['avif', 'webp']}
+      fallbackFormat="png"
+      widths={widths}
+      sizes={sizes}
+      alt={alt}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding={eager ? 'sync' : 'async'}
+      class="screen-img"
+    />
+  </div>
+  {caption && <figcaption class="screen-caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  /* The frame takes its ground from the section it sits in, so one component
+     serves the paper sections and the dark steward band without a second copy. */
+  figure[data-tone='paper'] {
+    --frame-line: var(--line);
+    --frame-rail: var(--quiet);
+    --frame-text: var(--sub);
+    --frame-shadow: 0 1px 2px rgb(15 31 26 / 0.06), 0 12px 28px -12px rgb(15 31 26 / 0.22);
+  }
+  figure[data-tone='ink'] {
+    --frame-line: #2e5a4c;
+    --frame-rail: #16302a;
+    --frame-text: #b7c4b2;
+    --frame-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 18px 40px -16px rgb(0 0 0 / 0.55);
+  }
+
+  .screen-frame {
+    overflow: hidden;
+    border: 1px solid var(--frame-line);
+    border-radius: var(--radius-card);
+    background: var(--frame-rail);
+    box-shadow: var(--frame-shadow);
+  }
+
+  /* The phone shot is a tall object, not a window: no rail, tighter radius,
+     and capped so it never dominates a row it shares with a desk screen. */
+  .screen-frame[data-phone] {
+    max-width: 15rem;
+    margin-inline: auto;
+    border-radius: 22px;
+  }
+
+  .screen-rail {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--frame-line);
+  }
+
+  .screen-dots {
+    display: inline-flex;
+    gap: 0.25rem;
+  }
+  .screen-dots i {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: var(--frame-line);
+  }
+
+  .screen-path {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--frame-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .screen-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .screen-caption {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--frame-text);
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+// The steward tour: every capability the desk actually ships, each with a
+// screenshot of the running product. The landing band leads with four of these;
+// this page is where a buyer who wants the whole picture — a centre director, a
+// municipality — can see all of it before claiming anything.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import ScreenFigure from './ScreenFigure.astro';
+import { useTranslations, appUrl, claimUrl, contactEmail } from '../i18n/utils';
+import { altFor, features } from '../lib/steward-tour';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const all = features(lang);
+
+---
+
+<BaseLayout lang={lang} title={t.stewardPage.metaTitle} description={t.stewardPage.metaDescription}>
+  <Header lang={lang} />
+
+  <main>
+    <!-- Hero: the promise, and the first screen right under it. -->
+    <section class="mx-auto max-w-6xl px-5 pt-14 pb-12 sm:pt-16">
+      <p class="font-mono text-sm font-semibold tracking-wide text-(--pine) uppercase">
+        {t.stewardPage.kicker}
+      </p>
+      <h1
+        class="mt-3 max-w-3xl font-display text-4xl leading-[1.06] font-extrabold tracking-[-0.03em] text-(--ink) sm:text-5xl"
+      >
+        {t.stewardPage.title}<span class="text-(--blaze)">.</span>
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-(--sub)">{t.stewardPage.lead}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href={claimUrl}
+          class="rounded-(--radius-control) bg-(--blaze) px-6 py-3.5 text-base font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
+          >{t.stewardPage.ctaPrimary}</a
+        >
+        <a
+          href={claimUrl}
+          class="rounded-(--radius-control) border border-(--line) px-6 py-3.5 text-base font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine)"
+          >{t.stewardPage.ctaSecondary}</a
+        >
+      </div>
+      <p class="mt-4 font-mono text-sm text-(--sub)">{t.stewards.ctaNote}</p>
+    </section>
+
+    <!-- One section per capability, alternating, each carrying its screens. -->
+    <section class="border-t border-(--line)">
+      <div class="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-16 sm:gap-20 sm:py-20">
+        {
+          all.map((f, i) => (
+            /* Top-aligned when a row carries two screens — see Landing.astro. */
+            <article
+              class={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${
+                f.screens.length > 1 ? 'items-start' : 'items-center'
+              }`}
+            >
+              {f.screens.length > 0 && (
+                <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+                  <ScreenFigure
+                    screen={f.screens[0]!}
+                    lang={lang}
+                    eager={i === 0}
+                    alt={altFor(lang, f.screens[0]!)}
+                  />
+                </div>
+              )}
+              {/* The unshipped capability keeps its « Bientôt » badge and gets
+                  NO screenshot: a picture beside that badge would argue with
+                  it, and the badge is the honest half. */}
+              <div class={f.screens.length === 0 ? 'lg:col-span-2 lg:max-w-2xl' : ''}>
+                <h2 class="flex flex-wrap items-center gap-2.5 font-display text-2xl font-bold tracking-[-0.02em] text-(--ink)">
+                  {f.title}
+                  {f.soon && (
+                    <span class="rounded-full border border-(--line) bg-(--quiet) px-2.5 py-0.5 font-mono text-[11px] font-semibold tracking-wide text-(--sub) uppercase">
+                      {t.stewards.soonBadge}
+                    </span>
+                  )}
+                </h2>
+                <p class="mt-3 text-lg leading-relaxed text-(--sub)">{f.body}</p>
+                {/* The second screen rides in the WORDS column — see Landing.astro. */}
+                {f.screens.length > 1 && (
+                  <div class="mt-8 max-w-[15rem]">
+                    <ScreenFigure
+                      screen={f.screens[1]!}
+                      lang={lang}
+                      alt={altFor(lang, f.screens[1]!)}
+                    />
+                  </div>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- The land itself: what a claim is, on the dark band. -->
+    <section id="territory" class="scroll-mt-20 bg-(--ink-band,#0f1f1a)">
+      <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <h2 class="font-display text-2xl font-bold tracking-[-0.02em] text-[#f1f4ee] sm:text-3xl">
+              {t.stewardPage.landTitle}
+            </h2>
+            <p class="mt-3 text-lg leading-relaxed text-[#b7c4b2]">{t.stewardPage.landBody}</p>
+            <a
+              href={claimUrl}
+              class="mt-7 inline-block rounded-(--radius-control) bg-[#e2703a] px-6 py-3.5 text-base font-bold text-[#0f1f1a] transition-opacity duration-200 hover:opacity-90"
+              >{t.stewardPage.ctaPrimary}</a
+            >
+          </div>
+          <ScreenFigure
+            screen="territory"
+            lang={lang}
+            tone="ink"
+            alt={altFor(lang, 'territory')}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Close: the same two doors the landing page offers. -->
+    <section class="mx-auto max-w-6xl px-5 py-20">
+      <div class="rounded-(--radius-sheet) bg-(--quiet) px-6 py-14 text-center sm:px-12">
+        <h2
+          class="mx-auto max-w-2xl font-display text-3xl font-extrabold tracking-[-0.02em] text-(--ink) sm:text-4xl"
+        >
+          {t.stewardPage.closeTitle}
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl leading-relaxed text-(--sub)">{t.stewardPage.closeBody}</p>
+        <div class="mt-8 flex flex-col items-center gap-4">
+          <a
+            href={claimUrl}
+            class="rounded-(--radius-control) bg-(--blaze) px-7 py-4 text-base font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
+            >{t.ctaBand.cta}</a
+          >
+          <p class="text-sm text-(--sub)">
+            {t.ctaBand.reportLead}{' '}
+            <a
+              href={appUrl}
+              class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+              >{t.ctaBand.reportCta}</a
+            >
+          </p>
+          <p class="text-sm text-(--sub)">
+            {t.ctaBand.mailLead}
+            <a
+              href={`mailto:${contactEmail}`}
+              class="font-mono font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+              >{contactEmail}</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>
+
+<style>
+  /* Same painted-sign treatment the landing band uses. */
+  #territory {
+    --ink-band: #0f1f1a;
+  }
+  @media (prefers-color-scheme: dark) {
+    #territory {
+      --ink-band: #161d16;
+    }
+  }
+</style>

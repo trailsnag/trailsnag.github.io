@@ -3,14 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import QrSticker from './QrSticker.astro';
+import ScreenFigure from './ScreenFigure.astro';
 import { useTranslations, appUrl, claimUrl, contactEmail } from '../i18n/utils';
-import type { Lang } from '../i18n/routes';
+import { altFor, leadFeatures, restFeatures } from '../lib/steward-tour';
+import { stewardTourPath, type Lang } from '../i18n/routes';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const lead = leadFeatures(lang);
+const rest = restFeatures(lang);
+const tourPath = stewardTourPath(lang);
 ---
 
 <BaseLayout lang={lang} title={t.meta.title} description={t.meta.description}>
@@ -133,13 +138,63 @@ const t = useTranslations(lang);
           {t.stewards.title}<span class="text-[#e2703a]">.</span>
         </h2>
         <p class="mt-4 max-w-2xl text-lg leading-relaxed text-[#d5e0d3]">{t.stewards.lead}</p>
-        <div class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+
+        {/* The band described the desk in eight paragraphs and showed none of
+            it. Four capabilities now lead with a screenshot of the real thing,
+            alternating side to side; the picture stacks ABOVE the words on a
+            phone, because a claim you cannot yet see is just a claim. */}
+        <div class="mt-12 flex flex-col gap-14 sm:gap-16">
           {
-            t.stewards.features.map((f) => (
+            lead.map((f, i) => (
+              /* Top-aligned when a row carries two screens: the tracing row's
+                 media column is nearly twice as tall as its words, and centring
+                 leaves the paragraph floating in the middle of nothing. */
+              <div
+                class={`grid gap-8 lg:grid-cols-2 lg:gap-12 ${
+                  f.screens.length > 1 ? 'items-start' : 'items-center'
+                }`}
+              >
+                <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+                  <ScreenFigure screen={f.screens[0]!} lang={lang} tone="ink" eager={i === 0} alt={altFor(lang, f.screens[0]!)} />
+                </div>
+                <div>
+                  <h3 class="font-display text-2xl font-bold tracking-[-0.02em] text-[#f1f4ee]">
+                    {f.title}
+                  </h3>
+                  <p class="mt-3 text-lg leading-relaxed text-[#b7c4b2]">{f.body}</p>
+                  {/* The tracing claim is the one that needs two pictures — the
+                      desk holds the walk, but the phone is where it is made —
+                      and the phone belongs in the WORDS column: stacked under
+                      the desk shot it doubled the media column's height and
+                      left the paragraph beside a column of nothing. Here the
+                      row reads the way the work happens: walk it, then promote
+                      it at the desk. */}
+                  {f.screens.length > 1 && (
+                    <div class="mt-8 max-w-[15rem]">
+                      <ScreenFigure
+                        screen={f.screens[1]!}
+                        lang={lang}
+                        tone="ink"
+                        alt={altFor(lang, f.screens[1]!)}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="mt-16 font-mono text-sm font-semibold tracking-wide text-[#7fb59d] uppercase">
+          {t.stewards.moreLabel}
+        </p>
+        <div class="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+          {
+            rest.map((f) => (
               <div class="border-t border-[#2e5a4c] pt-5">
                 <h3 class="flex flex-wrap items-center gap-2.5 font-display text-lg font-bold tracking-[-0.02em] text-[#f1f4ee]">
                   {f.title}
-                  {'soon' in f && f.soon && (
+                  {f.soon && (
                     /* « Bientôt » is the honesty rule: an unshipped surface
                        never reads as live. Drop the flag when it deploys. */
                     <span class="rounded-full border border-[#a8831f] px-2.5 py-0.5 font-mono text-[11px] font-semibold tracking-wide text-[#d9b64a] uppercase">
@@ -153,15 +208,21 @@ const t = useTranslations(lang);
           }
         </div>
         {/* The steward section described the desk without opening it — this is
-            the sign-in door for a crew that already has an account. */}
+            the sign-in door for a crew that already has an account, beside the
+            tour for one that wants to look before it claims. */}
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <a
             href={claimUrl}
             class="rounded-(--radius-control) bg-[#e2703a] px-6 py-3.5 text-base font-bold text-[#0f1f1a] transition-opacity duration-200 hover:opacity-90"
             >{t.stewards.cta}</a
           >
-          <p class="font-mono text-sm text-[#b7c4b2]">{t.stewards.ctaNote}</p>
+          <a
+            href={tourPath}
+            class="font-semibold text-[#f1f4ee] underline decoration-[#2e5a4c] underline-offset-4 hover:decoration-[#e2703a]"
+            >{t.stewards.tourCta}</a
+          >
         </div>
+        <p class="mt-4 font-mono text-sm text-[#b7c4b2]">{t.stewards.ctaNote}</p>
       </div>
     </section>
 

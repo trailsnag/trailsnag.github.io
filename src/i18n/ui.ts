@@ -81,41 +81,104 @@ const fr = {
     cta: 'Ouvrir le tableau de bord',
     ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
     soonBadge: 'Bientôt',
+    // The four capabilities that lead with a screenshot on the home page; the
+    // rest keep their compact line and carry their screen on the tour page.
+    tourCta: 'Voir le tableau de bord en détail',
+    moreLabel: 'Et aussi',
+    // Alt text for every captured screen, beside the copy it describes and
+    // inside the same FR/EN parity contract — a screenshot nobody can hear is
+    // half a page.
+    alts: {
+      triage:
+        'La file de triage : la carte du territoire avec les signalements géolocalisés, puis douze signalements avec leur état — à confirmer, confirmé, réglé, rejeté.',
+      trails:
+        'L’écran des sentiers : le rapport de réseau, une marche captée en attente de promotion avec ses deux tronçons, et l’état ouvert/prudence/fermé de chaque sentier.',
+      'field-trace':
+        'Un téléphone en train d’enregistrer une marche : 213 m captés, le tracé en orange qui suit le sentier, et l’avertissement de garder l’écran allumé.',
+      stats:
+        'Les statistiques du territoire : signalements au total, ouverts, validés, réglés, délai moyen, puis les exports CSV, GPX, KML et le rapport d’intervention PDF.',
+      categories:
+        'Le menu de signalement de l’organisme : les catégories par défaut suivies des siennes — frêne atteint par l’agrile, chicot à abattre, balise arrachée — en français et en anglais.',
+      rewards:
+        'Le catalogue de récompenses : laissez-passer, rabais de saison, tuque du réseau, et une demande d’échange en attente de décision.',
+      integrations:
+        'La section Intégrations : un point de terminaison 311 actif, les étapes qu’il reçoit, un bouton Tester, et la dernière livraison.',
+      territory:
+        'Le cadastre de l’organisme : son territoire dessiné sur la carte, avec le nom du réseau, les sports pratiqués et la superficie.',
+    },
     features: [
       {
+        key: 'triage',
+        screens: ['triage'],
         title: 'Une file de triage, pas une boîte courriel',
         body: 'Chaque signalement arrive géolocalisé et photographié sur la carte de votre territoire. Validez, corrigez, fermez — l’historique reste, et un résumé horaire par courriel prévient chaque membre qui le veut.',
       },
       {
+        key: 'trails',
+        screens: ['trails', 'field-trace'],
         title: 'Vos sentiers, tracés par vous',
         body: 'Marchez un sentier, le téléphone en capte le tracé — même sans réseau. Dans le tableau de bord, faites-en le tracé officiel ou dessinez-le à la main, publiez-le sur la carte publique quand il est prêt — et un rapport vous dit ce qui manque.',
       },
       {
+        key: 'categories',
+        screens: ['categories'],
         title: 'Vos catégories, jusqu’à l’essence d’arbre',
         body: 'Le menu de signalement est le vôtre : ajoutez vos propres catégories — frêne atteint par l’agrile, chicot à abattre, balise arrachée — en français et en anglais. Les visiteurs signalent dans vos mots, et retirer une catégorie n’efface jamais l’historique.',
       },
       {
+        key: 'proof',
+        screens: ['stats'],
         title: 'La preuve que vous avez répondu',
         body: 'La carte publique montre ce qui est signalé et ce qui est réglé. Exportez le registre en CSV, GPX ou KML pour vos demandes de subvention — et produisez un rapport d’intervention PDF, problème par problème.',
       },
       {
+        key: 'rewards',
+        screens: ['rewards'],
         title: 'Des bénévoles récompensés',
         body: 'Les correctifs validés donnent des points à vos bénévoles — et votre équipe décide de ce qu’ils valent : un accès gratuit, un rabais, un morceau à vos couleurs. Vous fixez le catalogue, TrailSnag tient le registre.',
       },
       {
+        // No screen: the desk prints the org's own origin into every sticker
+        // card, so a captured one would publish the capture machine's address.
+        // The hero's QrSticker already shows a real sticker, correctly addressed.
+        key: 'stickers',
+        screens: [],
         title: 'Des autocollants QR, un par départ de sentier',
         body: 'Imprimez-les vous-même depuis le tableau de bord : un fichier prêt à imprimer, dimensionné pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
       },
       {
+        key: 'integrations',
+        screens: ['integrations'],
         title: 'Se branche à vos outils existants',
         body: 'Chaque étape du cycle de vie d’un signalement peut alimenter votre 311 ou votre système de bons de travail — un flux signé, testable en un clic, plus l’import CSV avec les mêmes noms de champs.',
       },
       {
+        // No screen: this one is merged and browser-verified but not deployed,
+        // and « Bientôt » is the honesty rule. A screenshot beside the badge
+        // would argue against the badge.
+        key: 'status',
+        screens: [],
         title: 'L’état de vos sentiers, affiché partout',
         body: 'Déclarez chaque sentier ouvert, en prudence ou fermé : la carte publique colore le tracé, et une carte intégrable en une ligne montre le tout sur votre propre site web.',
         soon: true,
       },
     ],
+  },
+  stewardPage: {
+    metaTitle: 'TrailSnag pour les gestionnaires — le tableau de bord, écran par écran',
+    metaDescription:
+      'Ce que fait un gestionnaire de sentiers avec TrailSnag : trier les signalements sur la carte, tracer et publier ses sentiers, prouver ses interventions, récompenser ses bénévoles. Captures du vrai tableau de bord.',
+    kicker: 'Le tableau de bord',
+    title: 'Ce qu’un gestionnaire fait, écran par écran',
+    lead: 'Voici le vrai tableau de bord, pas une maquette : chaque image ci-dessous est une capture du produit en marche, sur le territoire de démonstration d’un organisme fictif.',
+    ctaPrimary: 'Réclamez votre territoire',
+    ctaSecondary: 'Ouvrir le tableau de bord',
+    landTitle: 'Votre territoire, à vous de le dire',
+    landBody:
+      'Réclamez votre terrain en le dessinant ou en choisissant vos lots au cadastre : le tableau de bord ne s’ouvre que sur le territoire que vous gérez, et les signalements qui y tombent vous arrivent à vous.',
+    closeTitle: 'Ce que ça prend pour commencer',
+    closeBody:
+      'Réclamez votre territoire, imprimez un autocollant par départ de sentier, et chaque visiteur devient une paire d’yeux pour votre équipe. Travaillez dès aujourd’hui, la vérification vient ensuite.',
   },
   audiences: {
     kicker: 'Pour qui',
@@ -252,41 +315,93 @@ const en: Dict = {
     cta: 'Open the steward desk',
     ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
     soonBadge: 'Coming soon',
+    tourCta: 'See the steward desk in detail',
+    moreLabel: 'And also',
+    alts: {
+      triage:
+        'The triage queue: the territory map with geolocated reports, then twelve reports with their state — to confirm, confirmed, fixed, rejected.',
+      trails:
+        'The trails screen: the network report, a captured walk waiting to be promoted with its two stretches, and each trail’s open/caution/closed status.',
+      'field-trace':
+        'A phone recording a walk: 213 m captured, the orange line following the trail, and the warning to keep the screen on.',
+      stats:
+        'Territory stats: total reports, open, validated, fixed, average time to fix, then the CSV, GPX, KML exports and the intervention-report PDF.',
+      categories:
+        'The org’s report menu: the default categories followed by its own — ash hit by the emerald borer, dead snag to fell, torn-off blaze — in French and English.',
+      rewards:
+        'The reward catalog: day pass, season discount, network toque, and one redemption request awaiting a decision.',
+      integrations:
+        'The Integrations section: an active 311 endpoint, the lifecycle steps it receives, a Test button, and the last delivery.',
+      territory:
+        'The org’s land record: its territory drawn on the map, with the network name, the sports practised and the area.',
+    },
     features: [
       {
+        key: 'triage',
+        screens: ['triage'],
         title: 'A triage queue, not an inbox',
         body: 'Every report lands geolocated and photographed on your territory’s map. Validate, fix, close — the history stays, and an hourly email digest keeps every member who wants it in the loop.',
       },
       {
+        key: 'trails',
+        screens: ['trails', 'field-trace'],
         title: 'Your trails, traced by you',
         body: 'Walk a trail and the phone captures the line — even with no signal. At the steward desk, make it the official route or draw it by hand, publish it to the public map when it is ready — and a report tells you what is missing.',
       },
       {
+        key: 'categories',
+        screens: ['categories'],
         title: 'Your categories, down to the tree species',
         body: 'The report menu is yours: add your own categories — an ash hit by the emerald borer, a dead snag to fell, a torn-off blaze — in French and English. Visitors report in your words, and retiring a category never erases the history.',
       },
       {
+        key: 'proof',
+        screens: ['stats'],
         title: 'Proof you responded',
         body: 'The public map shows what’s reported and what’s resolved. Export the log as CSV, GPX or KML for your grant files — and produce an intervention-report PDF, problem by problem.',
       },
       {
+        key: 'rewards',
+        screens: ['rewards'],
         title: 'Volunteers, rewarded',
         body: 'Validated fixes earn your volunteers points — and your crew decides what they’re worth: a free pass, a discount, gear in your colours. You set the catalog, TrailSnag keeps the ledger.',
       },
       {
+        key: 'stickers',
+        screens: [],
         title: 'QR stickers, one per trailhead',
         body: 'Print them yourself from the steward desk: a print-ready file sized for adhesive vinyl, one code per trailhead — that is the whole install. No kiosk, no hardware, no visitor training.',
       },
       {
+        key: 'integrations',
+        screens: ['integrations'],
         title: 'Feeds the tools you already run',
         body: 'Every step of a report’s lifecycle can feed your 311 or work-order system — a signed feed you can test in one click, plus CSV import with the same field names.',
       },
       {
+        key: 'status',
+        screens: [],
         title: 'Your trails’ status, shown everywhere',
         body: 'Declare each trail open, caution or closed: the public map colors the line, and a one-line embeddable map shows it all on your own website.',
         soon: true,
       },
     ],
+  },
+  stewardPage: {
+    metaTitle: 'TrailSnag for stewards — the desk, screen by screen',
+    metaDescription:
+      'What a trail steward does with TrailSnag: triage reports on the map, trace and publish trails, prove the work was done, reward volunteers. Screenshots of the real steward desk.',
+    kicker: 'The steward desk',
+    title: 'What a steward does, screen by screen',
+    lead: 'This is the real desk, not a mockup: every image below is a screenshot of the running product, on the demonstration territory of a fictional organisation.',
+    ctaPrimary: 'Claim your land',
+    ctaSecondary: 'Open the steward desk',
+    landTitle: 'Your territory, on your word',
+    landBody:
+      'Claim your land by drawing it or by picking your lots from the cadaster: the desk opens only on the territory you steward, and the reports that land inside it come to you.',
+    closeTitle: 'What it takes to start',
+    closeBody:
+      'Claim your land, print one sticker per trailhead, and every visitor becomes a pair of eyes for your crew. Work from today, verification comes after.',
   },
   audiences: {
     kicker: 'Who it serves',

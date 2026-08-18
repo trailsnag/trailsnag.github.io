@@ -6,10 +6,19 @@ export type Lang = 'fr' | 'en';
 
 export const routePairs: ReadonlyArray<{ fr: string; en: string }> = [
   { fr: '/', en: '/en/' },
+  // Named for the surface, not the audience: the header already carries a
+  // « Gestionnaires » button that opens the APP, and two doors with one word
+  // is a door nobody trusts. The page's own title is « Le tableau de bord ».
+  { fr: '/tableau-de-bord/', en: '/en/steward-desk/' },
   { fr: '/confidentialite/', en: '/en/privacy/' },
   { fr: '/conditions/', en: '/en/terms/' },
   { fr: '/contact/', en: '/en/contact/' },
 ];
+
+/** The steward tour, linked from the landing band. */
+export function stewardTourPath(lang: Lang): string {
+  return lang === 'fr' ? '/tableau-de-bord/' : '/en/steward-desk/';
+}
 
 const normalize = (path: string): string => (path.endsWith('/') ? path : `${path}/`);
 

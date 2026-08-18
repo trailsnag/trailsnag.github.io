@@ -1,0 +1,151 @@
+{
+  "capturedAt": "2026-08-18T14:12:38.964Z",
+  "appGitSha": "f0191f54a0b94fb31ddaecb4ae6c8d2b5cd5d2dc",
+  "orgName": "Sentiers du Mont-Corbeau",
+  "screens": [
+    {
+      "key": "categories",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/categories",
+      "file": "categories.en.png",
+      "sha256": "deb0858818a70e847d737b6f9e70ed8cdc2ada3800b04b9bf951759009c5fe8d",
+      "proof": "10 category rows · custom vocabulary present"
+    },
+    {
+      "key": "categories",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/categories",
+      "file": "categories.fr.png",
+      "sha256": "b92c678e0c3da5309e7ce30e1f18a99e0328d99bec6839f261dc682a08d52c24",
+      "proof": "10 category rows · custom vocabulary present"
+    },
+    {
+      "key": "field-trace",
+      "locale": "en",
+      "device": "phone",
+      "route": "/",
+      "file": "field-trace.en.png",
+      "sha256": "85db17bd7eb3a9960169325c05681f353a7ce433ca883ae6a239d2e6c9cad70d",
+      "proof": "recording live · 213 m captured"
+    },
+    {
+      "key": "field-trace",
+      "locale": "fr",
+      "device": "phone",
+      "route": "/",
+      "file": "field-trace.fr.png",
+      "sha256": "288425f6d783cd064a4c9b0b6937bbc9197750f30b78e10d6d0d51ae0d06ed50",
+      "proof": "recording live · 213 m captured"
+    },
+    {
+      "key": "integrations",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/settings",
+      "file": "integrations.en.png",
+      "sha256": "b79f02a8f6ce3b4d8463994ecc7b3741b8f4e8b20da181f4b0107f00cba7722b",
+      "proof": "1 endpoint(s) · no secret on screen · Last delivery: delivered"
+    },
+    {
+      "key": "integrations",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/settings",
+      "file": "integrations.fr.png",
+      "sha256": "22d9ddc2b57e95639f34012faab561501df2207da5e775fae5ac99dfe25fcd06",
+      "proof": "1 endpoint(s) · no secret on screen · Dernière livraison : livrée"
+    },
+    {
+      "key": "rewards",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/rewards",
+      "file": "rewards.en.png",
+      "sha256": "91d573a93c9441a7d5d85c73d5a04211c252b9f76901be7d613b017ddcc1f076",
+      "proof": "3 catalog items · 1 pending redemption(s)"
+    },
+    {
+      "key": "rewards",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/rewards",
+      "file": "rewards.fr.png",
+      "sha256": "18a035e174d56a57f968857983630cd5aaa192a9181c88771deb3995364fb185",
+      "proof": "3 catalog items · 1 pending redemption(s)"
+    },
+    {
+      "key": "stats",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/stats",
+      "file": "stats.en.png",
+      "sha256": "691d7ffc3b1e882de2f018bfceef0708a4bc8e87e9594de955e6b4f32e1c9294",
+      "proof": "3 leaderboard rows · 4 export actions"
+    },
+    {
+      "key": "stats",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/stats",
+      "file": "stats.fr.png",
+      "sha256": "7434c0d74b5173e0924012b6eb691e5a9cea6b4d232844c0f1478df55952f0c2",
+      "proof": "3 leaderboard rows · 4 export actions"
+    },
+    {
+      "key": "territory",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/settings",
+      "file": "territory.en.png",
+      "sha256": "8d6871abeafefbcd6061906ffac8937a26630082ae425419d28d43ff75f6885b",
+      "proof": "1 territory row(s) · 16.23 km² · map painted"
+    },
+    {
+      "key": "territory",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/settings",
+      "file": "territory.fr.png",
+      "sha256": "e22aa2a7e05ab0c2a25927f82cec04c19d3048283f6218f166a2aed74fcc7b85",
+      "proof": "1 territory row(s) · 16,23 km² · map painted"
+    },
+    {
+      "key": "trails",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/trails",
+      "file": "trails.en.png",
+      "sha256": "c0d274672a0e1a11ecbc2b859e135436a2bc430251f5fdef5e63ef7e371f9c8c",
+      "proof": "network report visible · 1 trail list(s) · facts: 3 trails · 5 segments · 4 published"
+    },
+    {
+      "key": "trails",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f/trails",
+      "file": "trails.fr.png",
+      "sha256": "1c166ff7ac78c33ffdf972e64eb7f284673e2a7e78610d9bc53c5f3c6de8cfb6",
+      "proof": "network report visible · 1 trail list(s) · facts: 3 sentiers · 5 segments · 4 publiés"
+    },
+    {
+      "key": "triage",
+      "locale": "en",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f",
+      "file": "triage.en.png",
+      "sha256": "aaa35f46c7f294225d6dc39629811145cd891a001631a53d0cbe78e783abbf6d",
+      "proof": "12 snag rows · 4 lifecycle states · map painted"
+    },
+    {
+      "key": "triage",
+      "locale": "fr",
+      "device": "desk",
+      "route": "/steward/3227a8e0-2d86-4f6a-a680-9f64d8ec783f",
+      "file": "triage.fr.png",
+      "sha256": "6238dfd34956a322ca8cd4961be0f4b7643ecd194e90f27717243ed089566cf1",
+      "proof": "12 snag rows · 4 lifecycle states · map painted"
+    }
+  ]
+}
