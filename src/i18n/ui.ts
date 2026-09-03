@@ -60,7 +60,7 @@ const fr = {
     lead: 'Chaque signalement confirmé et chaque correctif validé donne des points. Les équipes vérifiées les transforment en vraies récompenses — offertes par ceux qui gèrent le terrain.',
     cards: [
       {
-        title: 'Gagnés sur le terrain',
+        title: 'Cumulés sur le terrain',
         body: 'Les points viennent du vrai travail de sentier : un signalement confirmé par la communauté, un correctif validé par l’équipe. Pas de quiz, pas de tirage.',
       },
       {
