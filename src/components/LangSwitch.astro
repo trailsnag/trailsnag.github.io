@@ -15,6 +15,12 @@ const href = alternatePath(Astro.url.pathname, target);
   href={href}
   rel="alternate"
   hreflang={target}
-  class="rounded-(--radius-control) border border-(--line) px-3 py-1.5 text-sm font-semibold text-(--sub) transition-colors duration-200 hover:border-(--pine) hover:text-(--ink)"
-  >{t.langSwitch.label}</a
+  class="rounded-(--radius-control) border border-(--line) px-2 py-1.5 text-xs font-semibold text-(--sub) transition-colors duration-200 hover:border-(--pine) hover:text-(--ink) sm:px-3 sm:text-sm"
 >
+  {/* The header carries a wordmark, this switch and both app doors, which
+      together overran a 390px viewport and scrolled every page of the site
+      sideways. `short` has been in both locales since the switch was written
+      and was never rendered; below `sm` it is what fits. */}
+  <span class="sm:hidden">{t.langSwitch.short}</span>
+  <span class="hidden sm:inline">{t.langSwitch.label}</span>
+</a>
