@@ -2,7 +2,7 @@
 import Wordmark from './Wordmark.astro';
 import LangSwitch from './LangSwitch.astro';
 import { useTranslations, appUrl, claimUrl } from '../i18n/utils';
-import type { Lang } from '../i18n/routes';
+import { comparisonPath, type Lang } from '../i18n/routes';
 
 interface Props {
   lang: Lang;
@@ -20,9 +20,18 @@ const home = lang === 'fr' ? '/' : '/en/';
   >
     <a href={home} class="text-(--ink) no-underline"><Wordmark class="text-lg max-[380px]:text-base sm:text-2xl" /></a>
     <div class="flex items-center gap-2 sm:gap-5">
-      {
-        anchors && (
-          <nav class="hidden items-center gap-5 lg:flex" aria-label={t.nav.how}>
+      {/* The section anchors are landing-only, but the comparison is a PAGE and
+          rides here on every one of them: a buyer mid-comparison looks in the
+          nav, and it was reachable only at 92% of the home page and in the
+          footer. Below lg the row has no space for either — the footer link and
+          the in-page line under « Pour qui » are the doors there. */}
+      <nav class="hidden items-center gap-5 lg:flex" aria-label={t.nav.main}>
+        {/* The four French labels need ~508px and only clear it past xl —
+            at a real 1024 window the classic scrollbar leaves 1009 and two of
+            them wrapped to a second line. The anchors are the half that can
+            wait for the room; the comparison link is the one with a job. */}
+        {anchors && (
+          <span class="hidden items-center gap-5 xl:flex">
             <a href="#how" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
               {t.nav.how}
             </a>
@@ -32,9 +41,13 @@ const home = lang === 'fr' ? '/' : '/en/';
             <a href="#stewards" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
               {t.nav.stewards}
             </a>
-          </nav>
-        )
-      }
+          </span>
+        )}
+        <a
+          href={comparisonPath(lang)}
+          class="text-sm font-semibold text-(--sub) hover:text-(--ink)">{t.nav.compare}</a
+        >
+      </nav>
       <LangSwitch lang={lang} />
       {/* Both doors into the app, on every screen size: the reporter opens the
           map (position routes the snag), the steward opens the desk (which is

@@ -20,6 +20,7 @@ const fr = {
     open: 'Signaler',
     desk: 'Gestionnaires',
     compare: 'Comparatif',
+    main: 'Navigation principale',
   },
   hero: {
     kicker: 'Signalement de sentiers, sans friction',
@@ -405,6 +406,7 @@ const en: Dict = {
     open: 'Report',
     desk: 'Stewards',
     compare: 'Comparison',
+    main: 'Main navigation',
   },
   hero: {
     kicker: 'Trail reporting, without the friction',
