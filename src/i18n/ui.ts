@@ -104,7 +104,7 @@ const fr = {
       integrations:
         'La section Intégrations : un point de terminaison 311 actif, les étapes qu’il reçoit, un bouton Tester, et la dernière livraison.',
       territory:
-        'Le cadastre de l’organisme : son territoire dessiné sur la carte, avec le nom du réseau, les sports pratiqués et la superficie.',
+        'La fiche de territoire de l’organisme : son territoire dessiné sur la carte, avec le nom du réseau, les sports pratiqués et la superficie.',
     },
     features: [
       {
@@ -175,7 +175,7 @@ const fr = {
     ctaSecondary: 'Ouvrir le tableau de bord',
     landTitle: 'Votre territoire, à vous de le dire',
     landBody:
-      'Réclamez votre terrain en le dessinant ou en choisissant vos lots au cadastre : le tableau de bord ne s’ouvre que sur le territoire que vous gérez, et les signalements qui y tombent vous arrivent à vous.',
+      'Réclamez votre terrain en le dessinant sur la carte : le tableau de bord ne s’ouvre que sur le territoire que vous gérez, et les signalements qui y tombent vous arrivent à vous.',
     closeTitle: 'Ce que ça prend pour commencer',
     closeBody:
       'Réclamez votre territoire, imprimez un autocollant par départ de sentier, et chaque visiteur devient une paire d’yeux pour votre équipe. Travaillez dès aujourd’hui, la vérification vient ensuite.',
@@ -398,7 +398,7 @@ const en: Dict = {
     ctaSecondary: 'Open the steward desk',
     landTitle: 'Your territory, on your word',
     landBody:
-      'Claim your land by drawing it or by picking your lots from the cadaster: the desk opens only on the territory you steward, and the reports that land inside it come to you.',
+      'Claim your land by drawing it on the map: the desk opens only on the territory you steward, and the reports that land inside it come to you.',
     closeTitle: 'What it takes to start',
     closeBody:
       'Claim your land, print one sticker per trailhead, and every visitor becomes a pair of eyes for your crew. Work from today, verification comes after.',
