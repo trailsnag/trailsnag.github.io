@@ -10,10 +10,18 @@ export const routePairs: ReadonlyArray<{ fr: string; en: string }> = [
   // « Gestionnaires » button that opens the APP, and two doors with one word
   // is a door nobody trusts. The page's own title is « Le tableau de bord ».
   { fr: '/tableau-de-bord/', en: '/en/steward-desk/' },
+  // The competitive comparison. Named for what it is in each language rather
+  // than transliterated: « comparatif » is the word a Québec buyer types.
+  { fr: '/comparatif/', en: '/en/comparison/' },
   { fr: '/confidentialite/', en: '/en/privacy/' },
   { fr: '/conditions/', en: '/en/terms/' },
   { fr: '/contact/', en: '/en/contact/' },
 ];
+
+/** The competitive comparison, linked from the footer and the landing. */
+export function comparisonPath(lang: Lang): string {
+  return lang === 'fr' ? '/comparatif/' : '/en/comparison/';
+}
 
 /** The steward tour, linked from the landing band. */
 export function stewardTourPath(lang: Lang): string {

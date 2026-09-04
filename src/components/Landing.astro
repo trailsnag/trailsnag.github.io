@@ -6,7 +6,7 @@ import QrSticker from './QrSticker.astro';
 import ScreenFigure from './ScreenFigure.astro';
 import { useTranslations, appUrl, claimUrl, contactEmail } from '../i18n/utils';
 import { altFor, leadFeatures, restFeatures } from '../lib/steward-tour';
-import { stewardTourPath, type Lang } from '../i18n/routes';
+import { comparisonPath, stewardTourPath, type Lang } from '../i18n/routes';
 
 interface Props {
   lang: Lang;
@@ -16,6 +16,7 @@ const t = useTranslations(lang);
 const lead = leadFeatures(lang);
 const rest = restFeatures(lang);
 const tourPath = stewardTourPath(lang);
+const comparePath = comparisonPath(lang);
 ---
 
 <BaseLayout lang={lang} title={t.meta.title} description={t.meta.description}>
@@ -250,6 +251,18 @@ const tourPath = stewardTourPath(lang);
             ))
           }
         </div>
+        {/* Whoever just recognised their own row is the reader deciding
+            between us and three other tabs. The comparison is the honest next
+            click, and hiding it in the footer only means they read someone
+            else's version of it. */}
+        <p class="mt-10 text-(--sub)">
+          {t.comparison.landingLead}{' '}
+          <a
+            href={comparePath}
+            class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+            >{t.comparison.landingCta}</a
+          >
+        </p>
       </div>
     </section>
 
