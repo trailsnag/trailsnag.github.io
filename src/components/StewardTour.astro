@@ -71,17 +71,9 @@ const all = features(lang);
                   />
                 </div>
               )}
-              {/* The unshipped capability keeps its « Bientôt » badge and gets
-                  NO screenshot: a picture beside that badge would argue with
-                  it, and the badge is the honest half. */}
               <div class={f.screens.length === 0 ? 'lg:col-span-2 lg:max-w-2xl' : ''}>
                 <h2 class="flex flex-wrap items-center gap-2.5 font-display text-2xl font-bold tracking-[-0.02em] text-(--ink)">
                   {f.title}
-                  {f.soon && (
-                    <span class="rounded-full border border-(--line) bg-(--quiet) px-2.5 py-0.5 font-mono text-[11px] font-semibold tracking-wide text-(--sub) uppercase">
-                      {t.stewards.soonBadge}
-                    </span>
-                  )}
                 </h2>
                 <p class="mt-3 text-lg leading-relaxed text-(--sub)">{f.body}</p>
                 {/* The second screen rides in the WORDS column — see Landing.astro. */}

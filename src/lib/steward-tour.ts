@@ -17,7 +17,6 @@ export type Feature = {
   screens: readonly ScreenKey[];
   title: string;
   body: string;
-  soon: boolean;
 };
 
 /**
@@ -64,7 +63,6 @@ export function features(lang: Lang): Feature[] {
     screens: f.screens as readonly ScreenKey[],
     title: f.title,
     body: f.body,
-    soon: 'soon' in f && f.soon === true,
   }));
 }
 

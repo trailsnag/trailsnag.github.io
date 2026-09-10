@@ -82,7 +82,6 @@ const fr = {
     lead: 'TrailSnag fait de chaque visiteur une paire d’yeux sur le terrain — et donne à votre équipe une file de triage pour agir.',
     cta: 'Ouvrir le tableau de bord',
     ctaNote: 'Connexion par Google, mot de passe, ou code envoyé par courriel.',
-    soonBadge: 'Bientôt',
     // The four capabilities that lead with a screenshot on the home page; the
     // rest keep their compact line and carry their screen on the tour page.
     tourCta: 'Voir le tableau de bord en détail',
@@ -155,14 +154,14 @@ const fr = {
         body: 'Chaque étape du cycle de vie d’un signalement peut alimenter votre 311 ou votre système de bons de travail — un flux signé, testable en un clic, plus l’import CSV avec les mêmes noms de champs.',
       },
       {
-        // No screen: this one is merged and browser-verified but not deployed,
-        // and « Bientôt » is the honesty rule. A screenshot beside the badge
-        // would argue against the badge.
+        // No screenshot yet — the capture run has not been re-driven since this
+        // shipped. The row stands on its words until it has one; what it must
+        // never do is carry a « coming soon » badge, because the capability IS
+        // deployed (0024, and three browser.trail-status specs).
         key: 'status',
         screens: [],
         title: 'L’état de vos sentiers, affiché partout',
         body: 'Déclarez chaque sentier ouvert, en prudence ou fermé : la carte publique colore le tracé, et une carte intégrable en une ligne montre le tout sur votre propre site web.',
-        soon: true,
       },
     ],
   },
@@ -467,7 +466,6 @@ const en: Dict = {
     lead: 'TrailSnag turns every visitor into a pair of eyes on the ground — and gives your crew a triage queue to act.',
     cta: 'Open the steward desk',
     ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
-    soonBadge: 'Coming soon',
     tourCta: 'See the steward desk in detail',
     moreLabel: 'And also',
     alts: {
@@ -536,7 +534,6 @@ const en: Dict = {
         screens: [],
         title: 'Your trails’ status, shown everywhere',
         body: 'Declare each trail open, caution or closed: the public map colors the line, and a one-line embeddable map shows it all on your own website.',
-        soon: true,
       },
     ],
   },
