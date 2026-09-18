@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { useTranslations, claimUrl, appUrl, contactEmail } from '../i18n/utils';
-import { players, readingDate, READING_DATE } from '../lib/comparison';
+import { players } from '../lib/comparison';
 import type { Lang } from '../i18n/routes';
 
 interface Props {
@@ -21,7 +21,6 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const field = players(lang);
-const read = readingDate(lang);
 
 /** The three labelled facts every card carries, in one place so the two
     columns of every card line up down the grid. */
@@ -40,7 +39,7 @@ const rows = (p: (typeof field)[number]) => [
   <Header lang={lang} />
 
   <main>
-    <!-- Hero: the promise of the page, and the date it rests on. -->
+    <!-- Hero: the promise of the page, and where its facts were read. -->
     <section class="mx-auto max-w-6xl px-5 pt-14 pb-12 sm:pt-16">
       <p class="font-mono text-sm font-semibold tracking-wide text-(--pine) uppercase">
         {t.comparison.kicker}
@@ -51,15 +50,7 @@ const rows = (p: (typeof field)[number]) => [
         {t.comparison.title}<span class="text-(--blaze)">.</span>
       </h1>
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-(--sub)">{t.comparison.lead}</p>
-      {/* The date is a badge, not a footnote: a comparison page whose age you
-          have to hunt for is asking to be believed longer than it deserves. */}
-      <p
-        class="mt-8 inline-flex items-center gap-2 rounded-full border border-(--line) bg-(--quiet) px-4 py-2 font-mono text-sm font-semibold text-(--sub)"
-      >
-        {t.comparison.readingLabel}
-        <time datetime={READING_DATE}>{read}</time>
-      </p>
-      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-(--sub)">
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-(--sub)">
         {t.comparison.readingNote}
       </p>
     </section>

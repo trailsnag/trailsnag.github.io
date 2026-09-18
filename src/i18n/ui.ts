@@ -209,7 +209,7 @@ const fr = {
     ],
   },
   // The comparison page. Every cell here was read on a competitor's own public
-  // pages on READING_DATE (lib/comparison.ts) — nothing is inferred from a
+  // pages — nothing is inferred from a
   // category. Three rules hold this copy together, and breaking one is how a
   // comparison page becomes a liability:
   //
@@ -357,9 +357,8 @@ const fr = {
       'Un comparatif honnête des outils de sentiers offerts ici et ailleurs : TrailsIQ, Trail Sentinel, Vélo Québec, OuterSpatial, Ondago, Geotrek. Ce pour quoi chacun est le bon choix, et le seul mécanisme que nous n’avons trouvé nulle part ailleurs.',
     kicker: 'Le comparatif',
     title: 'Ce qui existe, et où nous nous distinguons',
-    lead: 'Vous magasinez un outil de sentiers. Voici le terrain tel que nous l’avons lu — sources publiques, date affichée, et pour chaque joueur ce qui nous sépare de lui. Quand un autre produit répond mieux à votre besoin, la carte le dit aussi : un comparatif qui gagne sur tous les axes n’informe personne.',
-    readingLabel: 'Relevé du',
-    readingNote: 'Lu sur les pages publiques de chaque fournisseur. Les fonctions et les prix changent : la date est là pour que vous sachiez quoi revérifier. Nous ne publions pas les prix des autres — ils se démodent en silence, et c’est chez eux qu’il faut les lire.',
+    lead: 'Vous magasinez un outil de sentiers. Voici le terrain tel que nous l’avons lu — sources publiques, et pour chaque joueur ce qui nous sépare de lui. Quand un autre produit répond mieux à votre besoin, la carte le dit aussi : un comparatif qui gagne sur tous les axes n’informe personne.',
+    readingNote: 'Lu sur les pages publiques de chaque fournisseur. Les fonctions et les prix changent. Nous ne publions pas les prix des autres — ils se démodent en silence, et c’est chez eux qu’il faut les lire.',
     fieldTitle: 'Le terrain, joueur par joueur',
     fieldLead: 'Six produits, classés par ce qu’ils ont en commun avec nous. Chaque carte dit d’abord ce qui nous sépare — puis, en une ligne, le besoin pour lequel il faut aller les voir plutôt que nous.',
     labels: {
@@ -825,9 +824,8 @@ const en: Dict = {
       'An honest comparison of the trail tools available here and elsewhere: TrailsIQ, Trail Sentinel, Vélo Québec, OuterSpatial, Ondago, Geotrek. What each one is the right choice for, and the one mechanism we found nowhere else.',
     kicker: 'The comparison',
     title: 'What exists, and where we differ',
-    lead: 'You are shopping for a trail tool. Here is the field as we read it — public sources, the date on the page, and for each player what separates us from it. Where another product answers your need better, the card says so too: a comparison that wins on every axis informs nobody.',
-    readingLabel: 'Field reading of',
-    readingNote: 'Read from each vendor’s own public pages. Features and prices change: the date is here so you know what to re-check. We do not publish other people’s prices — they go stale quietly, and their own site is where you should read them.',
+    lead: 'You are shopping for a trail tool. Here is the field as we read it — public sources, and for each player what separates us from it. Where another product answers your need better, the card says so too: a comparison that wins on every axis informs nobody.',
+    readingNote: 'Read from each vendor’s own public pages. Features and prices change. We do not publish other people’s prices — they go stale quietly, and their own site is where you should read them.',
     fieldTitle: 'The field, player by player',
     fieldLead: 'Six products, ordered by how much they overlap with us. Every card leads with what separates us — then, in one line, the need for which you should go to them rather than to us.',
     labels: {

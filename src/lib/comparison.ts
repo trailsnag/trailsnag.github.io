@@ -22,16 +22,6 @@ export type Player = {
   need: string;
 };
 
-/**
- * When these pages were last read, ISO-8601.
- *
- * A comparison page without a date is a claim with no shelf life, and this one
- * is deliberately loud about it: the page prints this date, invites
- * corrections against it, and every cell below was read on a competitor's own
- * public pages on this day. Re-read them before moving it.
- */
-export const READING_DATE = '2026-09-04';
-
 // Widened to string on purpose: `fr` is `as const`, so its keys narrow to a
 // literal union and every comparison against a plain string would be a type
 // error rather than the runtime check this file exists to perform.
@@ -75,12 +65,4 @@ export function players(lang: Lang): Player[] {
     versus: p.versus,
     need: p.need,
   }));
-}
-
-/** The reading date, written the way each locale writes a date. */
-export function readingDate(lang: Lang): string {
-  return new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-CA', {
-    dateStyle: 'long',
-    timeZone: 'UTC',
-  }).format(new Date(`${READING_DATE}T12:00:00Z`));
 }
