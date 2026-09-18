@@ -61,8 +61,8 @@ const support: Record<Tier['key'], string> = {
           const paid = tier.monthly !== null && tier.monthly > 0;
           // Guaranteed live: lib/pricing.ts fails the build on a missing link,
           // so nothing here has to reason about a half-configured page.
-          const monthly = offer(tier.monthlyUrl);
-          const yearly = offer(tier.yearlyUrl);
+          const monthly = offer(tier.monthlyUrl, lang);
+          const yearly = offer(tier.yearlyUrl, lang);
           return (
             <section class="flex flex-col rounded-2xl border border-(--rule) bg-(--paper) p-5">
               <h2 class="font-display text-xl font-bold text-(--ink)">{copy.name}</h2>

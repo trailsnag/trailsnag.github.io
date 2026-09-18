@@ -153,7 +153,22 @@ for (const t of TIERS) {
   }
 }
 
-/** Where a buy button goes. Guaranteed live by the guard above. */
-export function offer(url: string): { href: string } {
-  return { href: url };
+/**
+ * Where a buy button goes. Guaranteed live by the guard above.
+ *
+ * The page's language rides along as Stripe's `locale` parameter, because
+ * the hosted checkout otherwise follows the BROWSER: a reader on /tarifs/
+ * with an English Chrome met « Subscribe to TrailSnag Parc — per month » over
+ * a French product line, and the reverse on /en/pricing/. The visitor chose a
+ * language by choosing the page; the till keeps it. `fr-CA` rather than `fr`
+ * so the checkout writes amounts the Québec way, as this page does.
+ */
+export function offer(url: string, lang: Lang): { href: string } {
+  // Halte and Territoire carry no link at all: their buttons are the claim
+  // funnel and the contact page. The guard above has already refused an
+  // empty link on any tier that sells, so an empty one here is never a hole.
+  if (url === '') return { href: '' };
+  const u = new URL(url);
+  u.searchParams.set('locale', lang === 'fr' ? 'fr-CA' : 'en');
+  return { href: u.toString() };
 }
