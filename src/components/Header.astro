@@ -2,7 +2,7 @@
 import Wordmark from './Wordmark.astro';
 import LangSwitch from './LangSwitch.astro';
 import { useTranslations, appUrl, claimUrl } from '../i18n/utils';
-import { comparisonPath, type Lang } from '../i18n/routes';
+import { comparisonPath, pricingPath, type Lang } from '../i18n/routes';
 
 interface Props {
   lang: Lang;
@@ -43,6 +43,10 @@ const home = lang === 'fr' ? '/' : '/en/';
             </a>
           </span>
         )}
+        <a
+          href={pricingPath(lang)}
+          class="text-sm font-semibold text-(--sub) hover:text-(--ink)">{t.nav.pricing}</a
+        >
         <a
           href={comparisonPath(lang)}
           class="text-sm font-semibold text-(--sub) hover:text-(--ink)">{t.nav.compare}</a

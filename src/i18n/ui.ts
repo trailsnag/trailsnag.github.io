@@ -20,6 +20,7 @@ const fr = {
     open: 'Signaler',
     desk: 'Gestionnaires',
     compare: 'Comparatif',
+    pricing: 'Tarifs',
     main: 'Navigation principale',
   },
   hero: {
@@ -226,6 +227,82 @@ const fr = {
   // local companies that publish nothing about where the rows live, and the
   // copy says exactly that rather than crediting them with a claim they never
   // made.
+  // §4 of the business plan is the source for every claim in this block, and
+  // three of them are load-bearing. Halte is free FOREVER with no eligibility
+  // interview and no annual review — the contrast with Trail Sentinel's
+  // annually-reassessed community tier is the sale, so it is said out loud
+  // rather than implied. The two closing sentences are the ones §4 puts in a
+  // footer rather than a box: « hébergées au Canada » and never « tout reste
+  // au Canada », because the email processor is American and the privacy
+  // policy says so. And the cadastre is deliberately ABSENT from the grid —
+  // the lot data is not loaded, so selling it would be selling an empty
+  // picker.
+  pricing: {
+    title: 'Tarifs',
+    lede: 'Un prix par organisation, en dollars canadiens, taxes en sus. Le palier gratuit l’est pour de bon.',
+    monthlySuffix: '/ mois',
+    yearlyNote: 'ou {price} par année — deux mois offerts',
+    quoted: 'Sur soumission',
+    taxes: 'Taxes en sus. Facturé par organisation, pas par territoire ni par siège.',
+    tiers: {
+      halte: {
+        name: 'Halte',
+        who: 'Clubs bénévoles, ZEC, petits organismes',
+        pitch: 'Tout ce qu’un visiteur touche, et tout ce qui fait vivre votre carte publique.',
+        cta: 'Commencer — gratuit',
+      },
+      parc: {
+        name: 'Parc',
+        who: 'Parcs régionaux, municipalités, centres',
+        pitch: 'La paperasse que vous devez montrer à un assureur, un bailleur de fonds ou un conseil.',
+        cta: 'Choisir Parc',
+      },
+      reseau: {
+        name: 'Réseau',
+        who: 'MRC et réseaux à plusieurs territoires',
+        pitch: 'L’échelle, le service, et vos flux sortants vers un système de bons de travail.',
+        cta: 'Choisir Réseau',
+      },
+      territoire: {
+        name: 'Territoire',
+        who: 'Réseaux provinciaux et ententes de service',
+        pitch: 'Entente de service, contact nommé, et une mise en place faite avec vous.',
+        cta: 'Nous écrire',
+      },
+    },
+    // The free tier's promise, stated in the words §4 asks for.
+    freeForever: 'Gratuit pour toujours. Aucune entrevue d’admissibilité, aucune révision annuelle, aucune date de fin.',
+    contactCta: 'Nous écrire',
+    perYear: 'par année',
+    yearlyCta: 'Payer {price} par année',
+    labels: {
+      included: 'Inclus à tous les paliers',
+      territories: 'Territoires vérifiés inclus',
+      seats: 'Sièges gestionnaires',
+      support: 'Soutien',
+      unlimited: 'illimité',
+    },
+    rows: {
+      base: 'Signalement, hors ligne, codes QR, carte publique, widget, récompenses, annotations',
+      exports: 'Exports CSV, GPX et KML de vos données',
+      resolution: 'Rapport d’intervention PDF',
+      network: 'Rapport de réseau',
+      webhooks: 'Flux sortants signés (311, bons de travail)',
+    },
+    support: {
+      halte: 'Communauté',
+      parc: 'Courriel, 2 jours ouvrables',
+      reseau: 'Contact nommé, 1 jour ouvrable',
+      territoire: 'Entente de service',
+    },
+    // §4 puts both of these in the footer rather than in a tier box, because
+    // they are true of every tier including the free one.
+    footnotes: {
+      canada: 'Vos données sont hébergées au Canada — base de données à Montréal, application à Toronto. Nos courriels transitent par un fournisseur américain, et c’est écrit dans notre politique de confidentialité.',
+      install: 'Vos visiteurs n’installent rien. Une pancarte, un appareil photo, un navigateur.',
+      seats: 'Sièges illimités sur tous les paliers.',
+    },
+  },
   comparison: {
     metaTitle: 'TrailSnag comparé — ce qui existe pour la gestion de sentiers',
     metaDescription:
@@ -405,6 +482,7 @@ const en: Dict = {
     open: 'Report',
     desk: 'Stewards',
     compare: 'Comparison',
+    pricing: 'Pricing',
     main: 'Main navigation',
   },
   hero: {
@@ -578,6 +656,69 @@ const en: Dict = {
         body: 'Trails are the blind spot of 311. TrailSnag routes reports to the crew responsible for the land — not to a generic queue.',
       },
     ],
+  },
+  pricing: {
+    title: 'Pricing',
+    lede: 'One price per organisation, in Canadian dollars, taxes extra. The free tier is free for good.',
+    monthlySuffix: '/ month',
+    yearlyNote: 'or {price} a year — two months free',
+    quoted: 'On quote',
+    taxes: 'Taxes extra. Billed per organisation, not per territory or per seat.',
+    tiers: {
+      halte: {
+        name: 'Halte',
+        who: 'Volunteer clubs, ZECs, small organisations',
+        pitch: 'Everything a visitor touches, and everything that keeps your public map alive.',
+        cta: 'Start — free',
+      },
+      parc: {
+        name: 'Parc',
+        who: 'Regional parks, municipalities, centres',
+        pitch: 'The paperwork you have to show an insurer, a funder or a board.',
+        cta: 'Choose Parc',
+      },
+      reseau: {
+        name: 'Réseau',
+        who: 'RCMs and networks with several territories',
+        pitch: 'The scale, the service, and signed feeds into your work-order system.',
+        cta: 'Choose Réseau',
+      },
+      territoire: {
+        name: 'Territoire',
+        who: 'Province-wide networks and service agreements',
+        pitch: 'A service agreement, a named contact, and setup done with you.',
+        cta: 'Write to us',
+      },
+    },
+    freeForever: 'Free forever. No eligibility interview, no annual review, no end date.',
+    contactCta: 'Write to us',
+    perYear: 'a year',
+    yearlyCta: 'Pay {price} a year',
+    labels: {
+      included: 'Included on every tier',
+      territories: 'Verified territories included',
+      seats: 'Steward seats',
+      support: 'Support',
+      unlimited: 'unlimited',
+    },
+    rows: {
+      base: 'Reporting, offline queue, QR codes, public map, widget, rewards, annotations',
+      exports: 'CSV, GPX and KML exports of your data',
+      resolution: 'Intervention report PDF',
+      network: 'Network report',
+      webhooks: 'Signed outbound feeds (311, work orders)',
+    },
+    support: {
+      halte: 'Community',
+      parc: 'Email, 2 business days',
+      reseau: 'Named contact, 1 business day',
+      territoire: 'Service agreement',
+    },
+    footnotes: {
+      canada: 'Your data is hosted in Canada — database in Montréal, application in Toronto. Our emails go through an American provider, and our privacy policy says so.',
+      install: 'Your visitors install nothing. A sign, a camera, a browser.',
+      seats: 'Unlimited seats on every tier.',
+    },
   },
   comparison: {
     metaTitle: 'TrailSnag compared — what else exists for trail operations',

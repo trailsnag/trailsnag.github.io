@@ -13,6 +13,9 @@ export const routePairs: ReadonlyArray<{ fr: string; en: string }> = [
   // The competitive comparison. Named for what it is in each language rather
   // than transliterated: « comparatif » is the word a Québec buyer types.
   { fr: '/comparatif/', en: '/en/comparison/' },
+  // The prices, and the door that takes money. « Tarifs » rather than « Prix »
+  // is the word a Québec organisation uses for a published rate card.
+  { fr: '/tarifs/', en: '/en/pricing/' },
   { fr: '/confidentialite/', en: '/en/privacy/' },
   { fr: '/conditions/', en: '/en/terms/' },
   { fr: '/contact/', en: '/en/contact/' },
@@ -21,6 +24,16 @@ export const routePairs: ReadonlyArray<{ fr: string; en: string }> = [
 /** The competitive comparison, linked from the footer and the landing. */
 export function comparisonPath(lang: Lang): string {
   return lang === 'fr' ? '/comparatif/' : '/en/comparison/';
+}
+
+/** The prices. Linked from the header, the footer, and the landing band. */
+export function pricingPath(lang: Lang): string {
+  return lang === 'fr' ? '/tarifs/' : '/en/pricing/';
+}
+
+/** Where a buyer writes when a tier is quoted rather than sold by the card. */
+export function contactPath(lang: Lang): string {
+  return lang === 'fr' ? '/contact/' : '/en/contact/';
 }
 
 /** The steward tour, linked from the landing band. */
