@@ -306,9 +306,9 @@ const fr = {
     },
 
     support: {
-      halte: 'Courriel, sans délai garanti',
-      parc: 'Courriel, 2 jours ouvrables',
-      reseau: 'Personne-ressource attitrée, 1 jour ouvrable',
+      halte: 'Courriel',
+      parc: 'Courriel, 3 jours ouvrables',
+      reseau: 'Personne-ressource attitrée, 2 jours ouvrables',
     },
 
     // AJOUTÉE — le tableau d’orientation, §4. C’est ici que vit Territoire.
@@ -773,9 +773,9 @@ const en: Dict = {
     },
 
     support: {
-      halte: 'Email, no guaranteed delay',
-      parc: 'Email, 2 business days',
-      reseau: 'Named contact, 1 business day',
+      halte: 'Email',
+      parc: 'Email, 3 business days',
+      reseau: 'Named contact, 2 business days',
     },
 
     // ADDED — the orientation table, §4. This is where Territoire now lives.
