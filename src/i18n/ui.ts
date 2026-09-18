@@ -30,7 +30,7 @@ const fr = {
     lead: 'Ouvrez l’application, ou scannez le code QR au départ du sentier : décrivez le problème et l’équipe du sentier le reçoit — géolocalisé, photographié, prêt à trier. Aucun compte. Aucune application à installer. Même sans réseau.',
     ctaPrimary: 'Signaler un problème',
     ctaSecondary: 'Réclamez votre territoire',
-    ctaNote: 'Aucun compte requis. Votre position trouve à qui appartient le terrain — placez-la à la main si le GPS ne répond pas. Gratuit pour les clubs de bénévoles.',
+    ctaNote: 'Aucun compte requis. Votre position trouve à qui appartient le terrain — placez-la à la main si le GPS ne répond pas. Le palier gratuit n’a pas de date de fin, quelle que soit votre organisation.',
   },
   sticker: {
     caption: 'L’autocollant au départ du sentier — c’est toute l’installation.',
@@ -189,7 +189,7 @@ const fr = {
       {
         title: 'Clubs et comités de bénévoles',
         badge: 'Gratuit, pour toujours',
-        body: 'Vos sentiers, votre file de signalements, vos bénévoles reconnus. Le forfait bénévole ne coûte rien et ne coûtera jamais rien.',
+        body: 'Vos sentiers, votre file de signalements, vos bénévoles reconnus. Le palier gratuit ne coûte rien, n’a pas de date de fin, et ne demande aucune entrevue.',
       },
       {
         title: 'Propriétaires de terres et de boisés',
@@ -197,9 +197,9 @@ const fr = {
         body: 'Votre terrain, votre registre, vos mots : tracez vos propres sentiers, marquez le frêne atteint par l’agrile, le chicot à abattre, la clôture à réparer. Vous êtes votre propre équipe — et rien ne se perd, même sans réseau.',
       },
       {
-        title: 'Centres de plein air et parcs régionaux',
-        badge: 'Par territoire',
-        body: 'Un canal qui reçoit les signalements de vos visiteurs et documente votre diligence, saison après saison. Forfait par territoire — écrivez-nous pour un projet pilote.',
+        title: 'Centres de plein air, zecs et parcs régionaux',
+        badge: 'Le palier Parc',
+        body: 'Un canal qui reçoit les signalements de vos visiteurs et documente votre diligence, saison après saison. Une zec, un parc régional et un centre de plein air paient le même tarif : il suit votre forme juridique, pas votre superficie.',
       },
       {
         title: 'Municipalités et MRC',
@@ -239,68 +239,116 @@ const fr = {
   // picker.
   pricing: {
     title: 'Tarifs',
-    lede: 'Un prix par organisation, en dollars canadiens, taxes en sus. Le palier gratuit l’est pour de bon.',
+    lede: 'Un prix par organisation, en dollars canadiens, taxes en sus. Deux tarifs publiés côte à côte : celui des OBNL et des organismes publics, celui des entreprises. Et un palier gratuit qui l’est pour de bon.',
     monthlySuffix: '/ mois',
     yearlyNote: 'ou {price} par année — deux mois offerts',
-    quoted: 'Sur soumission',
-    taxes: 'Taxes en sus. Facturé par organisation, pas par territoire ni par siège.',
+    yearlyCta: 'Payer {price} par année',
+    taxes: 'Taxes en sus. Facturé par organisation, pas par territoire ni par utilisateur.',
+    invoice: 'Vous préférez une facture annuelle plutôt qu’un paiement par carte, ou un renouvellement arrimé à votre cycle budgétaire ? Nous émettons la facture au même montant.',
+
+    // AJOUTÉE — la bande d’honnêteté, §1 de la nouvelle page.
+    honesty: {
+      title: 'Ce qui se paie, et rien d’autre',
+      body: 'Trois choses se paient : le rapport d’intervention en PDF, le rapport de réseau, et les flux sortants signés vers un 311 ou un système de bons de travail. Tout le reste — le signalement, la file hors ligne, les codes QR, la carte publique et sa version intégrable à votre site, le tracé de sentiers, les repères, les récompenses et l’exportation complète de vos données — ne se paie sur aucun palier. Et l’exportation de vos données ne se paiera jamais : ce sont vos données.',
+    },
+
+    // AJOUTÉE — le sélecteur de tarif, §2.
+    rate: {
+      legend: 'Votre tarif',
+      nonprofit: 'OBNL et organismes publics',
+      commercial: 'Entreprise',
+      test: 'Le tarif organisme s’applique aux organismes sans but lucratif (OBNL) immatriculés au Québec, aux municipalités, aux MRC, aux zecs et aux autres organismes publics. Vous inscrivez votre NEQ au paiement, nous le vérifions au Registraire des entreprises, et c’est tout le test. Aucune entrevue, aucun état financier, aucune révision annuelle.',
+      commercialWho: 'Le tarif entreprise est celui des stations de ski, des centres de vélo de montagne, des pourvoiries, des domaines privés et des centres de plein air à but lucratif — ceux qui vendent l’accès à leurs sentiers.',
+      tieBreak: 'Le tarif suit la forme juridique de l’organisation qui signe, pas l’activité qu’elle exploite.',
+    },
+
+    // AJOUTÉE — le ruban de la carte ancre. Libellé NEUTRE : pas de preuve
+    // sociale inventée tant qu’il n’y a pas de clients à compter.
+    anchorBadge: 'Le palier de référence',
+
     tiers: {
       halte: {
         name: 'Halte',
-        who: 'Clubs bénévoles, ZEC, petits organismes',
-        pitch: 'Tout ce qu’un visiteur touche, et tout ce qui fait vivre votre carte publique.',
+        who: 'Clubs de bénévoles, comités de sentiers, propriétaires de boisés',
+        pitch: 'Le produit au complet, sans limite de temps et sans limite de sentiers. Beaucoup d’organisations n’auront jamais besoin d’autre chose, et c’est très bien ainsi.',
         cta: 'Commencer — gratuit',
       },
       parc: {
         name: 'Parc',
-        who: 'Parcs régionaux, municipalités, centres',
-        pitch: 'La paperasse que vous devez montrer à un assureur, un bailleur de fonds ou un conseil.',
+        who: 'Zecs, centres de plein air, parcs régionaux, municipalités',
+        pitch: 'Les deux documents que vous devez déposer devant un conseil, un assureur ou un bailleur de fonds : ce qui a été signalé, ce qui a été réparé et quand, puis ce qui manque encore au réseau.',
         cta: 'Choisir Parc',
       },
       reseau: {
         name: 'Réseau',
-        who: 'MRC et réseaux à plusieurs territoires',
-        pitch: 'L’échelle, le service, et vos flux sortants vers un système de bons de travail.',
+        who: 'MRC, regroupements régionaux de zecs, réseaux à plusieurs territoires',
+        pitch: 'Tout ce qu’il y a dans Parc, plus vos signalements qui sortent d’ici et entrent dans votre 311 ou votre système de bons de travail, signés à chaque envoi. Et une personne-ressource attitrée.',
         cta: 'Choisir Réseau',
       },
-      territoire: {
-        name: 'Territoire',
-        who: 'Réseaux provinciaux et ententes de service',
-        pitch: 'Entente de service, contact nommé, et une mise en place faite avec vous.',
-        cta: 'Nous écrire',
-      },
     },
-    // The free tier's promise, stated in the words §4 asks for.
-    freeForever: 'Gratuit pour toujours. Aucune entrevue d’admissibilité, aucune révision annuelle, aucune date de fin.',
-    contactCta: 'Nous écrire',
-    perYear: 'par année',
-    yearlyCta: 'Payer {price} par année',
+
+    freeForever: 'Gratuit pour toujours. Aucune entrevue d’admissibilité, aucune révision annuelle, aucune date de fin. Personne ne viendra vous demander vos états financiers pour décider si vous y avez encore droit.',
+
     labels: {
-      included: 'Inclus à tous les paliers',
+      included: 'Compris',
+      adds: 'Ce que ce palier ajoute',
       territories: 'Territoires vérifiés inclus',
-      seats: 'Sièges gestionnaires',
       support: 'Soutien',
-      unlimited: 'illimité',
     },
+
     rows: {
-      base: 'Signalement, hors ligne, codes QR, carte publique, widget, récompenses, annotations',
-      exports: 'Exports CSV, GPX et KML de vos données',
+      base: 'Signalement, hors ligne, codes QR, carte publique et intégrable, récompenses, repères',
+      exports: 'Exportation de vos données en CSV, GPX et KML',
+      inherits: 'Tout ce qu’il y a dans Parc',
       resolution: 'Rapport d’intervention PDF',
       network: 'Rapport de réseau',
       webhooks: 'Flux sortants signés (311, bons de travail)',
     },
+
     support: {
-      halte: 'Communauté',
+      halte: 'Courriel, sans délai garanti',
       parc: 'Courriel, 2 jours ouvrables',
-      reseau: 'Contact nommé, 1 jour ouvrable',
-      territoire: 'Entente de service',
+      reseau: 'Personne-ressource attitrée, 1 jour ouvrable',
     },
-    // §4 puts both of these in the footer rather than in a tier box, because
-    // they are true of every tier including the free one.
+
+    // AJOUTÉE — le tableau d’orientation, §4. C’est ici que vit Territoire.
+    segments: {
+      title: 'Quel palier est le vôtre ?',
+      lede: 'Ce n’est pas votre superficie qui décide du palier, c’est le nombre de territoires que vous gérez. Et ce n’est pas votre taille qui décide du tarif, c’est votre forme juridique.',
+      headers: {
+        who: 'Votre organisation',
+        tier: 'Votre palier',
+      },
+      rows: [
+        { who: 'Club de bénévoles, comité de sentiers, groupe sans personnel salarié', tier: 'Halte, gratuit' },
+        { who: 'Zec, parc régional, centre de plein air, municipalité, domaine privé', tier: 'Parc' },
+        { who: 'MRC, regroupement régional de zecs, réseau de plusieurs territoires', tier: 'Réseau' },
+        { who: 'Réseau provincial, entente de service, plus de dix territoires', tier: 'Une entente négociée — parlons-en' },
+      ],
+    },
+
+    // AJOUTÉE — la plaidoirie finale, §5.
+    free: {
+      title: 'Sur tous les paliers, le gratuit compris',
+      lede: 'Rien de ce qu’un visiteur ou un bénévole touche n’est derrière un paiement. La carte publique est notre meilleur argument de vente ; la fermer serait se tirer dans le pied.',
+      items: [
+        'Signalement en 30 secondes — sans compte, sans installation, même sans réseau',
+        'Des codes QR pour chacun de vos départs de sentier',
+        'Une carte publique, intégrable dans votre propre site',
+        'Le tracé de vos sentiers à la marche et le dessin de vos segments',
+        'Les repères : bancs, ponceaux, passerelles, essences d’arbres — ce que vous entretenez',
+        'Des récompenses à échanger pour vos bénévoles',
+        'L’exportation complète de vos données, en tout temps, sans condition',
+        'Utilisateurs illimités — gestionnaires, patrouilleurs, bénévoles',
+      ],
+    },
+
     footnotes: {
       canada: 'Vos données sont hébergées au Canada — base de données à Montréal, application à Toronto. Nos courriels transitent par un fournisseur américain, et c’est écrit dans notre politique de confidentialité.',
       install: 'Vos visiteurs n’installent rien. Une pancarte, un appareil photo, un navigateur.',
-      seats: 'Sièges illimités sur tous les paliers.',
+      seats: 'Utilisateurs illimités sur tous les paliers, le gratuit compris. Nous ne facturons jamais à l’utilisateur.',
+      territories: 'Un territoire vérifié naît d’une réclamation que nous vérifions à la main, une à la fois. Le nombre inclus sert à vous orienter vers le bon palier ; ce n’est pas un compteur.',
+      exports: 'Vos exportations vous restent acquises, même si vous cessez de payer. Nous ne prenons pas vos données en otage.',
     },
   },
   comparison: {
@@ -492,7 +540,7 @@ const en: Dict = {
     lead: 'Open the app, or scan the QR code at the trailhead: describe the problem and the trail crew has it — geolocated, photographed, ready to triage. No account. No app to install. Even with no signal.',
     ctaPrimary: 'Report an issue',
     ctaSecondary: 'Claim your land',
-    ctaNote: 'No account needed. Your position finds whose land you are on — place it by hand if GPS will not answer. Free for volunteer clubs.',
+    ctaNote: 'No account needed. Your position finds whose land you are on — place it by hand if GPS will not answer. The free tier has no end date, whatever your organisation is.',
   },
   sticker: {
     caption: 'The sticker at the trailhead — that is the whole install.',
@@ -638,7 +686,7 @@ const en: Dict = {
       {
         title: 'Volunteer clubs and committees',
         badge: 'Free, forever',
-        body: 'Your trails, your report queue, your volunteers recognized. The volunteer plan costs nothing and never will.',
+        body: 'Your trails, your report queue, your volunteers credited. The free tier costs nothing, has no end date, and asks for no interview.',
       },
       {
         title: 'Private landowners',
@@ -646,9 +694,9 @@ const en: Dict = {
         body: 'Your land, your log, your words: trace your own trails, mark the ash hit by the borer, the dead snag to fell, the fence to mend. You are your own crew — and nothing gets lost, even offline.',
       },
       {
-        title: 'Outdoor centres and regional parks',
-        badge: 'Per territory',
-        body: 'A channel that receives your visitors’ reports and documents your diligence, season after season. Per-territory plans — write to us about a pilot.',
+        title: 'Outdoor centres, ZECs and regional parks',
+        badge: 'The Parc tier',
+        body: 'A channel that takes your visitors’ reports and documents your diligence, season after season. A zec, a regional park and an outdoor centre pay the same rate: it follows your legal form, not your area.',
       },
       {
         title: 'Municipalities and RCMs',
@@ -659,65 +707,116 @@ const en: Dict = {
   },
   pricing: {
     title: 'Pricing',
-    lede: 'One price per organisation, in Canadian dollars, taxes extra. The free tier is free for good.',
+    lede: 'One price per organisation, in Canadian dollars, taxes extra. Two rates published side by side: the one for non-profits and public bodies, the one for businesses. And a free tier that is free for good.',
     monthlySuffix: '/ month',
     yearlyNote: 'or {price} a year — two months free',
-    quoted: 'On quote',
+    yearlyCta: 'Pay {price} a year',
     taxes: 'Taxes extra. Billed per organisation, not per territory or per seat.',
+    invoice: 'Would you rather have an annual invoice than a card payment, or a renewal that lines up with your budget cycle? We issue the invoice at the same amount.',
+
+    // ADDED — the honesty band, §1 of the new page.
+    honesty: {
+      title: 'What costs money, and nothing else',
+      body: 'Three things cost money: the intervention report PDF, the network report, and signed outbound feeds into a 311 or a work-order system. Everything else — reporting, the offline queue, QR codes, the public map and its embeddable version, trail tracing, markers, rewards and the full export of your data — costs nothing on any tier. And exporting your data never will: it is your data.',
+    },
+
+    // ADDED — the rate switch, §2.
+    rate: {
+      legend: 'Your rate',
+      nonprofit: 'Non-profits and public bodies',
+      commercial: 'Business',
+      test: 'The non-profit rate applies to non-profit organisations registered in Québec, to municipalities, RCMs, ZECs and other public bodies. You enter your NEQ at checkout, we check it against the Québec business register, and that is the whole test. No interview, no financial statements, no annual review.',
+      commercialWho: 'The business rate is for resorts, bike parks, outfitters, private domains and for-profit outdoor centres — the ones that sell access to their trails.',
+      tieBreak: 'The rate follows the legal form of the organisation that signs, not the activity it runs.',
+    },
+
+    // ADDED — the anchor card's ribbon. Neutral wording: no invented social
+    // proof while there are no customers to count.
+    anchorBadge: 'Our reference tier',
+
     tiers: {
       halte: {
         name: 'Halte',
-        who: 'Volunteer clubs, ZECs, small organisations',
-        pitch: 'Everything a visitor touches, and everything that keeps your public map alive.',
+        who: 'Volunteer clubs, trail committees, woodlot owners',
+        pitch: 'The whole product, with no time limit and no trail limit. Plenty of organisations will never need anything else, and that is exactly as it should be.',
         cta: 'Start — free',
       },
       parc: {
         name: 'Parc',
-        who: 'Regional parks, municipalities, centres',
-        pitch: 'The paperwork you have to show an insurer, a funder or a board.',
+        who: 'ZECs, outdoor centres, regional parks, municipalities',
+        pitch: 'The two documents you have to put in front of a board, an insurer or a funder: what was reported, what was fixed and when, then what the network is still missing.',
         cta: 'Choose Parc',
       },
       reseau: {
         name: 'Réseau',
-        who: 'RCMs and networks with several territories',
-        pitch: 'The scale, the service, and signed feeds into your work-order system.',
+        who: 'RCMs, regional zec groupings, networks with several territories',
+        pitch: 'Everything in Parc, plus your reports leaving here and landing in your 311 or your work-order system, signed on every send. And a named person to talk to.',
         cta: 'Choose Réseau',
       },
-      territoire: {
-        name: 'Territoire',
-        who: 'Province-wide networks and service agreements',
-        pitch: 'A service agreement, a named contact, and setup done with you.',
-        cta: 'Write to us',
-      },
     },
-    freeForever: 'Free forever. No eligibility interview, no annual review, no end date.',
-    contactCta: 'Write to us',
-    perYear: 'a year',
-    yearlyCta: 'Pay {price} a year',
+
+    freeForever: 'Free forever. No eligibility interview, no annual review, no end date. Nobody will ask to see your financial statements to decide whether you still qualify.',
+
     labels: {
-      included: 'Included on every tier',
+      included: 'Included',
+      adds: 'What this tier adds',
       territories: 'Verified territories included',
-      seats: 'Steward seats',
       support: 'Support',
-      unlimited: 'unlimited',
     },
+
     rows: {
-      base: 'Reporting, offline queue, QR codes, public map, widget, rewards, annotations',
+      base: 'Reporting, offline queue, QR codes, public map, widget, rewards, markers',
       exports: 'CSV, GPX and KML exports of your data',
+      inherits: 'Everything in Parc',
       resolution: 'Intervention report PDF',
       network: 'Network report',
       webhooks: 'Signed outbound feeds (311, work orders)',
     },
+
     support: {
-      halte: 'Community',
+      halte: 'Email, no guaranteed delay',
       parc: 'Email, 2 business days',
       reseau: 'Named contact, 1 business day',
-      territoire: 'Service agreement',
     },
+
+    // ADDED — the orientation table, §4. This is where Territoire now lives.
+    segments: {
+      title: 'Which tier is yours?',
+      lede: 'Your area does not decide your tier — the number of territories you manage does. And your size does not decide your rate — your legal form does.',
+      headers: {
+        who: 'Your organisation',
+        tier: 'Your tier',
+      },
+      rows: [
+        { who: 'Volunteer club, trail committee, group with no paid staff', tier: 'Halte, free' },
+        { who: 'Zec, regional park, outdoor centre, municipality, private domain', tier: 'Parc' },
+        { who: 'RCM, regional zec grouping, network of several territories', tier: 'Réseau' },
+        { who: 'Province-wide network, service agreement, more than ten territories', tier: 'A negotiated agreement — let us talk' },
+      ],
+    },
+
+    // ADDED — the closing argument, §5.
+    free: {
+      title: 'On every tier, the free one included',
+      lede: 'Nothing a visitor or a volunteer touches sits behind a payment. The public map is our best sales argument; closing it would be shooting ourselves in the foot.',
+      items: [
+        '30-second reporting — no account, no install, and it works with no signal',
+        'QR codes for every one of your trailheads',
+        'A public map and a widget to embed in your own site',
+        'Trail tracing on foot and segment drawing',
+        'Markers: benches, culverts, footbridges, tree species — whatever you maintain',
+        'Rewards your volunteers redeem',
+        'Full export of your data, any time, with no conditions',
+        'Unlimited seats — managers, patrollers, volunteers',
+      ],
+    },
+
     footnotes: {
       canada: 'Your data is hosted in Canada — database in Montréal, application in Toronto. Our emails go through an American provider, and our privacy policy says so.',
       install: 'Your visitors install nothing. A sign, a camera, a browser.',
-      seats: 'Unlimited seats on every tier.',
+      seats: 'Unlimited seats on every tier, on the free one as much as on the others. We never bill per user.',
+      territories: 'A verified territory comes from a claim we check by hand, one at a time. The number included is there to point you to the right tier; it is not a meter.',
+      exports: 'Your exports stay yours, even if you stop paying. We do not hold your data hostage.',
     },
   },
   comparison: {
