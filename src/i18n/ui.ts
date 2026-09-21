@@ -27,13 +27,13 @@ const fr = {
     kicker: 'Signalement de sentiers, sans friction',
     h1a: 'Un arbre tombé, un sentier lessivé, une pancarte brisée ?',
     h1b: 'Signalé en 30 secondes',
-    lead: 'Ouvrez l’application, ou scannez le code QR au départ du sentier : décrivez le problème et l’équipe du sentier le reçoit — géolocalisé, photographié, prêt à trier. Aucun compte. Aucune application à installer. Même sans réseau.',
+    lead: 'Ouvrez l’application, ou scannez le code QR au départ du sentier : décrivez le problème — géolocalisé, photographié, prêt à trier. S’il y a une équipe sur ce terrain, elle le reçoit ; sinon il l’attend. Aucun compte. Aucune application à installer, et une fois ouverte elle tient sans réseau.',
     ctaPrimary: 'Signaler un problème',
     ctaSecondary: 'Réclamez votre territoire',
-    ctaNote: 'Aucun compte requis. Votre position trouve à qui appartient le terrain — placez-la à la main si le GPS ne répond pas. Le palier gratuit n’a pas de date de fin, quelle que soit votre organisation.',
+    ctaNote: 'Aucun compte requis. Votre position trouve qui répond de ce terrain — placez-la à la main si le GPS ne répond pas. Le palier gratuit n’a pas de date de fin, quelle que soit votre organisation.',
   },
   sticker: {
-    caption: 'L’autocollant au départ du sentier — c’est toute l’installation.',
+    caption: 'L’autocollant au départ du sentier — c’est tout ce que le visiteur a à faire.',
     // The QR needs a printed sticker in reach; the app never does.
     orLead: 'Pas d’autocollant à portée ?',
     orCta: 'Ouvrir l’application',
@@ -44,7 +44,7 @@ const fr = {
     steps: [
       {
         title: 'Scannez',
-        body: 'Le code QR au départ du sentier ouvre le formulaire dans le navigateur. Rien à installer, rien à créer.',
+        body: 'Le code QR au départ du sentier ouvre la carte dans le navigateur, à l’endroit où vous êtes. Rien à installer, rien à créer.',
       },
       {
         title: 'Décrivez',
@@ -55,7 +55,7 @@ const fr = {
         body: 'Pas de signal en forêt ? Le signalement est gardé sur le téléphone et part tout seul au retour du réseau.',
       },
     ],
-    note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application — facultatif, pour toujours. L’anonymat reste la voie par défaut. Et vos photos sont nettoyées de leurs métadonnées cachées (position, appareil) avant même de quitter votre téléphone.',
+    note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application. Signaler n’en demande jamais ; seul l’échange d’une récompense en exige un. Et vos photos sont nettoyées de leurs métadonnées cachées (position, appareil) avant même de quitter votre téléphone.',
   },
   rewards: {
     kicker: 'La boucle des récompenses',
@@ -113,7 +113,7 @@ const fr = {
         key: 'triage',
         screens: ['triage'],
         title: 'Une file de triage, pas une boîte courriel',
-        body: 'Chaque signalement arrive géolocalisé et photographié sur la carte de votre territoire. Validez, corrigez, fermez — l’historique reste, et un résumé horaire par courriel prévient chaque membre qui le veut.',
+        body: 'Chaque signalement arrive sur la carte de votre territoire, avec sa position et, le plus souvent, une photo. Validez, corrigez, fermez — l’historique reste, et un résumé horaire par courriel prévient les gestionnaires et les propriétaires.',
       },
       {
         key: 'trails',
@@ -124,7 +124,7 @@ const fr = {
       {
         key: 'categories',
         screens: ['categories'],
-        title: 'Vos catégories, jusqu’à l’essence d’arbre',
+        title: 'Vos catégories, vos mots',
         body: 'Le menu de signalement est le vôtre : ajoutez vos propres catégories — frêne atteint par l’agrile, chicot à abattre, balise arrachée — en français et en anglais. Les visiteurs signalent dans vos mots, et retirer une catégorie n’efface jamais l’historique.',
       },
       {
@@ -137,7 +137,7 @@ const fr = {
         key: 'rewards',
         screens: ['rewards'],
         title: 'Des bénévoles récompensés',
-        body: 'Les correctifs validés donnent des points à vos bénévoles — et votre équipe décide de ce qu’ils valent : un accès gratuit, un rabais, un morceau à vos couleurs. Vous fixez le catalogue, TrailSnag tient le registre.',
+        body: 'Un signalement validé donne des points à la personne qui l’a signalé — et votre équipe décide de ce qu’ils valent : un accès gratuit, un rabais, un morceau à vos couleurs. Vous fixez le catalogue, TrailSnag tient le registre.',
       },
       {
         // No screen: the desk prints the org's own origin into every sticker
@@ -146,13 +146,13 @@ const fr = {
         key: 'stickers',
         screens: [],
         title: 'Des autocollants QR, un par départ de sentier',
-        body: 'Imprimez-les vous-même depuis le tableau de bord : un fichier prêt à imprimer, dimensionné pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
+        body: 'Imprimez-les vous-même depuis le tableau de bord : une planche prête à imprimer depuis le navigateur, dimensionnée pour le vinyle autocollant, un code par départ de sentier — c’est toute l’installation. Pas de borne, pas de matériel, pas de formation des visiteurs.',
       },
       {
         key: 'integrations',
         screens: ['integrations'],
         title: 'Se branche à vos outils existants',
-        body: 'Chaque étape du cycle de vie d’un signalement part vers l’adresse de votre choix — un flux signé, testable en un clic, que votre 311 ou votre système de bons de travail peut recevoir.',
+        body: 'Les étapes clés du cycle de vie d’un signalement — créé, validé, réglé, refusé — partent vers l’adresse de votre choix — un flux signé, testable en un clic, que votre 311 ou votre système de bons de travail peut recevoir.',
       },
       {
         // No screenshot yet — the capture run has not been re-driven since this
@@ -172,7 +172,7 @@ const fr = {
       'Ce que fait un gestionnaire de sentiers avec TrailSnag : trier les signalements sur la carte, tracer et publier ses sentiers, prouver ses interventions, récompenser ses bénévoles. Captures du vrai tableau de bord.',
     kicker: 'Le tableau de bord',
     title: 'Ce qu’un gestionnaire fait, écran par écran',
-    lead: 'Voici le vrai tableau de bord, pas une maquette : chaque image ci-dessous est une capture du produit en marche, sur le territoire de démonstration d’un organisme fictif.',
+    lead: 'Voici le vrai tableau de bord, pas une maquette : chaque image ci-dessous est une capture du produit en marche, sur le territoire de démonstration d’un organisme fictif. Le produit avance vite — il a gagné des salles depuis ces captures.',
     ctaPrimary: 'Réclamez votre territoire',
     ctaSecondary: 'Ouvrir le tableau de bord',
     landTitle: 'Votre territoire, à vous de le dire',
@@ -180,7 +180,7 @@ const fr = {
       'Réclamez votre terrain en le dessinant sur la carte : le tableau de bord ne s’ouvre que sur le territoire que vous gérez, et les signalements qui y tombent vous arrivent à vous.',
     closeTitle: 'Ce que ça prend pour commencer',
     closeBody:
-      'Réclamez votre territoire, imprimez un autocollant par départ de sentier, et chaque visiteur devient une paire d’yeux pour votre équipe. Travaillez dès aujourd’hui, la vérification vient ensuite.',
+      'Réclamez votre territoire : vous triez dès aujourd’hui les signalements déposés sur votre terrain. Une fois la réclamation vérifiée, imprimez un code par départ de sentier et chaque visiteur devient une paire d’yeux.',
   },
   audiences: {
     kicker: 'Pour qui',
@@ -312,7 +312,7 @@ const fr = {
         name: 'TrailsIQ',
         origin: 'États-Unis',
         what: 'Plateforme de signalement de sentiers avec un palier gratuit. De tout le relevé, c’est celle dont la promesse ressemble le plus à la nôtre.',
-        visitor: 'Leur application, téléchargée. Leur propre page de signalement fait de « ouvrir l’application » l’étape 1, avec l’App Store et Google Play comme seules portes — aucune option navigateur.',
+        visitor: 'Leur page de signalement fait de « ouvrir l’application » l’étape 1, avec l’App Store et Google Play comme seules portes — mais leur page d’accueil annonce « no install required. Works in any phone browser ». Leurs deux pages ne disent pas la même chose.',
         data: 'Aucune mention de résidence des données sur leur site.',
         pricing: 'Paliers publiés, dont un palier gratuit. Leur page n’indique aucune devise.',
         versus: 'Le signalement se fait dans le navigateur, depuis la pancarte. Personne qui a une barre de signal devant un arbre tombé ne télécharge une application — et nos données sont hébergées au Canada, ce que leur site ne dit nulle part.',
@@ -323,10 +323,10 @@ const fr = {
         name: 'Trail Sentinel',
         origin: 'Québec',
         what: 'Logiciel d’entretien de sentiers : tâches assignées, inventaire et inspection des ouvrages, rapports. Mobile et web.',
-        visitor: 'Côté équipe. Le signalement vient de vos membres et de vos bénévoles, avec un compte ; nous n’avons trouvé aucune porte pour le visiteur de passage.',
+        visitor: 'Les deux. Leur équipe signale depuis le terrain, et leur page de tarifs annonce aussi un signalement public sans compte, trié dans une boîte distincte, avec des avis au signaleur jusqu’à la réparation.',
         data: 'Entreprise d’ici, mais l’hébergement des données n’est indiqué nulle part sur leur site. Ce n’est pas la même chose.',
         pricing: 'Paliers publiés, plus un palier communautaire gratuit pour les clubs de bénévoles.',
-        versus: 'Nos signalements viennent de vos visiteurs, pas seulement de votre équipe : chaque personne qui marche votre réseau devient une paire d’yeux, sans compte et sans application à installer.',
+        versus: 'Leur palier gratuit est accordé pour un an et réévalué chaque année, après une revue d’admissibilité avec leur équipe. Le nôtre n’a ni entrevue, ni révision, ni date de fin.',
         need: 'Inspecter des ouvrages, assigner des travaux, compter des heures. C’est leur métier ; nous alimentons plutôt le système que vous avez déjà.',
       },
       {
@@ -367,7 +367,7 @@ const fr = {
         name: 'Geotrek',
         origin: 'Libre, France',
         what: 'Suite libre sous licence BSD que vous hébergez vous-même : un site public de randonnée et une console de gestion.',
-        visitor: 'Un formulaire de signalement dans le navigateur, sur la fiche du sentier, qui remonte dans la console. Rien à installer — c’est le seul du relevé qui rejoint le nôtre sur ce point, et il faut le dire.',
+        visitor: 'Un formulaire de signalement dans le navigateur, sur la fiche du sentier, qui remonte dans la console. Rien à installer, comme chez nous.',
         data: 'Là où vous l’installez. C’est votre serveur, et votre responsabilité.',
         pricing: 'Gratuit et modifiable ; le coût réel est celui de l’héberger et de l’entretenir.',
         versus: 'Rien à héberger, rien à mettre à jour, et une carte publique qui refuse d’elle-même un tronçon sortant du terrain que vous détenez. Vous ouvrez le tableau de bord, c’est tout.',
@@ -377,13 +377,13 @@ const fr = {
     ours: {
       kicker: 'Ce que nous n’avons trouvé nulle part ailleurs',
       title: 'Un sentier n’atteint la carte publique que là où quelqu’un répond du terrain — et c’est la géométrie qui en décide, jamais une case à cocher',
-      lead: 'Chez tous les autres, le chemin est le même : l’organisation achète, son réseau obtient un formulaire. Chez nous, c’est le point GPS qui décide à qui va le signalement, et c’est la géométrie du territoire vérifié — pas une case à cocher — qui autorise la publication.',
+      lead: 'Chez tous les autres, le chemin est le même : l’organisation achète, son réseau obtient un formulaire. Chez nous, c’est le point GPS qui décide à qui va le signalement, et c’est la géométrie du territoire vérifié — pas une case à cocher — qui décide si un tronçon peut être publié : la plateforme mesure ce qui déborde de votre terrain et refuse tant qu’il en déborde un mètre.',
       proofTitle: 'Ce que ça donne un mardi matin',
       proofBody: 'Un réseau de sept kilomètres dont un demi-kilomètre sort du terrain que l’organisme détient. La plateforme refuse de publier — pas seulement ce demi-kilomètre, mais le tronçon complet qui le contient — plutôt que de tracer un sentier public sur un terrain dont personne ne répond. Le régler demande une décision foncière : obtenir le terrain voisin, ou découper à la ligne de propriété. Aucun autre produit de ce relevé ne l’aurait signalé.',
       points: [
         {
           title: 'Publier exige un répondant, prouvé géométriquement',
-          body: 'Une épingle et un tronçon n’atteignent la carte publique que là où un territoire vérifié les couvre. Corrigez une limite vers l’intérieur et ce qui repose sur le terrain que vous ne détenez plus s’éteint tout seul, sans aucun geste. Ce n’est pas une fonctionnalité : c’est une posture de responsabilité.',
+          body: 'Sur un territoire vérifié, une épingle n’atteint la carte publique que là où ce territoire la couvre. Corrigez une limite vers l’intérieur et vos épingles posées sur le terrain que vous ne détenez plus s’éteignent toutes seules, sans aucun geste ; un tronçon déjà publié, lui, reste à l’écran jusqu’à ce que vous le dépubliiez — nous préférons vous le dire que vous le laisser découvrir. Ce n’est pas une fonctionnalité : c’est une posture de responsabilité.',
         },
         {
           title: 'Les données sont hébergées au Canada',
@@ -414,7 +414,7 @@ const fr = {
       ],
     },
     correctionTitle: 'Nous avons mal lu votre produit ?',
-    correctionBody: 'Cette page est une lecture de pages publiques à une date donnée, faite par nous, sur nos concurrents. Elle peut vieillir et elle peut se tromper. Si une ligne est inexacte, écrivez-nous : nous corrigerons et nous laisserons la date en évidence.',
+    correctionBody: 'Cette page est une lecture des pages publiques de nos concurrents, faite par nous. Elle peut vieillir et elle peut se tromper. Si une ligne est inexacte, écrivez-nous : nous corrigerons.',
     landingLead: 'Vous comparez plusieurs outils ?',
     landingCta: 'Voyez ce qui existe, et où nous nous distinguons',
   },
@@ -474,13 +474,13 @@ const en: Dict = {
     kicker: 'Trail reporting, without the friction',
     h1a: 'A downed tree, a washed-out trail, a broken sign?',
     h1b: 'Reported in 30 seconds',
-    lead: 'Open the app, or scan the QR code at the trailhead: describe the problem and the trail crew has it — geolocated, photographed, ready to triage. No account. No app to install. Even with no signal.',
+    lead: 'Open the app, or scan the QR code at the trailhead: describe the problem — geolocated, photographed, ready to triage. If a crew runs this land they get it; if nobody does yet, it waits for them. No account. No app to install, and once it is open it holds with no signal.',
     ctaPrimary: 'Report an issue',
     ctaSecondary: 'Claim your land',
-    ctaNote: 'No account needed. Your position finds whose land you are on — place it by hand if GPS will not answer. The free tier has no end date, whatever your organisation is.',
+    ctaNote: 'No account needed. Your position finds who answers for this land — place it by hand if GPS will not answer. The free tier has no end date, whatever your organisation is.',
   },
   sticker: {
-    caption: 'The sticker at the trailhead — that is the whole install.',
+    caption: 'The sticker at the trailhead — that is all the visitor has to do.',
     orLead: 'No sticker in reach?',
     orCta: 'Open the app',
   },
@@ -490,7 +490,7 @@ const en: Dict = {
     steps: [
       {
         title: 'Scan',
-        body: 'The QR code at the trailhead opens the form in the browser. Nothing to install, nothing to sign up for.',
+        body: 'The QR code at the trailhead opens the map in your browser, where you are standing. Nothing to install, nothing to sign up for.',
       },
       {
         title: 'Describe',
@@ -501,7 +501,7 @@ const en: Dict = {
         body: 'No signal in the woods? The report is kept on the phone and sends itself when the network comes back.',
       },
     ],
-    note: 'Want your points to follow you across devices? Create an account in the app — optional, forever. Anonymous stays the default. And your photos are scrubbed of their hidden metadata (position, device) before they even leave your phone.',
+    note: 'Want your points to follow you across devices? Create an account in the app. Reporting never asks for one; only redeeming a reward does. And your photos are scrubbed of their hidden metadata (position, device) before they even leave your phone.',
   },
   rewards: {
     kicker: 'The reward loop',
@@ -554,7 +554,7 @@ const en: Dict = {
         key: 'triage',
         screens: ['triage'],
         title: 'A triage queue, not an inbox',
-        body: 'Every report lands geolocated and photographed on your territory’s map. Validate, fix, close — the history stays, and an hourly email digest keeps every member who wants it in the loop.',
+        body: 'Every report lands on your territory’s map, with its position and, more often than not, a photo. Validate, fix, close — the history stays, and an hourly email digest keeps managers and owners in the loop.',
       },
       {
         key: 'trails',
@@ -565,7 +565,7 @@ const en: Dict = {
       {
         key: 'categories',
         screens: ['categories'],
-        title: 'Your categories, down to the tree species',
+        title: 'Your categories, your words',
         body: 'The report menu is yours: add your own categories — an ash hit by the emerald borer, a dead snag to fell, a torn-off blaze — in French and English. Visitors report in your words, and retiring a category never erases the history.',
       },
       {
@@ -578,19 +578,19 @@ const en: Dict = {
         key: 'rewards',
         screens: ['rewards'],
         title: 'Volunteers, rewarded',
-        body: 'Validated fixes earn your volunteers points — and your crew decides what they’re worth: a free pass, a discount, gear in your colours. You set the catalog, TrailSnag keeps the ledger.',
+        body: 'A validated report earns points for the person who reported it — and your crew decides what they’re worth: a free pass, a discount, gear in your colours. You set the catalog, TrailSnag keeps the ledger.',
       },
       {
         key: 'stickers',
         screens: [],
         title: 'QR stickers, one per trailhead',
-        body: 'Print them yourself from the steward desk: a print-ready file sized for adhesive vinyl, one code per trailhead — that is the whole install. No kiosk, no hardware, no visitor training.',
+        body: 'Print them yourself from the steward desk: a print-ready sheet straight from the browser, sized for adhesive vinyl, one code per trailhead — that is the whole install. No kiosk, no hardware, no visitor training.',
       },
       {
         key: 'integrations',
         screens: ['integrations'],
         title: 'Feeds the tools you already run',
-        body: 'Every step of a report’s lifecycle goes to an address you choose — a signed feed you can test in one click, which your 311 or work-order system can receive.',
+        body: 'The key steps of a report’s lifecycle — created, validated, resolved, rejected — go to an address you choose — a signed feed you can test in one click, which your 311 or work-order system can receive.',
       },
       {
         key: 'status',
@@ -606,7 +606,7 @@ const en: Dict = {
       'What a trail steward does with TrailSnag: triage reports on the map, trace and publish trails, prove the work was done, reward volunteers. Screenshots of the real steward desk.',
     kicker: 'The steward desk',
     title: 'What a steward does, screen by screen',
-    lead: 'This is the real desk, not a mockup: every image below is a screenshot of the running product, on the demonstration territory of a fictional organisation.',
+    lead: 'This is the real desk, not a mockup: every image below is a screenshot of the running product, on the demonstration territory of a fictional organisation. The product moves fast — it has gained rooms since these were taken.',
     ctaPrimary: 'Claim your land',
     ctaSecondary: 'Open the steward desk',
     landTitle: 'Your territory, on your word',
@@ -614,7 +614,7 @@ const en: Dict = {
       'Claim your land by drawing it on the map: the desk opens only on the territory you steward, and the reports that land inside it come to you.',
     closeTitle: 'What it takes to start',
     closeBody:
-      'Claim your land, print one sticker per trailhead, and every visitor becomes a pair of eyes for your crew. Work from today, verification comes after.',
+      'Claim your land: you triage reports on your ground from day one. Once the claim is verified, print a code for every trailhead and every visitor becomes a pair of eyes.',
   },
   audiences: {
     kicker: 'Who it serves',
@@ -717,7 +717,7 @@ const en: Dict = {
         name: 'TrailsIQ',
         origin: 'United States',
         what: 'A trail reporting platform with a free tier. Of everything in this survey, its promise is the closest to ours.',
-        visitor: 'Their app, downloaded. Their own reporting page makes “open the app” step 1, with the App Store and Google Play as the only doors — no browser option.',
+        visitor: 'Their reporting page makes “open the app” step 1, with the App Store and Google Play as its only doors — but their homepage says “no install required. Works in any phone browser”. Their two pages do not agree.',
         data: 'No mention of data residency anywhere on their site.',
         pricing: 'Published tiers, including a free one. Their page states no currency.',
         versus: 'Reporting happens in the browser, from the sign. Nobody standing in front of a fallen tree with one bar of signal downloads an app — and our data is hosted in Canada, which their site states nowhere.',
@@ -728,10 +728,10 @@ const en: Dict = {
         name: 'Trail Sentinel',
         origin: 'Québec',
         what: 'Trail maintenance software: assigned tasks, structure inventory and inspection, reports. Mobile and web.',
-        visitor: 'Crew-side. Reports come from your members and volunteers, with an account; we found no door for the visitor passing through.',
+        visitor: 'Both. Their crew reports from the field, and their pricing page also advertises public reporting with no account, triaged in a separate inbox, with the reporter notified until it is fixed.',
         data: 'A local company, but data hosting is stated nowhere on their site. Those are not the same thing.',
         pricing: 'Published tiers, plus a free community tier for volunteer clubs.',
-        versus: 'Our reports come from your visitors, not only your crew: everyone walking your network becomes a pair of eyes, with no account and no app to install.',
+        versus: 'Their free tier is granted for one year and reassessed annually, after an eligibility review with their team. Ours has no interview, no review and no end date.',
         need: 'Inspecting structures, assigning work, counting hours. That is their trade; we feed the system you already run instead.',
       },
       {
@@ -772,7 +772,7 @@ const en: Dict = {
         name: 'Geotrek',
         origin: 'Open source, France',
         what: 'A BSD-licensed open-source suite you host yourself: a public hiking site and a management console.',
-        visitor: 'A report form in the browser, on the trail’s own page, landing in the console. Nothing to install — it is the only one in this survey that meets ours on that point, and that deserves saying.',
+        visitor: 'A report form in the browser, on the trail’s own page, landing in the console. Nothing to install, same as ours.',
         data: 'Wherever you install it. It is your server, and your responsibility.',
         pricing: 'Free and modifiable; the real cost is hosting and maintaining it.',
         versus: 'Nothing to host, nothing to update, and a public map that refuses on its own any stretch leaving the ground you hold. You open the desk, that is all.',
@@ -782,13 +782,13 @@ const en: Dict = {
     ours: {
       kicker: 'What we found nowhere else',
       title: 'A trail reaches the public map only where somebody answers for the ground — and geometry decides that, never a checkbox',
-      lead: 'Everywhere else the path is the same: the organisation buys, its network gets a form. Here the GPS point decides who receives the report, and it is the geometry of verified land — not a checkbox — that authorises publishing.',
+      lead: 'Everywhere else the path is the same: the organisation buys, its network gets a form. Here the GPS point decides who receives the report, and it is the geometry of verified land — not a checkbox — that decides whether a stretch may be published: the platform measures what falls outside your ground and refuses while a single metre does.',
       proofTitle: 'What that looks like on a Tuesday morning',
       proofBody: 'A seven-kilometre network with half a kilometre leaving the ground the organisation holds. The platform refuses to publish — not just that half-kilometre, but the whole stretch containing it — rather than draw a public trail across land nobody answers for. Fixing it takes a land decision: get the neighbouring ground, or cut at the property line. Nothing else in this survey would have raised it.',
       points: [
         {
           title: 'Publishing needs someone answerable, proven geometrically',
-          body: 'A pin and a stretch reach the public map only where verified land covers them. Correct a boundary inward and whatever sits on ground you no longer hold goes dark on its own, with no action taken on it. That is not a feature: it is a posture about responsibility.',
+          body: 'On verified land, a pin reaches the public map only where that land covers it. Correct a boundary inward and your pins on ground you no longer hold go dark on their own, with no action taken; a stretch already published, though, stays on screen until you unpublish it — we would rather tell you than let you find out. That is not a feature: it is a posture about responsibility.',
         },
         {
           title: 'The data is hosted in Canada',
@@ -819,7 +819,7 @@ const en: Dict = {
       ],
     },
     correctionTitle: 'Did we read your product wrong?',
-    correctionBody: 'This page is one reading of public pages on one date, done by us, about our competitors. It can age and it can be wrong. If a line is inaccurate, write to us: we will correct it and leave the date in plain sight.',
+    correctionBody: 'This page is one reading of our competitors’ public pages, done by us. It can age and it can be wrong. If a line is inaccurate, write to us: we will correct it.',
     landingLead: 'Comparing a few tools?',
     landingCta: 'See what exists, and where we differ',
   },
