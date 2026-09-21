@@ -239,64 +239,54 @@ const fr = {
   // picker.
   pricing: {
     title: 'Tarifs',
-    lede: 'Un prix par organisation, taxes en sus. Deux tarifs publiés\u00a0: organismes et entreprises.',
+    lede: 'En dollars canadiens, taxes en sus.',
     monthlySuffix: '/ mois',
-    yearlyNote: 'ou {price} par année — deux mois offerts',
-    yearlyCta: 'Payer {price} par année',
-    taxes: 'Taxes en sus. Facturé par organisation, jamais à l\u2019utilisateur. Facture annuelle possible au même montant.',
-    canada: 'Données hébergées au Canada. Nos courriels passent par un fournisseur américain.',
-    territoire: 'Plus de dix territoires, ou une entente de service\u00a0? Parlons-en.',
-    free: 'Gratuit sur tous les paliers\u00a0: le signalement sans compte ni application, les codes QR, la carte publique intégrable, le tracé de sentiers, les repères, les récompenses et vos exports CSV, GPX et KML — en tout temps, même si vous cessez de payer.',
+    yearlyCta: 'Payer à l\u2019année — {price}',
+    rateNote: 'Tarif réservé aux OBNL, municipalités, MRC et zecs.',
+    territoire: 'Plus de dix territoires ou une entente de service\u00a0? Parlons-en.',
 
     rate: {
       legend: 'Votre tarif',
       nonprofit: 'OBNL et organismes publics',
       commercial: 'Entreprise',
-      test: 'OBNL, municipalité, MRC ou zec\u00a0: votre NEQ au paiement suffit. Aucune entrevue, aucune révision annuelle.',
     },
 
-    anchorBadge: 'Le palier de référence',
+    anchorBadge: 'Recommandé',
 
     tiers: {
       halte: {
         name: 'Halte',
-        who: 'Clubs de bénévoles, comités de sentiers, propriétaires de boisés',
+        who: 'Clubs et comités de sentiers',
         cta: 'Commencer — gratuit',
+        features: [
+          'Tout le produit, sans limite de temps',
+          '1 territoire vérifié',
+          'Soutien par courriel',
+        ],
       },
       parc: {
         name: 'Parc',
-        who: 'Zecs, centres de plein air, parcs régionaux, municipalités',
+        who: 'Zecs, centres de plein air, municipalités',
         cta: 'Choisir Parc',
+        features: [
+          'Tout ce qu\u2019il y a dans Halte',
+          'Rapport d\u2019intervention en PDF',
+          'Rapport de réseau',
+          'Jusqu\u2019à 3 territoires vérifiés',
+          'Soutien par courriel, 3 jours ouvrables',
+        ],
       },
       reseau: {
         name: 'Réseau',
-        who: 'MRC, regroupements régionaux de zecs, réseaux à plusieurs territoires',
+        who: 'MRC et réseaux à plusieurs territoires',
         cta: 'Choisir Réseau',
+        features: [
+          'Tout ce qu\u2019il y a dans Parc',
+          'Flux sortants signés vers vos systèmes',
+          'Jusqu\u2019à 10 territoires vérifiés',
+          'Personne-ressource attitrée, 2 jours ouvrables',
+        ],
       },
-    },
-
-    freeForever: 'Gratuit pour toujours, sans date de fin.',
-
-    labels: {
-      included: 'Compris',
-      adds: 'En plus',
-      territories: 'Territoires vérifiés inclus',
-      support: 'Soutien',
-    },
-
-    rows: {
-      base: 'Tout le produit',
-      exports: 'Exports CSV, GPX et KML',
-      inherits: 'Tout ce qu\u2019il y a dans Parc',
-      resolution: 'Rapport d\u2019intervention PDF',
-      network: 'Rapport de réseau',
-      webhooks: 'Flux sortants signés vers vos systèmes',
-    },
-
-    support: {
-      halte: 'Courriel',
-      parc: 'Courriel, 3 jours ouvrables',
-      reseau: 'Personne-ressource attitrée, 2 jours ouvrables',
     },
   },
   comparison: {
@@ -654,64 +644,54 @@ const en: Dict = {
   },
   pricing: {
     title: 'Pricing',
-    lede: 'One price per organisation, taxes extra. Two published rates: non-profits and businesses.',
+    lede: 'In Canadian dollars, taxes extra.',
     monthlySuffix: '/ month',
-    yearlyNote: 'or {price} a year — two months free',
-    yearlyCta: 'Pay {price} a year',
-    taxes: 'Taxes extra. Billed per organisation, never per user. An annual invoice is available at the same amount.',
-    canada: 'Data hosted in Canada. Our emails go through an American provider.',
+    yearlyCta: 'Pay yearly — {price}',
+    rateNote: 'This rate is for non-profits, municipalities, RCMs and zecs.',
     territoire: 'More than ten territories, or a service agreement? Let us talk.',
-    free: 'Free on every tier: reporting with no account and no app, QR codes, the embeddable public map, trail tracing, markers, rewards and your CSV, GPX and KML exports — any time, even if you stop paying.',
 
     rate: {
       legend: 'Your rate',
       nonprofit: 'Non-profits and public bodies',
       commercial: 'Business',
-      test: 'Non-profit, municipality, RCM or zec: your NEQ at checkout is the whole test. No interview, no annual review.',
     },
 
-    anchorBadge: 'Our reference tier',
+    anchorBadge: 'Recommended',
 
     tiers: {
       halte: {
         name: 'Halte',
-        who: 'Volunteer clubs, trail committees, woodlot owners',
+        who: 'Clubs and trail committees',
         cta: 'Start — free',
+        features: [
+          'The whole product, with no time limit',
+          '1 verified territory',
+          'Email support',
+        ],
       },
       parc: {
         name: 'Parc',
-        who: 'ZECs, outdoor centres, regional parks, municipalities',
+        who: 'Zecs, outdoor centres, municipalities',
         cta: 'Choose Parc',
+        features: [
+          'Everything in Halte',
+          'Intervention report as a PDF',
+          'Network report',
+          'Up to 3 verified territories',
+          'Email support, 3 business days',
+        ],
       },
       reseau: {
         name: 'Réseau',
-        who: 'RCMs, regional zec groupings, networks with several territories',
+        who: 'RCMs and multi-territory networks',
         cta: 'Choose Réseau',
+        features: [
+          'Everything in Parc',
+          'Signed outbound feeds to your systems',
+          'Up to 10 verified territories',
+          'Named contact, 2 business days',
+        ],
       },
-    },
-
-    freeForever: 'Free forever, with no end date.',
-
-    labels: {
-      included: 'Included',
-      adds: 'Adds',
-      territories: 'Verified territories included',
-      support: 'Support',
-    },
-
-    rows: {
-      base: 'The whole product',
-      exports: 'CSV, GPX and KML exports',
-      inherits: 'Everything in Parc',
-      resolution: 'Intervention report PDF',
-      network: 'Network report',
-      webhooks: 'Signed outbound feeds to your systems',
-    },
-
-    support: {
-      halte: 'Email',
-      parc: 'Email, 3 business days',
-      reseau: 'Named contact, 2 business days',
     },
   },
   comparison: {

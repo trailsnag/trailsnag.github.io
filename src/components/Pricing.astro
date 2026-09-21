@@ -1,30 +1,29 @@
 ---
-// The pricing page: what TrailSnag costs, and the door that takes the money.
+// The pricing page: three cards, one price each, one button each.
 //
-// A buyer pays HERE, before anybody has minted their organisation — setup is
-// not self-serve, because a territory has to be claimed and verified first —
-// so the button leads to the payment provider and the steward is provisioned
-// afterwards, from the receipt they come back holding.
+// It is built to the shape every buyer has already seen a hundred times,
+// because a price grid is scanned in about four seconds and anything
+// unfamiliar in it costs more than it explains. Name, one line saying who it
+// is for, the amount, the button, then a checked list. Nothing else.
 //
-// IT IS DELIBERATELY SHORT. The first version of this page ran to 914 words:
-// an essay on what we do not charge for, three paragraphs explaining the rate
-// switch, a pitch under every tier name, an orientation table repeating what
-// the cards already said, eight bullets of free features and five footnotes.
-// ChefFamille read it and said it was too complicated and too much text, and
-// he was right — a price grid is scanned, not read, and everything a buyer
-// cannot scan is something they have to wade through to reach the number.
-// What survives is the number, who each tier is for, the two or three things
-// that tier adds, and one line for everything else. Anything longer than a
-// line belongs on another page or in a conversation.
+// THE ALIGNMENT IS THE WHOLE LAYOUT, and it is why the rows are fixed rather
+// than flowed: a « who » line that wraps on one card and not on another puts
+// three prices at three different heights and the grid stops reading as a
+// comparison at all. The name+who block and the price block each hold their
+// own height whatever they contain, so the amounts sit on one line across the
+// three cards, the buttons sit on another, and the lists start together. The
+// anchor's ribbon is positioned OUT OF FLOW against the card's top edge for
+// the same reason — in flow it pushed that one card's contents down and broke
+// every row it was meant to draw attention to.
 //
-// Every amount comes from lib/pricing.ts rather than from the copy, so the two
-// locales cannot quote different numbers, and four build guards there refuse
-// the page outright if the arithmetic, the links, the spread or the order of
-// the tiers stop agreeing with what the words promise.
+// Every amount comes from lib/pricing.ts rather than from the copy, so the
+// two locales cannot quote different numbers, and four build guards there
+// refuse the page outright if the arithmetic, the links, the spread or the
+// order of the tiers stop agreeing with what the words promise.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import { useTranslations, claimUrl, contactEmail } from '../i18n/utils';
+import { useTranslations, claimUrl } from '../i18n/utils';
 import { TIERS, RATES, money, offer, type Rate, type Tier } from '../lib/pricing';
 import { contactPath, type Lang } from '../i18n/routes';
 
@@ -35,29 +34,12 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const contact = contactPath(lang);
 
-/** What each tier opens, mirroring PLAN_CAPABILITIES in the product. Exports
-    sit on EVERY tier deliberately: they are the org's own data, and gating
-    them would make a late payment a data-hostage situation. Two lines a card,
-    because nobody counts bullets on a page they are scanning. */
-const OPENS: Record<Tier['key'], string[]> = {
-  halte: [t.pricing.rows.base, t.pricing.rows.exports],
-  parc: [t.pricing.rows.resolution, t.pricing.rows.network],
-  reseau: [t.pricing.rows.inherits, t.pricing.rows.webhooks],
-};
-
-const support: Record<Tier['key'], string> = {
-  halte: t.pricing.support.halte,
-  parc: t.pricing.support.parc,
-  reseau: t.pricing.support.reseau,
-};
-
 const rateLabel: Record<Rate, string> = {
   nonprofit: t.pricing.rate.nonprofit,
   commercial: t.pricing.rate.commercial,
 };
 
-/** The anchor, distinguished by a ring and a ribbon rather than by colour
-    alone, so it still reads for somebody who cannot see the accent. */
+/** The anchor, marked by a ribbon and a ring rather than by colour alone. */
 const ANCHOR: Tier['key'] = 'parc';
 ---
 
@@ -67,39 +49,36 @@ const ANCHOR: Tier['key'] = 'parc';
     <h1 class="font-display text-3xl font-bold text-balance text-(--ink) sm:text-4xl">
       {t.pricing.title}
     </h1>
-    <p class="mt-3 max-w-2xl text-lg text-(--ink-soft)">{t.pricing.lede}</p>
+    <p class="mt-2 text-(--ink-soft)">{t.pricing.lede}</p>
 
-    {/* The rate switch, and the one structural decision on this page: it works
-        with NO JAVASCRIPT. The site is a static build with no hydration, so
-        the two radios are real inputs and plain CSS does the rest — but only
-        from a PRECEDING SIBLING, which is why they sit first and everything
-        they drive is a later sibling's descendant. A `:has()` on the grid
-        alone cannot see them, and Tailwind's `peer-checked` needs the styled
-        element to be the input's own sibling rather than its grandchild; both
-        were tried and both silently showed every card twice.
-
-        Organisme is `checked` at build time: it is what four buyers in five
-        pay, and it is what a visitor with no CSS at all sees first. */}
-    <div class="rate-scope mt-8">
+    {/* The rate switch works with NO JAVASCRIPT: the site is a static build
+        with no hydration, so two real radios sit first and plain CSS reaches
+        forward into their later siblings. A `:has()` on the grid cannot see
+        radios outside it, and Tailwind's `peer-checked` needs the styled
+        element to be the input's own sibling — both were tried, and both
+        silently showed every card twice. */}
+    <div class="rate-scope mt-7">
       <input type="radio" name="rate" id="rate-nonprofit" class="sr-only" checked />
       <input type="radio" name="rate" id="rate-commercial" class="sr-only" />
 
       <div class="flex flex-col gap-2 sm:flex-row" role="group" aria-label={t.pricing.rate.legend}>
         <label
           for="rate-nonprofit"
-          class="cursor-pointer rounded-full border border-(--rule) px-4 py-2 text-center font-display text-sm font-semibold text-(--ink-soft)"
+          class="cursor-pointer rounded-full border border-(--rule) px-4 py-1.5 text-center font-display text-sm font-semibold text-(--ink-soft)"
         >
           {rateLabel.nonprofit}
         </label>
         <label
           for="rate-commercial"
-          class="cursor-pointer rounded-full border border-(--rule) px-4 py-2 text-center font-display text-sm font-semibold text-(--ink-soft)"
+          class="cursor-pointer rounded-full border border-(--rule) px-4 py-1.5 text-center font-display text-sm font-semibold text-(--ink-soft)"
         >
           {rateLabel.commercial}
         </label>
       </div>
 
-      <p class="mt-3 max-w-2xl text-sm text-(--ink-soft)">{t.pricing.rate.test}</p>
+      {/* Shown only on the organisme rate, because it is the only one with a
+          condition. It states WHO the rate is for and promises no procedure. */}
+      <p data-rate="nonprofit" class="mt-3 text-sm text-(--ink-faint)">{t.pricing.rateNote}</p>
 
       <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -109,102 +88,80 @@ const ANCHOR: Tier['key'] = 'parc';
             const anchor = tier.key === ANCHOR;
             return (
               <section
-                class={`flex flex-col rounded-2xl border bg-(--paper) p-5 ${
-                  anchor ? 'border-(--blaze) ring-2 ring-(--blaze) shadow-lg' : 'border-(--rule)'
+                class={`relative flex flex-col rounded-2xl border bg-(--paper) p-6 ${
+                  anchor ? 'border-(--blaze) ring-1 ring-(--blaze)' : 'border-(--rule)'
                 }`}
               >
                 {anchor && (
-                  <p class="mb-2 inline-block self-start rounded-full bg-(--blaze) px-2 py-0.5 font-display text-[11px] font-bold tracking-wide text-white uppercase">
+                  <p class="absolute -top-3 left-6 rounded-full bg-(--blaze) px-3 py-0.5 font-display text-[11px] font-bold tracking-wide text-white uppercase">
                     {t.pricing.anchorBadge}
                   </p>
                 )}
-                <h2 class="font-display text-xl font-bold text-(--ink)">{copy.name}</h2>
-                <p class="mt-1 text-xs font-semibold tracking-wide text-(--ink-soft) uppercase">
-                  {copy.who}
-                </p>
 
-                {/* The amount, in the size it is read at from a projector in a
-                    council meeting. Halte renders « 0 $ » in that same type
-                    rather than the word « gratuit » — a zero beside 79 $ is a
-                    stronger claim than an adjective. */}
-                {RATES.map((rate) => {
-                  const prices = tier.rates[rate];
-                  return (
-                    <div data-rate={rate} class="mt-4">
-                      <p class="flex flex-wrap items-baseline gap-x-2">
-                        <span class="font-display text-4xl font-bold text-(--ink)">
-                          {money(prices.monthly, lang)}
-                        </span>
-                        <span class="text-base text-(--ink-soft)">{t.pricing.monthlySuffix}</span>
-                      </p>
-                      {paid && (
-                        <p class="mt-1 text-sm text-(--ink-soft)">
-                          {t.pricing.yearlyNote.replace('{price}', money(prices.yearly, lang))}
-                        </p>
-                      )}
-                    </div>
-                  );
-                })}
+                {/* Row 1 — who. Fixed height so three cards agree. */}
+                <div class="min-h-14">
+                  <h2 class="font-display text-lg font-bold text-(--ink)">{copy.name}</h2>
+                  <p class="mt-1 text-sm text-(--ink-soft)">{copy.who}</p>
+                </div>
 
-                {tier.key === 'halte' && (
-                  <p class="mt-3 text-sm font-semibold text-(--ink)">{t.pricing.freeForever}</p>
-                )}
-
-                <p class="mt-4 text-xs font-semibold tracking-wide text-(--ink-soft) uppercase">
-                  {tier.key === 'halte' ? t.pricing.labels.included : t.pricing.labels.adds}
-                </p>
-                <ul class="mt-1 space-y-1 text-sm text-(--ink-soft)">
-                  {OPENS[tier.key].map((row) => (
-                    <li>{row}</li>
+                {/* Row 2 — the amount, in the size it is read at across a
+                    meeting room. Both rates render; CSS shows one. */}
+                <div class="min-h-16">
+                  {RATES.map((rate) => (
+                    <p data-rate={rate} class="flex flex-wrap items-baseline gap-x-2">
+                      <span class="font-display text-4xl font-bold text-(--ink)">
+                        {money(tier.rates[rate].monthly, lang)}
+                      </span>
+                      <span class="text-(--ink-soft)">{t.pricing.monthlySuffix}</span>
+                    </p>
                   ))}
-                </ul>
+                </div>
 
-                <dl class="mt-4 space-y-1 text-xs text-(--ink-soft)">
-                  <div class="flex justify-between gap-3">
-                    <dt class="min-w-0">{t.pricing.labels.territories}</dt>
-                    <dd class="font-semibold text-(--ink)">{tier.territories}</dd>
-                  </div>
-                  <div class="flex justify-between gap-3">
-                    <dt class="min-w-0">{t.pricing.labels.support}</dt>
-                    <dd class="font-semibold text-(--ink)">{support[tier.key]}</dd>
-                  </div>
-                </dl>
-
-                {/* The doors, pinned to the bottom so three cards of different
-                    heights still line their buttons up. Both intervals are
-                    real buttons rather than a footnote somebody has to ask
-                    about: annual is the better deal for the buyer and the
-                    cash-flow win for a solo founder. */}
-                <div class="mt-auto pt-5">
+                {/* Row 3 — one button, where a buyer expects it: under the
+                    price, not at the bottom of a list they have to read
+                    first. The annual door is a quiet line beneath it rather
+                    than a second button competing with the first. */}
+                <div class="mt-5">
                   {tier.key === 'halte' ? (
                     <a
                       href={claimUrl}
-                      class="block rounded-lg bg-(--blaze) px-3 py-2 text-center font-display text-sm font-bold text-white"
+                      class="block rounded-lg bg-(--blaze) px-3 py-2.5 text-center font-display text-sm font-bold text-white"
                     >
                       {copy.cta}
                     </a>
                   ) : (
-                    RATES.map((rate) => {
-                      const prices = tier.rates[rate];
-                      return (
-                        <div data-rate={rate} class="space-y-2">
-                          <a
-                            href={offer(prices.monthlyUrl, lang).href}
-                            class="block rounded-lg bg-(--blaze) px-3 py-2 text-center font-display text-sm font-bold text-white"
-                          >
-                            {copy.cta}
-                          </a>
-                          <a
-                            href={offer(prices.yearlyUrl, lang).href}
-                            class="block rounded-lg border border-(--rule) px-3 py-2 text-center font-display text-sm font-bold text-(--ink)"
-                          >
-                            {t.pricing.yearlyCta.replace('{price}', money(prices.yearly, lang))}
-                          </a>
-                        </div>
-                      );
-                    })
+                    RATES.map((rate) => (
+                      <div data-rate={rate}>
+                        <a
+                          href={offer(tier.rates[rate].monthlyUrl, lang).href}
+                          class="block rounded-lg bg-(--blaze) px-3 py-2.5 text-center font-display text-sm font-bold text-white"
+                        >
+                          {copy.cta}
+                        </a>
+                        <a
+                          href={offer(tier.rates[rate].yearlyUrl, lang).href}
+                          class="mt-2 block text-center text-xs text-(--ink-soft) underline hover:text-(--ink)"
+                        >
+                          {t.pricing.yearlyCta.replace(
+                            '{price}',
+                            money(tier.rates[rate].yearly, lang),
+                          )}
+                        </a>
+                      </div>
+                    ))
                   )}
+                  {!paid && <span class="mt-2 block text-center text-xs">&nbsp;</span>}
                 </div>
+
+                {/* Row 4 — what you get, checked. */}
+                <ul class="mt-6 space-y-2 text-sm text-(--ink-soft)">
+                  {copy.features.map((f) => (
+                    <li class="flex gap-2">
+                      <span aria-hidden="true" class="text-(--blaze)">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </section>
             );
           })
@@ -212,36 +169,19 @@ const ANCHOR: Tier['key'] = 'parc';
       </div>
     </div>
 
-    {/* Everything the product does that nobody pays for, in ONE line. It was
-        eight bullets under a heading with its own lede; a buyer scanning a
-        price grid does not read a second list, and the sentence makes the
-        same point faster — the three prices above are what is NOT in it. */}
-    <p class="mt-8 max-w-3xl text-sm text-(--ink-soft)">{t.pricing.free}</p>
-
-    {/* Territoire has no card, because a card with no price and no button
-        sells nothing. It is one line, and it leads to a conversation. */}
-    <p class="mt-6 text-sm text-(--ink-soft)">
+    <p class="mt-8 text-sm text-(--ink-soft)">
       <a class="underline hover:text-(--ink)" href={contact}>{t.pricing.territoire}</a>
     </p>
 
-    <div class="mt-8 space-y-1 border-t border-(--rule) pt-6 text-xs text-(--ink-faint)">
-      <p>{t.pricing.taxes}</p>
-      <p>{t.pricing.canada}</p>
-      <p>
-        <a class="break-words underline hover:text-(--ink)" href={`mailto:${contactEmail}`}>
-          {contactEmail}
-        </a>
-      </p>
-    </div>
   </main>
   <Footer lang={lang} />
 </BaseLayout>
 
 <style>
-  /* The rate switch, with no JavaScript and no `:has()`.
-     Each rule reaches FORWARD from a checked radio into a later sibling's
-     descendants, which is the only direction a sibling combinator goes — and
-     the reason the radios are the container's first children. */
+  /* The rate switch: each rule reaches FORWARD from a checked radio into a
+     later sibling's descendants, which is the only direction a sibling
+     combinator goes — and the reason the radios are the container's first
+     children. */
   #rate-nonprofit:checked ~ * [data-rate='commercial'],
   #rate-commercial:checked ~ * [data-rate='nonprofit'] {
     display: none;
@@ -256,8 +196,8 @@ const ANCHOR: Tier['key'] = 'parc';
     color: var(--paper);
   }
 
-  /* The inputs are visually hidden but still focusable, so the focus ring has
-     to be drawn on the label a keyboard user can actually see. */
+  /* The inputs are visually hidden but still focusable, so the focus ring is
+     drawn on the label a keyboard user can actually see. */
   #rate-nonprofit:focus-visible ~ * label[for='rate-nonprofit'],
   #rate-commercial:focus-visible ~ * label[for='rate-commercial'] {
     outline: 2px solid var(--blaze);
