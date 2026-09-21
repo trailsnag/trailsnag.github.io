@@ -24,36 +24,63 @@ import { contactEmail } from '../i18n/utils';
 
   <h2>Ce qu'un signalement contient</h2>
   <ul>
-    <li>la position GPS du problème (ou, à défaut, celle de l'autocollant scanné) ;</li>
+    <li>
+      la position du problème : celle que votre appareil rapporte, ou celle que vous placez
+      vous-même sur la carte quand le GPS est absent ou faux (un autocollant ne porte aucune
+      coordonnée — il nomme le panneau, jamais l'endroit) ;
+    </li>
     <li>une catégorie et, si vous le souhaitez, une description et des photos ;</li>
-    <li>un identifiant technique généré par votre appareil, qui évite les doublons.</li>
+    <li>un identifiant technique généré par votre appareil, qui évite les doublons ;</li>
+    <li>
+      un identifiant de session créé automatiquement, qui relie entre eux les signalements faits
+      depuis votre appareil. Si vous ouvrez un compte plus tard, vous pouvez choisir d'y rattacher
+      cet historique.
+    </li>
   </ul>
   <p>
-    Aucun compte n'est requis et le signalement est anonyme par défaut. La position et les photos
-    peuvent constituer des renseignements personnels : nous les traitons comme tels.
+    Aucun compte n'est requis : vous pouvez signaler sans donner votre nom ni votre adresse
+    courriel. La position et les photos peuvent constituer des renseignements personnels : nous
+    les traitons comme tels. Si vous envoyez une photo, elle peut être soumise à un service
+    d'analyse automatisée qui nous sert à vous proposer une catégorie.
   </p>
 
   <h2>Ce que nous en faisons</h2>
   <p>
-    Un signalement est transmis uniquement à l'organisme qui gère le territoire concerné, pour
-    qu'il puisse le trier et le corriger. Un organisme peut publier une carte publique de ses
-    signalements : elle montre la nature, la position et le statut du problème — jamais l'identité
-    de la personne qui l'a signalé. Nous ne vendons aucune donnée, à personne.
+    Un signalement est transmis à l'organisme qui gère le territoire concerné, pour qu'il puisse
+    le trier et le corriger. Quand aucun organisme ne gère l'endroit, il est conservé par
+    TrailSnag en attendant qu'un organisme réclame ce terrain.
+  </p>
+  <p>
+    Un organisme peut publier une carte publique de ses signalements. Elle montre la nature, la
+    position et l'état du problème, la description que vous avez écrite et, s'il y en a une, la
+    photo jointe. Votre nom n'y paraît jamais, à moins que vous n'ayez vous-même activé
+    l'affichage public de votre pseudonyme dans votre profil. Nous ne vendons aucune donnée, à
+    personne.
   </p>
 
   <h2>Où vivent les données</h2>
   <p>
     La base de données et le stockage des photos sont au Canada (Montréal) ; l'API est hébergée à
-    Toronto. Certains de nos fournisseurs techniques (hébergement, stockage) sont des entreprises
-    américaines soumises à leurs propres lois.
+    Toronto. L'hébergement et le stockage sont fournis par des entreprises américaines soumises à
+    leurs propres lois, même si les données, elles, restent au Canada.
+  </p>
+  <p>
+    Deux choses sortent du pays. Nos courriels — dont les avis envoyés aux organismes, qui peuvent
+    citer un extrait d'un signalement — sont acheminés par une infrastructure américaine. Et
+    l'application affiche des fonds de carte et une recherche de lieux fournis par des tiers :
+    votre navigateur les contacte directement, ils voient donc votre adresse IP, la zone de carte
+    affichée et, pour la recherche, le texte que vous tapez.
   </p>
 
   <h2>Vos droits</h2>
   <p>
-    Conformément à la Loi 25 (Québec), vous pouvez demander l'accès, la rectification ou la
-    suppression des renseignements personnels liés à un signalement que vous avez fait. Écrivez au
-    responsable de la protection des renseignements personnels :
-    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+    La Loi 25 (Québec) vous donne le droit de demander l'accès, la rectification ou la suppression
+    des renseignements personnels liés à un signalement que vous avez fait. Écrivez au responsable
+    de la protection des renseignements personnels :
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Chaque demande est traitée à la main —
+    il n'existe pas encore de bouton pour cela dans l'application — et nous répondons dans les
+    trente jours que prévoit la loi. Nos travaux de conformité à la Loi 25 sont en cours ; nous ne
+    déclarons pas être conformes.
   </p>
 
   <h2>Évolution de cette politique</h2>

@@ -8,7 +8,7 @@ const fr = {
   meta: {
     title: 'TrailSnag — Signalez un problème de sentier en 30 secondes',
     description:
-      'Un arbre tombé, un sentier lessivé, une pancarte brisée ? Scannez le code QR au départ du sentier et signalez-le en moins de 30 secondes — aucun compte, aucune application, même sans réseau. Les équipes reçoivent, valident et corrigent.',
+      'Un arbre tombé, un sentier lessivé, une pancarte brisée ? Scannez le code QR au départ du sentier et signalez-le en moins de 30 secondes — aucun compte, aucune application à installer. Une fois ouverte, l’application tient sans réseau. Les équipes reçoivent, valident et corrigent.',
   },
   nav: {
     how: 'Comment ça marche',
@@ -131,7 +131,7 @@ const fr = {
         key: 'proof',
         screens: ['stats'],
         title: 'La preuve que vous avez répondu',
-        body: 'La carte publique montre ce qui est signalé et ce qui est réglé. Exportez le registre en CSV, GPX ou KML pour vos demandes de subvention — et produisez un rapport d’intervention PDF, problème par problème.',
+        body: 'Ouvrez votre carte publique quand vous le voulez : elle montre alors ce qui est signalé et ce qui est réglé. Exportez le registre en CSV, GPX ou KML pour vos demandes de subvention — et produisez un rapport d’intervention PDF, problème par problème.',
       },
       {
         key: 'rewards',
@@ -152,7 +152,7 @@ const fr = {
         key: 'integrations',
         screens: ['integrations'],
         title: 'Se branche à vos outils existants',
-        body: 'Chaque étape du cycle de vie d’un signalement peut alimenter votre 311 ou votre système de bons de travail — un flux signé, testable en un clic, plus l’import CSV avec les mêmes noms de champs.',
+        body: 'Chaque étape du cycle de vie d’un signalement part vers l’adresse de votre choix — un flux signé, testable en un clic, que votre 311 ou votre système de bons de travail peut recevoir.',
       },
       {
         // No screenshot yet — the capture run has not been re-driven since this
@@ -199,7 +199,7 @@ const fr = {
       {
         title: 'Centres de plein air, zecs et parcs régionaux',
         badge: 'Le palier Parc',
-        body: 'Un canal qui reçoit les signalements de vos visiteurs et documente votre diligence, saison après saison. Une zec, un parc régional et un centre de plein air paient le même tarif : il suit votre forme juridique, pas votre superficie.',
+        body: 'Un canal qui reçoit les signalements de vos visiteurs et documente votre diligence, saison après saison. Le tarif suit votre forme juridique — organismes publics et OBNL d’un côté, entreprises de l’autre — jamais votre superficie.',
       },
       {
         title: 'Municipalités et MRC',
@@ -401,7 +401,7 @@ const fr = {
       cards: [
         {
           title: 'L’assignation de bons de travail',
-          body: 'Nous n’assignons pas de tâches à une équipe et nous ne comptons pas d’heures. Chaque étape du cycle de vie d’un signalement part plutôt vers le 311 ou le système de bons de travail que vous avez déjà, par un flux signé.',
+          body: 'Nous n’assignons pas de tâches à une équipe et nous ne comptons pas d’heures. Chaque étape du cycle de vie d’un signalement part plutôt, par un flux signé, vers l’adresse que vous indiquez — celle que votre 311 ou votre système de bons de travail expose.',
         },
         {
           title: 'L’inspection d’ouvrages en profondeur',
@@ -456,7 +456,7 @@ const en: Dict = {
   meta: {
     title: 'TrailSnag — Report a trail problem in 30 seconds',
     description:
-      'A downed tree, a washed-out trail, a broken sign? Scan the QR code at the trailhead and report it in under 30 seconds — no account, no app, even with no signal. Trail crews receive, validate, and fix.',
+      'A downed tree, a washed-out trail, a broken sign? Scan the QR code at the trailhead and report it in under 30 seconds — no account, no app to install. Once it is open, the app holds with no signal. Trail crews receive, validate, and fix.',
   },
   nav: {
     how: 'How it works',
@@ -572,7 +572,7 @@ const en: Dict = {
         key: 'proof',
         screens: ['stats'],
         title: 'Proof you responded',
-        body: 'The public map shows what’s reported and what’s resolved. Export the log as CSV, GPX or KML for your grant files — and produce an intervention-report PDF, problem by problem.',
+        body: 'Open your public map when you choose to: it then shows what is reported and what is resolved. Export the log as CSV, GPX or KML for your grant files — and produce an intervention-report PDF, problem by problem.',
       },
       {
         key: 'rewards',
@@ -590,7 +590,7 @@ const en: Dict = {
         key: 'integrations',
         screens: ['integrations'],
         title: 'Feeds the tools you already run',
-        body: 'Every step of a report’s lifecycle can feed your 311 or work-order system — a signed feed you can test in one click, plus CSV import with the same field names.',
+        body: 'Every step of a report’s lifecycle goes to an address you choose — a signed feed you can test in one click, which your 311 or work-order system can receive.',
       },
       {
         key: 'status',
@@ -633,7 +633,7 @@ const en: Dict = {
       {
         title: 'Outdoor centres, ZECs and regional parks',
         badge: 'The Parc tier',
-        body: 'A channel that takes your visitors’ reports and documents your diligence, season after season. A zec, a regional park and an outdoor centre pay the same rate: it follows your legal form, not your area.',
+        body: 'A channel that takes your visitors’ reports and documents your diligence, season after season. The rate follows your legal form — public bodies and non-profits on one side, businesses on the other — never your area.',
       },
       {
         title: 'Municipalities and RCMs',
@@ -806,7 +806,7 @@ const en: Dict = {
       cards: [
         {
           title: 'Work-order assignment',
-          body: 'We do not assign tasks to a crew and we do not count hours. Every step of a report’s lifecycle goes out instead to the 311 or work-order system you already run, over a signed feed.',
+          body: 'We do not assign tasks to a crew and we do not count hours. Every step of a report’s lifecycle goes out instead, over a signed feed, to the address you give us — the one your 311 or work-order system exposes.',
         },
         {
           title: 'Deep structure inspection',
