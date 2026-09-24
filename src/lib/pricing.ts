@@ -44,6 +44,19 @@ export const RATES: readonly Rate[] = ['nonprofit', 'commercial'];
  * organisme rate at the entreprise price or the reverse, and nothing
  * downstream can detect it — the URL is opaque. Each of these was verified
  * against its Stripe line item before being pasted.
+ *
+ * THESE EIGHT LINKS AND THE EIGHT AMOUNTS IN TIERS ARE KEPT BY HAND IN FOUR
+ * PLACES, and nothing checks one against another. Change a price or replace
+ * a link and change it in all four the same day:
+ *   1. here (links) and in TIERS below (amounts);
+ *   2. snag `.env.example` — STRIPE_PRICE_* with the amounts as comments,
+ *      STRIPE_CHECKOUT_* with the links;
+ *   3. the API's Fly secrets STRIPE_CHECKOUT_* (and STRIPE_PRICE_*), read by
+ *      apps/api/src/env.ts — the billing room's « Passer à … » buttons;
+ *   4. the vault's « TrailSnag Plan d'affaires 2026-08-28 », §4.
+ * Stripe is the only authority over what a link actually charges; a manifest
+ * exported from it and read by all four is the fix still owed
+ * (trailsnag/snag-carnet#66).
  */
 export const CHECKOUT: Readonly<Record<string, string>> = {
   parcNonprofitMonthly: 'https://buy.stripe.com/6oUaEX5EzeLu1057QXaMU04',
