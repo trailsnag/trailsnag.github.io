@@ -87,8 +87,10 @@ export type RatePrices = {
 
 export type Tier = {
   key: TierKey;
-  /** Verified territories included. A number to orient by, never a meter. */
-  territories: string;
+  /** Verified territories included. A number to orient by, never a meter.
+      The card's territory line and the « more than N » line under the grid
+      are both printed from it (guard 6), so ui.ts never holds the count. */
+  territories: number;
   rates: Record<Rate, RatePrices>;
 };
 
@@ -108,12 +110,12 @@ const FREE: RatePrices = { monthly: 0, yearly: 0, monthlyUrl: '', yearlyUrl: '' 
 export const TIERS: readonly Tier[] = [
   {
     key: 'halte',
-    territories: '1',
+    territories: 1,
     rates: { nonprofit: FREE, commercial: FREE },
   },
   {
     key: 'parc',
-    territories: '3',
+    territories: 3,
     rates: {
       nonprofit: {
         monthly: 79,
@@ -131,7 +133,7 @@ export const TIERS: readonly Tier[] = [
   },
   {
     key: 'reseau',
-    territories: '10',
+    territories: 10,
     rates: {
       nonprofit: {
         monthly: 129,
@@ -280,6 +282,43 @@ export function trialCopy(lang: Lang): { badge: string; note: string } | null {
     badge: trialBadge.replace('{months}', String(TRIAL_MONTHS)),
     note: trialNote.replace('{days}', String(TRIAL_DAYS)),
   };
+}
+
+// GUARD 6 — the territory counts live on the tiers, not in the copy. Each
+// card names its count through exactly one `{n}` feature line, and the line
+// under the grid (« plus de {n} territoires ») through `{n}` too, filled with
+// the largest tier's count; a digit typed next to either would be a second
+// answer that stops agreeing the day a tier's allowance moves.
+const TERRITORY_CEILING = Math.max(...TIERS.map((t) => t.territories));
+for (const lang of ['fr', 'en'] as const) {
+  const copy = ui[lang].pricing;
+  for (const t of TIERS) {
+    const lines = copy.tiers[t.key].features.filter((f) => f.includes('{n}'));
+    if (lines.length !== 1 || /\d/.test(lines[0]!)) {
+      throw new Error(
+        `pricing: ui.${lang}.pricing.tiers.${t.key}.features needs exactly one line with {n} and ` +
+          `no digit — the territory count comes from TIERS (${t.territories}), not from the copy`,
+      );
+    }
+  }
+  if (!copy.territoire.includes('{n}') || /\d/.test(copy.territoire)) {
+    throw new Error(
+      `pricing: ui.${lang}.pricing.territoire must say {n} rather than a number — it is filled ` +
+        `with the largest tier's count (${TERRITORY_CEILING})`,
+    );
+  }
+}
+
+/** A tier's feature lines with its territory count written in. */
+export function tierFeatures(tier: Tier, lang: Lang): string[] {
+  return ui[lang].pricing.tiers[tier.key].features.map((f) =>
+    f.replace('{n}', String(tier.territories)),
+  );
+}
+
+/** The line under the grid, pointing past the largest tier to the contact page. */
+export function beyondLargestTier(lang: Lang): string {
+  return ui[lang].pricing.territoire.replace('{n}', String(TERRITORY_CEILING));
 }
 
 /**

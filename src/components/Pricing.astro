@@ -25,7 +25,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { useTranslations, claimUrl } from '../i18n/utils';
-import { TIERS, RATES, money, offer, trialCopy, type Rate, type Tier } from '../lib/pricing';
+import {
+  TIERS,
+  RATES,
+  money,
+  offer,
+  trialCopy,
+  tierFeatures,
+  beyondLargestTier,
+  type Rate,
+  type Tier,
+} from '../lib/pricing';
 import { contactPath, type Lang } from '../i18n/routes';
 
 interface Props {
@@ -167,7 +177,7 @@ const ANCHOR: Tier['key'] = 'parc';
 
                 {/* Row 4 — what you get, checked. */}
                 <ul class="mt-6 space-y-2 text-sm text-(--ink-soft)">
-                  {copy.features.map((f) => (
+                  {tierFeatures(tier, lang).map((f) => (
                     <li class="flex gap-2">
                       <span aria-hidden="true" class="text-(--blaze)">✓</span>
                       <span>{f}</span>
@@ -188,7 +198,7 @@ const ANCHOR: Tier['key'] = 'parc';
     {trial && <p class="mt-6 max-w-2xl text-sm text-(--ink-faint)">{trial.note}</p>}
 
     <p class="mt-6 text-sm text-(--ink-soft)">
-      <a class="underline hover:text-(--ink)" href={contact}>{t.pricing.territoire}</a>
+      <a class="underline hover:text-(--ink)" href={contact}>{beyondLargestTier(lang)}</a>
     </p>
 
   </main>

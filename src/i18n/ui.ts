@@ -243,7 +243,7 @@ const fr = {
     monthlySuffix: '/ mois',
     yearlyCta: 'Payer à l\u2019année — {price}',
     rateNote: 'Tarif réservé aux OBNL, municipalités, MRC et zecs.',
-    territoire: 'Plus de dix territoires ou une entente de service\u00a0? Parlons-en.',
+    territoire: 'Plus de {n}\u00a0territoires ou une entente de service\u00a0? Parlons-en.',
 
     // L'offre de lancement. Elle est portée par les liens MENSUELS seulement
     // — le prix annuel est déjà à dix mois pour douze, un rabais distinct de
@@ -269,7 +269,7 @@ const fr = {
         cta: 'Commencer — gratuit',
         features: [
           'Tout le produit, sans limite de temps',
-          '1 territoire vérifié',
+          '{n}\u00a0territoire vérifié',
           'Soutien par courriel',
         ],
       },
@@ -281,7 +281,7 @@ const fr = {
           'Tout ce qu\u2019il y a dans Halte',
           'Rapport d\u2019intervention en PDF',
           'Rapport de réseau',
-          'Jusqu\u2019à 3 territoires vérifiés',
+          'Jusqu\u2019à {n}\u00a0territoires vérifiés',
           'Soutien par courriel, 3 jours ouvrables',
         ],
       },
@@ -292,7 +292,7 @@ const fr = {
         features: [
           'Tout ce qu\u2019il y a dans Parc',
           'Flux sortants signés vers vos systèmes',
-          'Jusqu\u2019à 10 territoires vérifiés',
+          'Jusqu\u2019à {n}\u00a0territoires vérifiés',
           'Personne-ressource attitrée, 2 jours ouvrables',
         ],
       },
@@ -662,7 +662,7 @@ const en: Dict = {
     monthlySuffix: '/ month',
     yearlyCta: 'Pay yearly — {price}',
     rateNote: 'This rate is for non-profits, municipalities, RCMs and zecs.',
-    territoire: 'More than ten territories, or a service agreement? Let us talk.',
+    territoire: 'More than {n} territories, or a service agreement? Let us talk.',
 
     trialBadge: '{months} months free',
     trialNote: 'Launch offer on monthly billing: {days} days at no charge, a card is asked for at sign-up, and you can cancel before the first payment.',
@@ -682,7 +682,7 @@ const en: Dict = {
         cta: 'Start — free',
         features: [
           'The whole product, with no time limit',
-          '1 verified territory',
+          '{n} verified territory',
           'Email support',
         ],
       },
@@ -694,7 +694,7 @@ const en: Dict = {
           'Everything in Halte',
           'Intervention report as a PDF',
           'Network report',
-          'Up to 3 verified territories',
+          'Up to {n} verified territories',
           'Email support, 3 business days',
         ],
       },
@@ -705,7 +705,7 @@ const en: Dict = {
         features: [
           'Everything in Parc',
           'Signed outbound feeds to your systems',
-          'Up to 10 verified territories',
+          'Up to {n} verified territories',
           'Named contact, 2 business days',
         ],
       },
