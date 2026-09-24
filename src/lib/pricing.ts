@@ -7,7 +7,8 @@
 // worst bug this site could ship. The copy carries words; this carries money.
 //
 // Source of truth: the repricing approved 2026-09-18. Per ORGANISATION, in
-// CAD, taxes extra. Annual is ten months of the monthly rate.
+// CAD, taxes extra. Annual is ten months of the monthly rate (guard 1); the
+// launch trial is a separate thing on the monthly links only (TRIAL_MONTHS).
 
 import type { Lang } from '../i18n/routes';
 import { ui } from '../i18n/ui';
@@ -79,7 +80,9 @@ export const TRIAL_DAYS = TRIAL_MONTHS * 30;
 export type RatePrices = {
   /** CAD per month. */
   monthly: number;
-  /** CAD per year. Ten months of the monthly rate — two months off. */
+  /** CAD per year. Ten months of the monthly rate: twelve months billed as
+      ten. That is the ANNUAL DISCOUNT, and it has nothing to do with the
+      launch trial, which only the monthly links carry (TRIAL_MONTHS). */
   yearly: number;
   monthlyUrl: string;
   yearlyUrl: string;
@@ -154,18 +157,26 @@ export const TIERS: readonly Tier[] = [
 /** The paid tiers, which is where every guard below has something to check. */
 const SOLD = TIERS.filter((t) => t.rates.nonprofit.monthly > 0);
 
-// GUARD 1 — the arithmetic nobody re-checks by eye: annual must actually be
-// ten months of the monthly rate, or the page advertises « deux mois offerts »
-// over a discount that is not there — a promise a customer can compute in one
-// multiplication and we cannot take back. Both rates, because a correction
+// GUARD 1 — the annual discount, and ONLY the annual discount: the yearly
+// price must be exactly ten times the monthly one, twelve months for the
+// price of ten. A buyer checks that in one multiplication against the « Payer
+// à l'année » line, and a yearly price that drifted off it would be a
+// discount we quietly stopped giving. Both rates, because a correction
 // applied to one and forgotten on the other is the likeliest way this breaks.
+//
+// This is NOT the launch trial, though both are « two months » today and they
+// were confused before: the trial is days at no charge on the MONTHLY links
+// alone (TRIAL_MONTHS, guard 5, set in Stripe by `snag billing trial`), and
+// the yearly links carry none precisely because the discount already gives
+// those months — both together would be fourteen months for the price of ten.
+// Change either one without touching the other.
 for (const t of SOLD) {
   for (const rate of RATES) {
     const { monthly, yearly } = t.rates[rate];
     if (yearly !== monthly * 10) {
       throw new Error(
         `tier ${t.key} (${rate}): annual ${yearly} is not ten months of ${monthly} — ` +
-          `the page claims two months off, so either fix the number or stop claiming it`,
+          `the yearly price is sold as twelve months for the price of ten, so fix the number`,
       );
     }
   }
