@@ -270,6 +270,10 @@ const fr = {
         features: [
           'Tout le produit, sans limite de temps',
           '{n}\u00a0territoire vérifié',
+          // L'unique brèche dans la barrière des paliers (snag 0059) : un
+          // rapport d'intervention PDF par saison FIXE — 1er mai → 31 oct.,
+          // 1er nov. → 30 avr. —, jamais le rapport de réseau ni les flux.
+          '1 rapport d\u2019intervention gratuit par saison',
           'Soutien par courriel',
         ],
       },
@@ -683,6 +687,7 @@ const en: Dict = {
         features: [
           'The whole product, with no time limit',
           '{n} verified territory',
+          '1 free intervention report per season',
           'Email support',
         ],
       },
