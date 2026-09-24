@@ -246,11 +246,13 @@ const fr = {
     territoire: 'Plus de dix territoires ou une entente de service\u00a0? Parlons-en.',
 
     // L'offre de lancement. Elle est portée par les liens MENSUELS seulement
-    // — le prix annuel contient déjà deux mois — et la note sous la grille
-    // dit les trois choses qu'un acheteur doit savoir avant de cliquer :
-    // lesquels, combien de jours exactement, et qu'une carte est demandée.
-    trialBadge: '2 mois gratuits',
-    trialNote: 'Offre de lancement sur le paiement mensuel\u00a0: 60 jours sans frais, carte demandée à l\u2019inscription, annulable avant le premier prélèvement.',
+    // — le prix annuel est déjà à dix mois pour douze, un rabais distinct de
+    // l'essai — et la note sous la grille dit les trois choses qu'un acheteur
+    // doit savoir avant de cliquer : lesquels, combien de jours exactement, et
+    // qu'une carte est demandée. Les durées ne s'écrivent pas ici : {months}
+    // et {days} viennent de TRIAL_MONTHS dans lib/pricing.ts (garde 5).
+    trialBadge: '{months}\u00a0mois gratuits',
+    trialNote: 'Offre de lancement sur le paiement mensuel\u00a0: {days}\u00a0jours sans frais, carte demandée à l\u2019inscription, annulable avant le premier prélèvement.',
 
     rate: {
       legend: 'Votre tarif',
@@ -662,8 +664,8 @@ const en: Dict = {
     rateNote: 'This rate is for non-profits, municipalities, RCMs and zecs.',
     territoire: 'More than ten territories, or a service agreement? Let us talk.',
 
-    trialBadge: '2 months free',
-    trialNote: 'Launch offer on monthly billing: 60 days at no charge, a card is asked for at sign-up, and you can cancel before the first payment.',
+    trialBadge: '{months} months free',
+    trialNote: 'Launch offer on monthly billing: {days} days at no charge, a card is asked for at sign-up, and you can cancel before the first payment.',
 
     rate: {
       legend: 'Your rate',

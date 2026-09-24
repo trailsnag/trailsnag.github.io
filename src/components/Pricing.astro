@@ -17,14 +17,15 @@
 // every row it was meant to draw attention to.
 //
 // Every amount comes from lib/pricing.ts rather than from the copy, so the
-// two locales cannot quote different numbers, and four build guards there
+// two locales cannot quote different numbers, and the build guards there
 // refuse the page outright if the arithmetic, the links, the spread or the
-// order of the tiers stop agreeing with what the words promise.
+// order of the tiers or the length of the trial stop agreeing with what the
+// words promise.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { useTranslations, claimUrl } from '../i18n/utils';
-import { TIERS, RATES, money, offer, type Rate, type Tier } from '../lib/pricing';
+import { TIERS, RATES, money, offer, trialCopy, type Rate, type Tier } from '../lib/pricing';
 import { contactPath, type Lang } from '../i18n/routes';
 
 interface Props {
@@ -33,6 +34,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const contact = contactPath(lang);
+const trial = trialCopy(lang);
 
 const rateLabel: Record<Rate, string> = {
   nonprofit: t.pricing.rate.nonprofit,
@@ -124,7 +126,7 @@ const ANCHOR: Tier['key'] = 'parc';
                     third puts the three buttons at three heights, which is
                     the one thing this layout cannot afford. */}
                 <p class="mt-3 min-h-6 font-display text-sm font-bold text-(--blaze)">
-                  {paid ? t.pricing.trialBadge : '\u00a0'}
+                  {paid && trial ? trial.badge : '\u00a0'}
                 </p>
 
                 {/* Row 3 — one button, where a buyer expects it: under the
@@ -183,7 +185,7 @@ const ANCHOR: Tier['key'] = 'parc';
         applies to, the exact number of days Stripe counts, and that a card is
         asked for. An offer whose terms are only discovered at checkout is the
         kind of pleasant surprise that turns into a complaint. */}
-    <p class="mt-6 max-w-2xl text-sm text-(--ink-faint)">{t.pricing.trialNote}</p>
+    {trial && <p class="mt-6 max-w-2xl text-sm text-(--ink-faint)">{trial.note}</p>}
 
     <p class="mt-6 text-sm text-(--ink-soft)">
       <a class="underline hover:text-(--ink)" href={contact}>{t.pricing.territoire}</a>

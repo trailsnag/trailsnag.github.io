@@ -10,6 +10,7 @@
 // CAD, taxes extra. Annual is ten months of the monthly rate.
 
 import type { Lang } from '../i18n/routes';
+import { ui } from '../i18n/ui';
 
 export type TierKey = 'halte' | 'parc' | 'reseau';
 
@@ -53,6 +54,26 @@ export const CHECKOUT: Readonly<Record<string, string>> = {
   reseauCommercialMonthly: 'https://buy.stripe.com/3cI6oH5Ez6eYaAF1szaMU0a',
   reseauCommercialYearly: 'https://buy.stripe.com/5kQ9AT9UPaveaAFb39aMU0b',
 };
+
+/**
+ * The launch offer, in the unit it is SPOKEN in: months free on the MONTHLY
+ * links, none on the yearly ones.
+ *
+ * THIS IS A COPY, AND THE ORIGINAL IS NOT HERE. The real trial is an operator
+ * setting held by Stripe on each payment link (`trial_period_days`), moved by
+ * `./bin/snag.sh billing trial --months N --interval month` in the snag repo
+ * (apps/api/src/ops/stripe-trial.ts) and read back from Stripe on every run.
+ * A static build cannot ask Stripe, so nothing here can notice the offer
+ * changing: whoever runs that command changes this number in the same hour,
+ * or the page promises an offer the till no longer makes. 0 withdraws the
+ * badge and the note from the page.
+ */
+export const TRIAL_MONTHS: number = 2;
+
+/** What Stripe actually counts. Thirty-day months, the same convention
+    stripe-trial.ts converts with, so « 60 jours » is the exact figure the
+    checkout shows rather than two calendar months. */
+export const TRIAL_DAYS = TRIAL_MONTHS * 30;
 
 /** One rate's two amounts and two doors. */
 export type RatePrices = {
@@ -221,6 +242,44 @@ for (let i = 1; i < SOLD.length; i += 1) {
       }
     }
   }
+}
+
+// GUARD 5 — the trial is a number the copy is not allowed to know. The badge
+// and the note carry `{months}` and `{days}` and this file fills them, so the
+// two locales cannot quote two offers and neither can quote a stale one. The
+// offer is a whole number of months within what stripe-trial.ts accepts
+// (1-730 days), and never ONE: the copy is written in the plural, and « 1 mois
+// gratuits » is the kind of slip a buyer reads as carelessness about money.
+if (!Number.isInteger(TRIAL_MONTHS) || TRIAL_MONTHS < 0 || TRIAL_DAYS > 730) {
+  throw new Error(
+    `pricing: TRIAL_MONTHS ${TRIAL_MONTHS} is not a whole number of months between 0 and 24 — ` +
+      `Stripe's trial on the payment links is set in days, 1 to 730`,
+  );
+}
+if (TRIAL_MONTHS === 1) {
+  throw new Error(
+    `pricing: a one-month trial needs singular copy (« 1 mois gratuit », "1 month free") — ` +
+      `add it to ui.ts before setting TRIAL_MONTHS to 1`,
+  );
+}
+for (const lang of ['fr', 'en'] as const) {
+  const { trialBadge, trialNote } = ui[lang].pricing;
+  if (!trialBadge.includes('{months}') || !trialNote.includes('{days}') || /\d/.test(trialBadge + trialNote)) {
+    throw new Error(
+      `pricing: ui.${lang}.pricing.trialBadge must carry {months} and trialNote {days}, and neither ` +
+        `may hold a digit — the length of the offer lives in TRIAL_MONTHS and nowhere else`,
+    );
+  }
+}
+
+/** The launch offer as the page prints it, or null when there is none. */
+export function trialCopy(lang: Lang): { badge: string; note: string } | null {
+  if (TRIAL_MONTHS === 0) return null;
+  const { trialBadge, trialNote } = ui[lang].pricing;
+  return {
+    badge: trialBadge.replace('{months}', String(TRIAL_MONTHS)),
+    note: trialNote.replace('{days}', String(TRIAL_DAYS)),
+  };
 }
 
 /**
