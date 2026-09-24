@@ -242,7 +242,7 @@ const fr = {
     lede: 'En dollars canadiens, taxes en sus.',
     monthlySuffix: '/ mois',
     yearlyCta: 'Payer à l\u2019année — {price}',
-    rateNote: 'Tarif réservé aux OBNL, municipalités, MRC et zecs.',
+    rateNote: 'Tarif réservé aux OBNL, municipalités, MRC et zecs. Le NEQ demandé au paiement est vérifié au Registraire des entreprises\u00a0— aucune entrevue, aucune révision annuelle.',
     territoire: 'Plus de {n}\u00a0territoires ou une entente de service\u00a0? Parlons-en.',
 
     // L'offre de lancement. Elle est portée par les liens MENSUELS seulement
@@ -254,9 +254,12 @@ const fr = {
     trialBadge: '{months}\u00a0mois gratuits',
     trialNote: 'Offre de lancement sur le paiement mensuel\u00a0: {days}\u00a0jours sans frais, carte demandée à l\u2019inscription, annulable avant le premier prélèvement.',
 
+    // Les deux libellés sont ceux de la salle de facturation de l'application
+    // (steward.billing.rateNonprofit / rateCommercial dans apps/web/messages), pour
+    // qu'un acheteur qui choisit un tarif ici le retrouve sous le même nom là.
     rate: {
       legend: 'Votre tarif',
-      nonprofit: 'OBNL et organismes publics',
+      nonprofit: 'Organisme et public',
       commercial: 'Entreprise',
     },
 
@@ -665,7 +668,7 @@ const en: Dict = {
     lede: 'In Canadian dollars, taxes extra.',
     monthlySuffix: '/ month',
     yearlyCta: 'Pay yearly — {price}',
-    rateNote: 'This rate is for non-profits, municipalities, RCMs and zecs.',
+    rateNote: 'This rate is for non-profits, municipalities, RCMs and zecs. The NEQ asked for at checkout is checked at Québec’s Registraire des entreprises — no interview, no annual review.',
     territoire: 'More than {n} territories, or a service agreement? Let us talk.',
 
     trialBadge: '{months} months free',
@@ -673,7 +676,7 @@ const en: Dict = {
 
     rate: {
       legend: 'Your rate',
-      nonprofit: 'Non-profits and public bodies',
+      nonprofit: 'Non-profit and public',
       commercial: 'Business',
     },
 
