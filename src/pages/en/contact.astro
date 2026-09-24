@@ -1,19 +1,5 @@
 ---
-import LegalLayout from '../../layouts/LegalLayout.astro';
-import { contactEmail } from '../../i18n/utils';
+import Contact from '../../components/Contact.astro';
 ---
 
-<LegalLayout
-  lang="en"
-  title="Contact"
-  description="Write to us — service agreements, volunteer clubs, questions."
->
-  <p>
-    Land to claim, a province-wide network or a service agreement to negotiate, a volunteer club
-    that wants its own report queue — write to us. We answer in French or English. The Parc and
-    Réseau tiers are bought straight from the pricing page.
-  </p>
-  <p class="!mt-8">
-    <a href={`mailto:${contactEmail}`} class="font-mono text-xl font-semibold">{contactEmail}</a>
-  </p>
-</LegalLayout>
+<Contact lang="en" />

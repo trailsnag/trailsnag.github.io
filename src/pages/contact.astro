@@ -1,19 +1,5 @@
 ---
-import LegalLayout from '../layouts/LegalLayout.astro';
-import { contactEmail } from '../i18n/utils';
+import Contact from '../components/Contact.astro';
 ---
 
-<LegalLayout
-  lang="fr"
-  title="Contact"
-  description="Écrivez-nous — ententes de service, clubs de bénévoles, questions."
->
-  <p>
-    Un territoire à réclamer, un réseau provincial ou une entente de service à négocier, un club de
-    bénévoles qui veut sa file de signalements — écrivez-nous. On répond en français ou en anglais.
-    Les paliers Parc et Réseau, eux, s’achètent directement depuis la page des tarifs.
-  </p>
-  <p class="!mt-8">
-    <a href={`mailto:${contactEmail}`} class="font-mono text-xl font-semibold">{contactEmail}</a>
-  </p>
-</LegalLayout>
+<Contact lang="fr" />

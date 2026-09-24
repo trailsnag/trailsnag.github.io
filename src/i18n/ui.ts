@@ -445,6 +445,11 @@ const fr = {
     body: 'Cette page n’existe pas — ou plus. Revenez au départ du sentier.',
     back: 'Retour à l’accueil',
   },
+  contact: {
+    title: 'Contact',
+    description: 'Écrivez-nous — ententes de service, clubs de bénévoles, questions.',
+    body: 'Un territoire à réclamer, un réseau provincial ou une entente de service à négocier, un club de bénévoles qui veut sa file de signalements — écrivez-nous. On répond en français ou en anglais. Les paliers Parc et Réseau, eux, s’achètent directement depuis la page des tarifs.',
+  },
 } as const;
 
 type Dict = {
@@ -852,6 +857,11 @@ const en: Dict = {
     title: 'Off trail',
     body: 'This page doesn’t exist — or not anymore. Head back to the trailhead.',
     back: 'Back to the home page',
+  },
+  contact: {
+    title: 'Contact',
+    description: 'Write to us — service agreements, volunteer clubs, questions.',
+    body: 'Land to claim, a province-wide network or a service agreement to negotiate, a volunteer club that wants its own report queue — write to us. We answer in French or English. The Parc and Réseau tiers are bought straight from the pricing page.',
   },
 };
 

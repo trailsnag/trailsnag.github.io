@@ -1,0 +1,21 @@
+---
+// The contact page, once for both locales. The words live in ui.ts under
+// `contact`, typed FR-first like the rest of the copy, so the two pages cannot
+// drift apart the way two hand-copied files did.
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { useTranslations, contactEmail } from '../i18n/utils';
+import type { Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang).contact;
+---
+
+<LegalLayout lang={lang} title={t.title} description={t.description}>
+  <p>{t.body}</p>
+  <p class="!mt-8">
+    <a href={`mailto:${contactEmail}`} class="font-mono text-xl font-semibold">{contactEmail}</a>
+  </p>
+</LegalLayout>
