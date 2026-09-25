@@ -26,6 +26,32 @@ pnpm only (same doctrine as the monorepo).
 | `pnpm preview` | Serve the built `dist/` locally |
 | `pnpm check` | Astro + TypeScript diagnostics |
 
+## Prices, payment links and the launch trial
+
+`/tarifs/` and `/en/pricing/` print every amount, all eight buy buttons and the
+trial from `src/data/stripe-manifest.json`, through `src/lib/pricing.ts`. None
+of them is typed anywhere in this repository, and the file is **never edited by
+hand**: Stripe is the authority, and the snag operator shell reads it there.
+After **any** change at Stripe — a new or replaced payment link, a new price, a
+trial moved by `./bin/snag.sh billing trial --apply` (which prints this same
+reminder):
+
+```bash
+# in the snag checkout, with the production STRIPE_SECRET_KEY and the sixteen
+# STRIPE_PRICE_* / STRIPE_CHECKOUT_* values the API runs with
+./bin/snag.sh billing manifest > <this checkout>/src/data/stripe-manifest.json
+# here: commit that file and push main, which deploys
+```
+
+An unchanged account prints an unchanged file. The build refuses a manifest
+that does not fit the grid the page prints — a sandbox key, a missing, doubled
+or extra row, a currency other than CAD, an amount with cents, a yearly price
+that is not ten months of the monthly one, a trial that differs between the
+monthly links or appears on a yearly one — and a refused command leaves the
+file empty, which the build refuses too (`git checkout` it to restore the last
+good one). `src/data/README.md` has the details, and says which version of the
+file was transcribed rather than read from Stripe.
+
 ## Product screenshots
 
 The steward screens on `/` and `/tableau-de-bord/` (`/en/steward-desk/`) are

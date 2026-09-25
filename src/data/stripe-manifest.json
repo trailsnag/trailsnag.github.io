@@ -1,0 +1,125 @@
+{
+  "entries": [
+    {
+      "audience": "commercial",
+      "interval": "month",
+      "link": {
+        "trial_period_days": 60,
+        "url": "https://buy.stripe.com/eVq6oH8QL7j25gl5IPaMU06"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "month",
+        "interval_count": 1,
+        "unit_amount": 10900
+      },
+      "tier": "parc"
+    },
+    {
+      "audience": "commercial",
+      "interval": "year",
+      "link": {
+        "trial_period_days": null,
+        "url": "https://buy.stripe.com/8x2cN58QL0UEbEJ3AHaMU07"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "year",
+        "interval_count": 1,
+        "unit_amount": 109000
+      },
+      "tier": "parc"
+    },
+    {
+      "audience": "nonprofit",
+      "interval": "month",
+      "link": {
+        "trial_period_days": 60,
+        "url": "https://buy.stripe.com/6oUaEX5EzeLu1057QXaMU04"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "month",
+        "interval_count": 1,
+        "unit_amount": 7900
+      },
+      "tier": "parc"
+    },
+    {
+      "audience": "nonprofit",
+      "interval": "year",
+      "link": {
+        "trial_period_days": null,
+        "url": "https://buy.stripe.com/aFa9ATaYTgTC7ot5IPaMU05"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "year",
+        "interval_count": 1,
+        "unit_amount": 79000
+      },
+      "tier": "parc"
+    },
+    {
+      "audience": "commercial",
+      "interval": "month",
+      "link": {
+        "trial_period_days": 60,
+        "url": "https://buy.stripe.com/3cI6oH5Ez6eYaAF1szaMU0a"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "month",
+        "interval_count": 1,
+        "unit_amount": 16900
+      },
+      "tier": "reseau"
+    },
+    {
+      "audience": "commercial",
+      "interval": "year",
+      "link": {
+        "trial_period_days": null,
+        "url": "https://buy.stripe.com/5kQ9AT9UPaveaAFb39aMU0b"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "year",
+        "interval_count": 1,
+        "unit_amount": 169000
+      },
+      "tier": "reseau"
+    },
+    {
+      "audience": "nonprofit",
+      "interval": "month",
+      "link": {
+        "trial_period_days": 60,
+        "url": "https://buy.stripe.com/9B614n8QL7j2gZ3gntaMU08"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "month",
+        "interval_count": 1,
+        "unit_amount": 12900
+      },
+      "tier": "reseau"
+    },
+    {
+      "audience": "nonprofit",
+      "interval": "year",
+      "link": {
+        "trial_period_days": null,
+        "url": "https://buy.stripe.com/28EfZhgjdbzi4ch5IPaMU09"
+      },
+      "price": {
+        "currency": "cad",
+        "interval": "year",
+        "interval_count": 1,
+        "unit_amount": 129000
+      },
+      "tier": "reseau"
+    }
+  ],
+  "livemode": true
+}

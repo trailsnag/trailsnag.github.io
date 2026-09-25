@@ -1,17 +1,21 @@
 // The tiers, the two published rates, and the doors that take the money.
 //
-// EVERY NUMBER LIVES HERE AND NOWHERE IN ui.ts. That is the whole design of
-// this file: `ui.ts` types `en` against `fr`, so a missing key is a compile
-// error — but nothing would catch « 79 $ » in French sitting beside "$99" in
-// English, and a pricing page whose two locales quote different amounts is the
-// worst bug this site could ship. The copy carries words; this carries money.
+// EVERY NUMBER REACHES THE PAGE THROUGH HERE AND NOWHERE THROUGH ui.ts. That
+// is the whole design of this file: `ui.ts` types `en` against `fr`, so a
+// missing key is a compile error — but nothing would catch « 79 $ » in French
+// sitting beside "$99" in English, and a pricing page whose two locales quote
+// different amounts is the worst bug this site could ship. The copy carries
+// words; this carries money.
 //
-// Source of truth: the repricing approved 2026-09-18. Per ORGANISATION, in
-// CAD, taxes extra. Annual is ten months of the monthly rate (guard 1); the
-// launch trial is a separate thing on the monthly links only (TRIAL_MONTHS).
+// Source of truth: Stripe, read by `./bin/snag.sh billing manifest` in snag and
+// committed here as src/data/stripe-manifest.json (see the README beside it).
+// Per ORGANISATION, in CAD, taxes extra. Annual is ten months of the monthly
+// rate (guard 1); the launch trial is a separate thing on the monthly links
+// only (TRIAL_MONTHS).
 
 import type { Lang } from '../i18n/routes';
 import { ui } from '../i18n/ui';
+import manifestJson from '../data/stripe-manifest.json';
 
 export type TierKey = 'halte' | 'parc' | 'reseau';
 
@@ -33,56 +37,55 @@ export type Rate = 'nonprofit' | 'commercial';
 export const RATES: readonly Rate[] = ['nonprofit', 'commercial'];
 
 /**
- * The payment links, pasted from the Stripe dashboard.
+ * What Stripe says the eight payment links charge and offer.
  *
- * These are PUBLIC urls — a payment link is meant to be clicked by anybody, it
+ * src/data/stripe-manifest.json is printed by `./bin/snag.sh billing manifest`
+ * in snag, which follows the API's own STRIPE_CHECKOUT_* / STRIPE_PRICE_*
+ * configuration to each live link, the one price it sells and its trial, and
+ * refuses a link that sells a price the API does not name. Neither the links
+ * nor the amounts are typed anywhere in this repository: after ANY change at
+ * Stripe — a link replaced, a price created, a trial moved by `billing trial`
+ * — run
+ *   ./bin/snag.sh billing manifest > <this checkout>/src/data/stripe-manifest.json
+ * and commit it here. The snag `.env.example` and the vault's business plan
+ * point at this file rather than repeating it.
+ *
+ * The urls are PUBLIC — a payment link is meant to be clicked by anybody, it
  * carries no secret, and committing it is how a static site can sell anything
- * at all. An empty one is a BUILD FAILURE (the guard below), never a fallback:
- * the page ships when every button can take money, and not before.
- *
- * Keep the pairing honest. A link pasted into the wrong constant sells the
- * organisme rate at the entreprise price or the reverse, and nothing
- * downstream can detect it — the URL is opaque. Each of these was verified
- * against its Stripe line item before being pasted.
- *
- * THESE EIGHT LINKS AND THE EIGHT AMOUNTS IN TIERS ARE KEPT BY HAND IN FOUR
- * PLACES, and nothing checks one against another. Change a price or replace
- * a link and change it in all four the same day:
- *   1. here (links) and in TIERS below (amounts);
- *   2. snag `.env.example` — STRIPE_PRICE_* with the amounts as comments,
- *      STRIPE_CHECKOUT_* with the links;
- *   3. the API's Fly secrets STRIPE_CHECKOUT_* (and STRIPE_PRICE_*), read by
- *      apps/api/src/env.ts — the billing room's « Passer à … » buttons;
- *   4. the vault's « TrailSnag Plan d'affaires 2026-08-28 », §4.
- * Stripe is the only authority over what a link actually charges; a manifest
- * exported from it and read by all four is the fix still owed
- * (trailsnag/snag-carnet#66).
+ * at all. The guards below refuse a manifest that does not fit the grid this
+ * page prints, because the build is the only place a static site can object.
  */
-export const CHECKOUT: Readonly<Record<string, string>> = {
-  parcNonprofitMonthly: 'https://buy.stripe.com/6oUaEX5EzeLu1057QXaMU04',
-  parcNonprofitYearly: 'https://buy.stripe.com/aFa9ATaYTgTC7ot5IPaMU05',
-  parcCommercialMonthly: 'https://buy.stripe.com/eVq6oH8QL7j25gl5IPaMU06',
-  parcCommercialYearly: 'https://buy.stripe.com/8x2cN58QL0UEbEJ3AHaMU07',
-  reseauNonprofitMonthly: 'https://buy.stripe.com/9B614n8QL7j2gZ3gntaMU08',
-  reseauNonprofitYearly: 'https://buy.stripe.com/28EfZhgjdbzi4ch5IPaMU09',
-  reseauCommercialMonthly: 'https://buy.stripe.com/3cI6oH5Ez6eYaAF1szaMU0a',
-  reseauCommercialYearly: 'https://buy.stripe.com/5kQ9AT9UPaveaAFb39aMU0b',
+type Interval = 'month' | 'year';
+const INTERVALS: readonly Interval[] = ['month', 'year'];
+
+/** What `billing manifest` prints, in Stripe's own field names (amounts in
+    cents). Declared here rather than inferred from the JSON, so `astro check`
+    holds the committed file to the shape the snag command writes, and a field
+    renamed on either side is a type error rather than a quiet `undefined`. */
+type ManifestEntry = {
+  tier: string;
+  audience: string;
+  interval: string;
+  price: { currency: string; interval: string; interval_count: number; unit_amount: number };
+  link: { url: string; trial_period_days: number | null };
 };
+const manifest: { livemode: boolean; entries: readonly ManifestEntry[] } = manifestJson;
+const MANIFEST = 'src/data/stripe-manifest.json';
+const REGENERATE =
+  'Regenerate it with `./bin/snag.sh billing manifest` in snag (src/data/README.md).';
 
 /**
  * The launch offer, in the unit it is SPOKEN in: months free on the MONTHLY
  * links, none on the yearly ones.
  *
- * THIS IS A COPY, AND THE ORIGINAL IS NOT HERE. The real trial is an operator
- * setting held by Stripe on each payment link (`trial_period_days`), moved by
- * `./bin/snag.sh billing trial --months N --interval month` in the snag repo
- * (apps/api/src/ops/stripe-trial.ts) and read back from Stripe on every run.
- * A static build cannot ask Stripe, so nothing here can notice the offer
- * changing: whoever runs that command changes this number in the same hour,
- * or the page promises an offer the till no longer makes. 0 withdraws the
- * badge and the note from the page.
+ * The real trial is an operator setting held by Stripe on each payment link
+ * (`trial_period_days`), moved by `./bin/snag.sh billing trial --months N
+ * --interval month` in snag (apps/api/src/ops/stripe-trial.ts), which ends by
+ * reminding whoever ran it to regenerate the manifest. It is read here from
+ * the four monthly links, which must agree (guard 5). 0 withdraws the badge
+ * and the note from the page.
  */
-export const TRIAL_MONTHS: number = 2;
+export const TRIAL_MONTHS: number = trialMonthsFromManifest();
 
 /** What Stripe actually counts. Thirty-day months, the same convention
     stripe-trial.ts converts with, so « 60 jours » is the exact figure the
@@ -116,6 +119,59 @@ export type Tier = {
 const FREE: RatePrices = { monthly: 0, yearly: 0, monthlyUrl: '', yearlyUrl: '' };
 
 /**
+ * GUARD 2 — EVERY BUY BUTTON MUST BE A REAL PAYMENT LINK, and the build
+ * enforces it as each door is read from the manifest.
+ *
+ * ChefFamille's rule, 2026-09-09: no « bientôt », no « écrivez-nous » standing
+ * where a price button belongs. A buy button that admits the product is not
+ * ready is worse than no page at all — it tells a buyer to come back later,
+ * and they do not. So a missing door is a BUILD FAILURE rather than a graceful
+ * fallback, and so is one the page cannot print honestly: a currency other
+ * than the CAD every amount is formatted in, an amount with cents the page
+ * would round away, or a price billed on another interval than its button
+ * says.
+ */
+function door(tier: TierKey, rate: Rate, interval: Interval): { amount: number; url: string } {
+  const where = `${tier} ${rate} ${interval}`;
+  const found: ManifestEntry[] = manifest.entries.filter(
+    (e) => e.tier === tier && e.audience === rate && e.interval === interval,
+  );
+  if (found.length !== 1) {
+    throw new Error(
+      `pricing: ${MANIFEST} holds ${found.length} entries for ${where}, not one. ${REGENERATE} ` +
+        `The pricing page does not ship with a button that cannot take money.`,
+    );
+  }
+  const { price, link } = found[0]!;
+  if (price.currency !== 'cad' || price.interval !== interval || price.interval_count !== 1) {
+    throw new Error(
+      `pricing: ${where} bills ${price.currency} every ${price.interval_count} ${price.interval} — ` +
+        `the page prints CAD, one ${interval} at a time`,
+    );
+  }
+  if (!Number.isInteger(price.unit_amount) || price.unit_amount <= 0 || price.unit_amount % 100 !== 0) {
+    throw new Error(
+      `pricing: ${where} costs ${price.unit_amount} cents — the page prints whole dollars, ` +
+        `so it would quote an amount the checkout does not charge`,
+    );
+  }
+  if (!link.url.startsWith('https://')) {
+    throw new Error(`pricing: ${where} must have an https payment link, got "${link.url}"`);
+  }
+  return { amount: price.unit_amount / 100, url: link.url };
+}
+
+/** A sold tier's two rates, each with its two amounts and two doors. */
+function soldRates(tier: TierKey): Record<Rate, RatePrices> {
+  const prices = (rate: Rate): RatePrices => {
+    const month = door(tier, rate, 'month');
+    const year = door(tier, rate, 'year');
+    return { monthly: month.amount, yearly: year.amount, monthlyUrl: month.url, yearlyUrl: year.url };
+  };
+  return { nonprofit: prices('nonprofit'), commercial: prices('commercial') };
+}
+
+/**
  * The grid, in the order a buyer meets it.
  *
  * Territoire is ABSENT and that is the decision, not an omission: a card with
@@ -124,47 +180,9 @@ const FREE: RatePrices = { monthly: 0, yearly: 0, monthlyUrl: '', yearlyUrl: '' 
  * row in the orientation table with a line to the contact page.
  */
 export const TIERS: readonly Tier[] = [
-  {
-    key: 'halte',
-    territories: 1,
-    rates: { nonprofit: FREE, commercial: FREE },
-  },
-  {
-    key: 'parc',
-    territories: 3,
-    rates: {
-      nonprofit: {
-        monthly: 79,
-        yearly: 790,
-        monthlyUrl: CHECKOUT.parcNonprofitMonthly ?? '',
-        yearlyUrl: CHECKOUT.parcNonprofitYearly ?? '',
-      },
-      commercial: {
-        monthly: 109,
-        yearly: 1090,
-        monthlyUrl: CHECKOUT.parcCommercialMonthly ?? '',
-        yearlyUrl: CHECKOUT.parcCommercialYearly ?? '',
-      },
-    },
-  },
-  {
-    key: 'reseau',
-    territories: 10,
-    rates: {
-      nonprofit: {
-        monthly: 129,
-        yearly: 1290,
-        monthlyUrl: CHECKOUT.reseauNonprofitMonthly ?? '',
-        yearlyUrl: CHECKOUT.reseauNonprofitYearly ?? '',
-      },
-      commercial: {
-        monthly: 169,
-        yearly: 1690,
-        monthlyUrl: CHECKOUT.reseauCommercialMonthly ?? '',
-        yearlyUrl: CHECKOUT.reseauCommercialYearly ?? '',
-      },
-    },
-  },
+  { key: 'halte', territories: 1, rates: { nonprofit: FREE, commercial: FREE } },
+  { key: 'parc', territories: 3, rates: soldRates('parc') },
+  { key: 'reseau', territories: 10, rates: soldRates('reseau') },
 ];
 
 /** The paid tiers, which is where every guard below has something to check. */
@@ -189,43 +207,8 @@ for (const t of SOLD) {
     if (yearly !== monthly * 10) {
       throw new Error(
         `tier ${t.key} (${rate}): annual ${yearly} is not ten months of ${monthly} — ` +
-          `the yearly price is sold as twelve months for the price of ten, so fix the number`,
+          `the yearly price is sold as twelve months for the price of ten, so fix the price at Stripe`,
       );
-    }
-  }
-}
-
-/**
- * GUARD 2 — EVERY BUY BUTTON MUST BE A REAL PAYMENT LINK, and the build
- * enforces it.
- *
- * ChefFamille's rule, 2026-09-09: no « bientôt », no « écrivez-nous » standing
- * where a price button belongs. A buy button that admits the product is not
- * ready is worse than no page at all — it tells a buyer to come back later,
- * and they do not. So a missing link is a BUILD FAILURE rather than a graceful
- * fallback, and the failure names the exact constant to fill, because the
- * person reading it will be holding eight Stripe URLs and wanting to know
- * which goes where.
- */
-for (const t of SOLD) {
-  for (const rate of RATES) {
-    const prices = t.rates[rate];
-    for (const [interval, url] of [
-      ['Monthly', prices.monthlyUrl],
-      ['Yearly', prices.yearlyUrl],
-    ] as const) {
-      const constant = `${t.key}${rate === 'nonprofit' ? 'Nonprofit' : 'Commercial'}${interval}`;
-      if (url === '') {
-        throw new Error(
-          `pricing: ${t.key} has no ${rate} ${interval.toLowerCase()} payment link. Paste it ` +
-            `into CHECKOUT.${constant} in src/lib/pricing.ts. Create it in Stripe → Payment ` +
-            `links, on the matching price. The pricing page does not ship with a button that ` +
-            `cannot take money.`,
-        );
-      }
-      if (!url.startsWith('https://')) {
-        throw new Error(`pricing: CHECKOUT.${constant} must be an https URL, got "${url}"`);
-      }
     }
   }
 }
@@ -273,19 +256,46 @@ for (let i = 1; i < SOLD.length; i += 1) {
 // GUARD 5 — the trial is a number the copy is not allowed to know. The badge
 // and the note carry `{months}` and `{days}` and this file fills them, so the
 // two locales cannot quote two offers and neither can quote a stale one. The
-// offer is a whole number of months within what stripe-trial.ts accepts
-// (1-730 days), and never ONE: the copy is written in the plural, and « 1 mois
+// page states ONE offer for every monthly button and none for the yearly ones,
+// so that is what the manifest must say (trialMonthsFromManifest); the offer
+// is a whole number of months within what stripe-trial.ts accepts (1-730
+// days), and never ONE: the copy is written in the plural, and « 1 mois
 // gratuits » is the kind of slip a buyer reads as carelessness about money.
-if (!Number.isInteger(TRIAL_MONTHS) || TRIAL_MONTHS < 0 || TRIAL_DAYS > 730) {
+function trialMonthsFromManifest(): number {
+  const monthly = new Set(
+    manifest.entries.filter((e) => e.interval === 'month').map((e) => e.link.trial_period_days),
+  );
+  const yearly = manifest.entries.filter(
+    (e) => e.interval === 'year' && e.link.trial_period_days !== null,
+  );
+  if (monthly.size !== 1 || yearly.length > 0) {
+    throw new Error(
+      `pricing: ${MANIFEST} offers trials of [${[...monthly].join(', ')}] days across the monthly ` +
+        `links and a trial on ${yearly.length} yearly link(s) — the page promises one offer on ` +
+        `monthly billing only. Set it with \`./bin/snag.sh billing trial --interval month\` ` +
+        `(and withdraw any yearly one), then regenerate the manifest.`,
+    );
+  }
+  const days = [...monthly][0] ?? null;
+  if (days === null) return 0;
+  if (days % 30 !== 0) {
+    throw new Error(
+      `pricing: the monthly links offer ${days} days, which the copy cannot say in months — ` +
+        `set the trial with \`billing trial --months N\` (thirty-day months), then regenerate the manifest`,
+    );
+  }
+  return days / 30;
+}
+if (TRIAL_MONTHS < 0 || TRIAL_DAYS > 730) {
   throw new Error(
-    `pricing: TRIAL_MONTHS ${TRIAL_MONTHS} is not a whole number of months between 0 and 24 — ` +
+    `pricing: a trial of ${TRIAL_DAYS} days is outside 0 to 24 months — ` +
       `Stripe's trial on the payment links is set in days, 1 to 730`,
   );
 }
 if (TRIAL_MONTHS === 1) {
   throw new Error(
     `pricing: a one-month trial needs singular copy (« 1 mois gratuit », "1 month free") — ` +
-      `add it to ui.ts before setting TRIAL_MONTHS to 1`,
+      `add it to ui.ts before offering one month at Stripe`,
   );
 }
 for (const lang of ['fr', 'en'] as const) {
@@ -293,7 +303,7 @@ for (const lang of ['fr', 'en'] as const) {
   if (!trialBadge.includes('{months}') || !trialNote.includes('{days}') || /\d/.test(trialBadge + trialNote)) {
     throw new Error(
       `pricing: ui.${lang}.pricing.trialBadge must carry {months} and trialNote {days}, and neither ` +
-        `may hold a digit — the length of the offer lives in TRIAL_MONTHS and nowhere else`,
+        `may hold a digit — the length of the offer comes from the manifest, through TRIAL_MONTHS`,
     );
   }
 }
@@ -343,6 +353,22 @@ export function tierFeatures(tier: Tier, lang: Lang): string[] {
 /** The line under the grid, pointing past the largest tier to the contact page. */
 export function beyondLargestTier(lang: Lang): string {
   return ui[lang].pricing.territoire.replace('{n}', String(TERRITORY_CEILING));
+}
+
+// GUARD 7 — the manifest is the grid, the whole grid and nothing else, and it
+// is the live account's. Guard 2 has found one entry per door the page draws;
+// an entry beyond those is a price Stripe sells that this page never shows,
+// which means the grid here is the stale side. A sandbox manifest carries test
+// links that take no money, which is guard 2's broken button by another road.
+if (manifest.entries.length !== SOLD.length * RATES.length * INTERVALS.length) {
+  throw new Error(
+    `pricing: ${MANIFEST} holds ${manifest.entries.length} entries, but the grid sells ` +
+      `${SOLD.length * RATES.length * INTERVALS.length} (${SOLD.map((t) => t.key).join(', ')} × ` +
+      `${RATES.join('/')} × ${INTERVALS.join('/')}) — change the grid here or the prices at Stripe`,
+  );
+}
+if (manifest.livemode !== true) {
+  throw new Error(`pricing: ${MANIFEST} was read with a sandbox key — its links take no money. ${REGENERATE}`);
 }
 
 /**
