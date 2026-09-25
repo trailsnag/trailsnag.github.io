@@ -33,8 +33,9 @@ The file carries only public facts: no key and no price, link or account id.
 
 The build refuses a manifest that does not fit the grid the page prints
 (`src/lib/pricing.ts`): a sandbox manifest, a missing or doubled row, a row the
-grid does not sell, a link that is not a `https://buy.stripe.com/` payment link
-or that two rows share, a currency other than CAD, an amount with cents, a
+grid does not sell, a link that is not a `https://buy.stripe.com/` payment link,
+is a sandbox one (`https://buy.stripe.com/test_…`, whatever `livemode` says) or
+that two rows share, a currency other than CAD, an amount with cents, a
 yearly price that is not ten months of the monthly one, a trial that differs
 between the monthly links, any trial on a yearly link, or a trial that is not a
 whole number of 30-day months. The command above only moves a successful run

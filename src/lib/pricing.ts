@@ -131,7 +131,7 @@ const FREE: RatePrices = { monthly: 0, yearly: 0, monthlyUrl: '', yearlyUrl: '' 
  * than the CAD every amount is formatted in, an amount with cents the page
  * would round away, a price billed on another interval than its button says,
  * or a url that is not a Stripe payment link — the only doors snag's command
- * can print, so anything else is a hand edit.
+ * can print, so anything else is a hand edit — or is a sandbox one.
  */
 function door(tier: TierKey, rate: Rate, interval: Interval): { amount: number; url: string } {
   const where = `${tier} ${rate} ${interval}`;
@@ -161,6 +161,12 @@ function door(tier: TierKey, rate: Rate, interval: Interval): { amount: number; 
     throw new Error(
       `pricing: ${where} must be a https://buy.stripe.com/ payment link, got "${link.url}". ${REGENERATE}`,
     );
+  }
+  // A sandbox link lives on the same host, under `test_`, and takes no money
+  // whatever the manifest's `livemode` says (guard 7): that flag is one line a
+  // hand edit can flip, while the url is the door the buyer actually gets.
+  if (link.url.startsWith('https://buy.stripe.com/test_')) {
+    throw new Error(`pricing: ${where} is a sandbox payment link, "${link.url}" — it takes no money. ${REGENERATE}`);
   }
   return { amount: price.unit_amount / 100, url: link.url };
 }
