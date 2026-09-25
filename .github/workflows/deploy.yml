@@ -5,30 +5,72 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# The build job runs code this repository does not control: every dependency's
+# install scripts, then the Astro build. It gets a token that reads this
+# repository and nothing more. The Pages grant and the OIDC token go on the
+# deploy job alone, which runs one GitHub action and none of our code.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
+# Every action is pinned to a commit SHA with its release in a comment, because
+# a tag points at whatever its owner chooses when the run starts, and this
+# workflow publishes the page that carries the eight payment links. Dependabot
+# (.github/dependabot.yml) proposes each move of a pin. The build is written out
+# step by step instead of going through withastro/action, because that action
+# calls four more actions by tag, and no pin in this file reaches those.
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: withastro/action@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Runs before any other action, so an `@v4` pasted from an action's README
+      # stops the deploy here instead of running.
+      - name: Refuse an action not pinned to a commit
+        run: |
+          unpinned=$(grep -rnE --include='*.yml' --include='*.yaml' '^[[:space:]-]*uses:' .github/workflows \
+            | grep -vE 'uses:[[:space:]]*[^@[:space:]]+@[0-9a-f]{40}([[:space:]]|$)' || true)
+          if [ -n "$unpinned" ]; then
+            printf '%s\n' "$unpinned"
+            echo "::error::every uses: must name a 40-character commit SHA, with its release in a comment"
+            exit 1
+          fi
+
+      # No version input: pnpm's version comes from `packageManager` in package.json.
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # The price and payment-link guards (src/lib/pricing.ts) run inside the
+      # build. If they refuse the manifest, the build fails and nothing deploys.
+      - name: Build
+        run: pnpm build
         env:
           SITE_URL: https://trailsnag.com
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist/
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

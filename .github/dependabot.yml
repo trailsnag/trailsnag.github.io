@@ -1,0 +1,27 @@
+# Dependabot watches the actions that .github/workflows/deploy.yml pins by
+# commit SHA. The policy is the same as trailsnag/snag's .github/dependabot.yml.
+#
+# A pin never moves on its own. That is why it is pinned, and it is also how a
+# pinned action goes stale when its owner ships a fix. This entry opens a pull
+# request naming the action and the release its pin would move to. Minor and
+# patch bumps come grouped, one pull request a week. Each major gets a pull
+# request of its own, so it never merges under a title that reads like a
+# routine bump.
+#
+# No workflow runs on those pull requests; deploy.yml runs only on main. The
+# review is the diff: which action, which commit, which release. Merging it
+# deploys.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    groups:
+      actions:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    commit-message:
+      prefix: "ci"
