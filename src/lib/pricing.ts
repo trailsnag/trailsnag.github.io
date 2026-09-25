@@ -7,8 +7,9 @@
 // different amounts is the worst bug this site could ship. The copy carries
 // words; this carries money.
 //
-// Source of truth: Stripe, read by `./bin/snag.sh billing manifest` in snag and
-// committed here as src/data/stripe-manifest.json (see the README beside it).
+// Source of truth: Stripe, read by snag's `billing manifest` on the API's own
+// Fly machine and committed here as src/data/stripe-manifest.json (see the
+// README beside it).
 // Per ORGANISATION, in CAD, taxes extra. Annual is ten months of the monthly
 // rate (guard 1); the launch trial is a separate thing on the monthly links
 // only (TRIAL_MONTHS).
@@ -39,16 +40,16 @@ export const RATES: readonly Rate[] = ['nonprofit', 'commercial'];
 /**
  * What Stripe says the eight payment links charge and offer.
  *
- * src/data/stripe-manifest.json is printed by `./bin/snag.sh billing manifest`
- * in snag, which follows the API's own STRIPE_CHECKOUT_* / STRIPE_PRICE_*
- * configuration to each live link, the one price it sells and its trial, and
- * refuses a link that sells a price the API does not name. Neither the links
- * nor the amounts are typed anywhere in this repository: after ANY change at
- * Stripe — a link replaced, a price created, a trial moved by `billing trial`
- * — run
- *   ./bin/snag.sh billing manifest > <this checkout>/src/data/stripe-manifest.json
- * and commit it here. The snag `.env.example` and the vault's business plan
- * point at this file rather than repeating it.
+ * src/data/stripe-manifest.json is printed by snag's `billing manifest`, run
+ * on the API's own Fly machine so that it follows the STRIPE_CHECKOUT_* /
+ * STRIPE_PRICE_* the API actually runs with — to each live link, the one price
+ * it sells and its trial — and refuses a link that sells a price the API does
+ * not name. Neither the links nor the amounts are typed anywhere in this
+ * repository: after ANY change at Stripe or to those secrets — a link
+ * replaced, a price created, a trial moved by `billing trial` — print it again
+ * (src/data/README.md has the one command line) and commit it here. The snag
+ * `.env.example` and the vault's business plan point at this file rather than
+ * repeating it.
  *
  * The urls are PUBLIC — a payment link is meant to be clicked by anybody, it
  * carries no secret, and committing it is how a static site can sell anything
@@ -72,7 +73,7 @@ type ManifestEntry = {
 const manifest: { livemode: boolean; entries: readonly ManifestEntry[] } = manifestJson;
 const MANIFEST = 'src/data/stripe-manifest.json';
 const REGENERATE =
-  'Regenerate it with `./bin/snag.sh billing manifest` in snag (src/data/README.md).';
+  'Print it again with `billing manifest` on the Fly machine of the snag API (src/data/README.md).';
 
 /**
  * The launch offer, in the unit it is SPOKEN in: months free on the MONTHLY
@@ -128,8 +129,9 @@ const FREE: RatePrices = { monthly: 0, yearly: 0, monthlyUrl: '', yearlyUrl: '' 
  * and they do not. So a missing door is a BUILD FAILURE rather than a graceful
  * fallback, and so is one the page cannot print honestly: a currency other
  * than the CAD every amount is formatted in, an amount with cents the page
- * would round away, or a price billed on another interval than its button
- * says.
+ * would round away, a price billed on another interval than its button says,
+ * or a url that is not a Stripe payment link — the only doors snag's command
+ * can print, so anything else is a hand edit.
  */
 function door(tier: TierKey, rate: Rate, interval: Interval): { amount: number; url: string } {
   const where = `${tier} ${rate} ${interval}`;
@@ -155,8 +157,10 @@ function door(tier: TierKey, rate: Rate, interval: Interval): { amount: number; 
         `so it would quote an amount the checkout does not charge`,
     );
   }
-  if (!link.url.startsWith('https://')) {
-    throw new Error(`pricing: ${where} must have an https payment link, got "${link.url}"`);
+  if (!link.url.startsWith('https://buy.stripe.com/')) {
+    throw new Error(
+      `pricing: ${where} must be a https://buy.stripe.com/ payment link, got "${link.url}". ${REGENERATE}`,
+    );
   }
   return { amount: price.unit_amount / 100, url: link.url };
 }
@@ -358,14 +362,22 @@ export function beyondLargestTier(lang: Lang): string {
 // GUARD 7 — the manifest is the grid, the whole grid and nothing else, and it
 // is the live account's. Guard 2 has found one entry per door the page draws;
 // an entry beyond those is a price Stripe sells that this page never shows,
-// which means the grid here is the stale side. A sandbox manifest carries test
-// links that take no money, which is guard 2's broken button by another road.
+// which means the grid here is the stale side. Eight rows are eight doors: one
+// url behind two buttons sells one price under two labels, which snag's
+// command refuses to print, so only a hand edit gets here. A sandbox manifest
+// carries test links that take no money, which is guard 2's broken button by
+// another road.
 if (manifest.entries.length !== SOLD.length * RATES.length * INTERVALS.length) {
   throw new Error(
     `pricing: ${MANIFEST} holds ${manifest.entries.length} entries, but the grid sells ` +
       `${SOLD.length * RATES.length * INTERVALS.length} (${SOLD.map((t) => t.key).join(', ')} × ` +
       `${RATES.join('/')} × ${INTERVALS.join('/')}) — change the grid here or the prices at Stripe`,
   );
+}
+const urls = manifest.entries.map((e) => e.link.url);
+const shared = [...new Set(urls.filter((u, i) => urls.indexOf(u) !== i))];
+if (shared.length > 0) {
+  throw new Error(`pricing: ${MANIFEST} puts ${shared.join(', ')} behind more than one button. ${REGENERATE}`);
 }
 if (manifest.livemode !== true) {
   throw new Error(`pricing: ${MANIFEST} was read with a sandbox key — its links take no money. ${REGENERATE}`);

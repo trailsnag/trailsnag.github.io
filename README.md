@@ -31,26 +31,27 @@ pnpm only (same doctrine as the monorepo).
 `/tarifs/` and `/en/pricing/` print every amount, all eight buy buttons and the
 trial from `src/data/stripe-manifest.json`, through `src/lib/pricing.ts`. None
 of them is typed anywhere in this repository, and the file is **never edited by
-hand**: Stripe is the authority, and the snag operator shell reads it there.
-After **any** change at Stripe — a new or replaced payment link, a new price, a
-trial moved by `./bin/snag.sh billing trial --apply` (which prints this same
-reminder):
+hand**: Stripe is the authority, and snag's `billing manifest` command reads it
+there, on the API's own Fly machine, following the payment links and prices the
+API itself is configured with. After **any** change at Stripe or to the API's
+`STRIPE_*` secrets — a new or replaced payment link, a new price, a trial moved
+by `./bin/snag.sh billing trial --apply` (which prints this same reminder):
 
 ```bash
-# in the snag checkout, with the production STRIPE_SECRET_KEY and the sixteen
-# STRIPE_PRICE_* / STRIPE_CHECKOUT_* values the API runs with
-./bin/snag.sh billing manifest > <this checkout>/src/data/stripe-manifest.json
+fly ssh console -a snag-api --process-group webhooks -q \
+  -C "node /app/dist/ops/cli.js billing manifest" > /tmp/stripe-manifest.json \
+  && mv /tmp/stripe-manifest.json <this checkout>/src/data/stripe-manifest.json
 # here: commit that file and push main, which deploys
 ```
 
 An unchanged account prints an unchanged file. The build refuses a manifest
 that does not fit the grid the page prints — a sandbox key, a missing, doubled
-or extra row, a currency other than CAD, an amount with cents, a yearly price
-that is not ten months of the monthly one, a trial that differs between the
-monthly links or appears on a yearly one — and a refused command leaves the
-file empty, which the build refuses too (`git checkout` it to restore the last
-good one). `src/data/README.md` has the details, and says which version of the
-file was transcribed rather than read from Stripe.
+or extra row, a link that is not on `buy.stripe.com` or that serves two rows, a
+currency other than CAD, an amount with cents, a yearly price that is not ten
+months of the monthly one, a trial that differs between the monthly links or
+appears on a yearly one — and an empty file too. `src/data/README.md` has the
+details, and says which version of the file was transcribed rather than read
+from Stripe.
 
 ## Product screenshots
 
