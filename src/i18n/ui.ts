@@ -447,6 +447,7 @@ const fr = {
     privacy: 'Confidentialité',
     terms: 'Conditions',
     contact: 'Contact',
+    guides: 'Guides',
   },
   langSwitch: { label: 'English', short: 'EN' },
   notFound: {
@@ -861,6 +862,7 @@ const en: Dict = {
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',
+    guides: 'Guides',
   },
   langSwitch: { label: 'Français', short: 'FR' },
   notFound: {

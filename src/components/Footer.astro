@@ -2,7 +2,7 @@
 import Wordmark from './Wordmark.astro';
 import LangSwitch from './LangSwitch.astro';
 import { useTranslations } from '../i18n/utils';
-import { comparisonPath, pricingPath, type Lang } from '../i18n/routes';
+import { comparisonPath, guidesPath, pricingPath, type Lang } from '../i18n/routes';
 
 interface Props {
   lang: Lang;
@@ -25,6 +25,7 @@ const paths =
       <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-(--sub)">
         <a href={pricingPath(lang)} class="hover:text-(--ink)">{t.nav.pricing}</a>
         <a href={comparisonPath(lang)} class="hover:text-(--ink)">{t.nav.compare}</a>
+        <a href={guidesPath(lang)} class="hover:text-(--ink)">{t.footer.guides}</a>
         <a href={paths.privacy} class="hover:text-(--ink)">{t.footer.privacy}</a>
         <a href={paths.terms} class="hover:text-(--ink)">{t.footer.terms}</a>
         <a href={paths.contact} class="hover:text-(--ink)">{t.footer.contact}</a>

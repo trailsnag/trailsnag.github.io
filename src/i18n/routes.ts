@@ -16,6 +16,11 @@ export const routePairs: ReadonlyArray<{ fr: string; en: string }> = [
   // The prices, and the door that takes money. « Tarifs » rather than « Prix »
   // is the word a Québec organisation uses for a published rate card.
   { fr: '/tarifs/', en: '/en/pricing/' },
+  // Guides answer the questions a steward types into a search engine; the
+  // slugs are those questions' words in each language.
+  { fr: '/guides/', en: '/en/guides/' },
+  { fr: '/guides/signalements-sentiers/', en: '/en/guides/trail-problem-reports/' },
+  { fr: '/guides/prouver-entretien-sentiers/', en: '/en/guides/proving-trail-maintenance/' },
   { fr: '/confidentialite/', en: '/en/privacy/' },
   { fr: '/conditions/', en: '/en/terms/' },
   { fr: '/contact/', en: '/en/contact/' },
@@ -34,6 +39,11 @@ export function pricingPath(lang: Lang): string {
 /** Where a buyer writes when a tier is quoted rather than sold by the card. */
 export function contactPath(lang: Lang): string {
   return lang === 'fr' ? '/contact/' : '/en/contact/';
+}
+
+/** The guides index, linked from the footer. */
+export function guidesPath(lang: Lang): string {
+  return lang === 'fr' ? '/guides/' : '/en/guides/';
 }
 
 /** The steward tour, linked from the landing band. */
