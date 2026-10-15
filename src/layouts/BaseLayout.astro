@@ -43,6 +43,8 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta property="og:locale" content={lang === 'fr' ? 'fr_CA' : 'en_CA'} />
     <meta property="og:locale:alternate" content={lang === 'fr' ? 'en_CA' : 'fr_CA'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Cookieless visit counts (Plausible); the privacy page says exactly what it records. -->
+    <script is:inline defer data-domain="trailsnag.com" src="https://plausible.io/js/script.outbound-links.js"></script>
   </head>
   <body class="min-h-screen font-body antialiased">
     <slot />
