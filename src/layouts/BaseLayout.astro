@@ -61,6 +61,7 @@ const ogImage = new URL('/og.png', Astro.site);
         var goal =
           h.indexOf('https://trailsnag.app/steward') === 0 ? 'Claim' :
           h.indexOf('https://buy.stripe.com/') === 0 ? 'Purchase' :
+          h.indexOf('https://calendly.com/') === 0 ? 'Book call' :
           h.indexOf('mailto:') === 0 ? 'Contact email' :
           h.indexOf('https://trailsnag.app') === 0 ? 'Open app' : null;
         if (goal) window.plausible(goal, { props: { page: location.pathname } });

@@ -3,7 +3,7 @@
 // `contact`, typed FR-first like the rest of the copy, so the two pages cannot
 // drift apart the way two hand-copied files did.
 import LegalLayout from '../layouts/LegalLayout.astro';
-import { useTranslations, contactEmail } from '../i18n/utils';
+import { useTranslations, contactEmail, bookingUrl } from '../i18n/utils';
 import type { Lang } from '../i18n/routes';
 
 interface Props {
@@ -17,5 +17,9 @@ const t = useTranslations(lang).contact;
   <p>{t.body}</p>
   <p class="!mt-8">
     <a href={`mailto:${contactEmail}`} class="font-mono text-xl font-semibold">{contactEmail}</a>
+  </p>
+  <p class="!mt-8">{t.bookLead}</p>
+  <p>
+    <a href={bookingUrl} target="_blank" rel="noopener" class="font-semibold">{t.bookCta}</a>
   </p>
 </LegalLayout>

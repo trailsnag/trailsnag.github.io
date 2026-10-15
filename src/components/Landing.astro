@@ -4,7 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import QrSticker from './QrSticker.astro';
 import ScreenFigure from './ScreenFigure.astro';
-import { useTranslations, appUrl, claimUrl, contactEmail } from '../i18n/utils';
+import { useTranslations, appUrl, bookingUrl, claimUrl, contactEmail } from '../i18n/utils';
 import { altFor, leadFeatures, restFeatures } from '../lib/steward-tour';
 import { comparisonPath, guidesPath, stewardTourPath, type Lang } from '../i18n/routes';
 
@@ -285,6 +285,16 @@ const comparePath = comparisonPath(lang);
               href={appUrl}
               class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
               >{t.ctaBand.reportCta}</a
+            >
+          </p>
+          <p class="text-sm text-(--sub)">
+            {t.ctaBand.bookLead}{' '}
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener"
+              class="font-semibold text-(--ink) underline decoration-(--line) underline-offset-4 hover:decoration-(--blaze)"
+              >{t.ctaBand.bookCta}</a
             >
           </p>
           <p class="text-sm text-(--sub)">

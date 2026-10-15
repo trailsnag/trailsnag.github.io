@@ -441,6 +441,8 @@ const fr = {
     cta: 'Réclamez votre territoire',
     reportLead: 'Simple visiteur ?',
     reportCta: 'Signalez un problème maintenant',
+    bookLead: 'Une question avant de commencer ?',
+    bookCta: 'Réservez un appel de 30 minutes',
     mailLead: 'ou écrivez-nous :',
   },
   footer: {
@@ -460,6 +462,8 @@ const fr = {
     title: 'Contact',
     description: 'Écrivez-nous — ententes de service, clubs de bénévoles, questions.',
     body: 'Un territoire à réclamer, un réseau provincial ou une entente de service à négocier, un club de bénévoles qui veut sa file de signalements — écrivez-nous. On répond en français ou en anglais. Les paliers Parc et Réseau, eux, s’achètent directement depuis la page des tarifs.',
+    bookLead: 'Vous préférez en parler ?',
+    bookCta: 'Réservez 30 minutes avec nous',
   },
 } as const;
 
@@ -857,6 +861,8 @@ const en: Dict = {
     cta: 'Claim your land',
     reportLead: 'Just visiting?',
     reportCta: 'Report an issue now',
+    bookLead: 'A question before you start?',
+    bookCta: 'Book a 30-minute call',
     mailLead: 'or write to us:',
   },
   footer: {
@@ -876,6 +882,8 @@ const en: Dict = {
     title: 'Contact',
     description: 'Write to us — service agreements, volunteer clubs, questions.',
     body: 'Land to claim, a province-wide network or a service agreement to negotiate, a volunteer club that wants its own report queue — write to us. We answer in French or English. The Parc and Réseau tiers are bought straight from the pricing page.',
+    bookLead: 'Rather talk it through?',
+    bookCta: 'Book 30 minutes with us',
   },
 };
 
