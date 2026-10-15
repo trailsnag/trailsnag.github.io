@@ -39,17 +39,17 @@ const comparePath = comparisonPath(lang);
             </span>
           </h1>
           <p class="mt-6 max-w-xl text-lg leading-relaxed text-(--sub)">{t.hero.lead}</p>
-          {/* Reporting leads: the app routes a snag from the visitor's own
-              position, so no sticker has to be within reach. Claiming land is
-              the strong second — it is the buyer's path, not the visitor's. */}
+          {/* Claiming land leads: the person who arrives at this site is the
+              buyer, while a visitor reaches the app through the sticker at the
+              trailhead. Reporting stays one click away as the second door. */}
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href={appUrl}
+              href={claimUrl}
               class="rounded-(--radius-control) bg-(--blaze) px-6 py-3.5 text-base font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press)"
               >{t.hero.ctaPrimary}</a
             >
             <a
-              href={claimUrl}
+              href={appUrl}
               class="rounded-(--radius-control) border border-(--line) px-6 py-3.5 text-base font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine)"
               >{t.hero.ctaSecondary}</a
             >

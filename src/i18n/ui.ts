@@ -6,9 +6,9 @@
 
 const fr = {
   meta: {
-    title: 'TrailSnag — Signalez un problème de sentier en 30 secondes',
+    title: 'TrailSnag — Les signalements de vos visiteurs, triés sur la carte de vos sentiers',
     description:
-      'Un arbre tombé, un sentier lessivé, une pancarte brisée ? Scannez le code QR au départ du sentier et signalez-le en moins de 30 secondes — aucun compte, aucune application à installer. Une fois ouverte, l’application tient sans réseau. Les équipes reçoivent, valident et corrigent.',
+      'Pour les clubs, parcs et municipalités qui entretiennent des sentiers : un code QR au départ, et chaque visiteur vous signale un arbre tombé, un sentier lessivé ou une pancarte brisée en 30 secondes, sans compte. Votre équipe trie, valide et corrige sur la carte. Palier gratuit sans date de fin.',
   },
   nav: {
     how: 'Comment ça marche',
@@ -24,13 +24,13 @@ const fr = {
     main: 'Navigation principale',
   },
   hero: {
-    kicker: 'Signalement de sentiers, sans friction',
-    h1a: 'Un arbre tombé, un sentier lessivé, une pancarte brisée ?',
-    h1b: 'Signalé en 30 secondes',
-    lead: 'Ouvrez l’application, ou scannez le code QR au départ du sentier : décrivez le problème — géolocalisé, photographié, prêt à trier. S’il y a une équipe sur ce terrain, elle le reçoit ; sinon il l’attend. Aucun compte. Aucune application à installer, et une fois ouverte elle tient sans réseau.',
-    ctaPrimary: 'Signaler un problème',
-    ctaSecondary: 'Réclamez votre territoire',
-    ctaNote: 'Aucun compte requis. Votre position trouve qui répond de ce terrain — placez-la à la main si le GPS ne répond pas. Le palier gratuit n’a pas de date de fin, quelle que soit votre organisation.',
+    kicker: 'Pour les gestionnaires de sentiers',
+    h1a: 'Un arbre tombé, un sentier lessivé, une pancarte brisée sur votre territoire ?',
+    h1b: 'Signalé par vos visiteurs',
+    lead: 'Un code QR au départ du sentier, et chaque randonneur vous signale un problème en 30 secondes — géolocalisé, photographié, sans compte ni application à installer, même sans réseau. Votre équipe le reçoit dans une file de tri, sur la carte de votre territoire.',
+    ctaPrimary: 'Réclamez votre territoire',
+    ctaSecondary: 'Signaler un problème',
+    ctaNote: 'Le palier gratuit n’a pas de date de fin, quelle que soit votre organisation. Simple visiteur ? Signaler ne demande aucun compte.',
   },
   sticker: {
     caption: 'L’autocollant au départ du sentier — c’est tout ce que le visiteur a à faire.',
@@ -475,9 +475,9 @@ type DeepString<T> = T extends string
 
 const en: Dict = {
   meta: {
-    title: 'TrailSnag — Report a trail problem in 30 seconds',
+    title: 'TrailSnag — Your visitors’ reports, triaged on the map of your trails',
     description:
-      'A downed tree, a washed-out trail, a broken sign? Scan the QR code at the trailhead and report it in under 30 seconds — no account, no app to install. Once it is open, the app holds with no signal. Trail crews receive, validate, and fix.',
+      'For the clubs, parks and municipalities that maintain trails: a QR code at the trailhead, and every visitor reports a downed tree, a washed-out trail or a broken sign to you in 30 seconds, with no account. Your crew triages, validates and fixes on the map. Free tier with no end date.',
   },
   nav: {
     how: 'How it works',
@@ -492,13 +492,13 @@ const en: Dict = {
     main: 'Main navigation',
   },
   hero: {
-    kicker: 'Trail reporting, without the friction',
-    h1a: 'A downed tree, a washed-out trail, a broken sign?',
-    h1b: 'Reported in 30 seconds',
-    lead: 'Open the app, or scan the QR code at the trailhead: describe the problem — geolocated, photographed, ready to triage. If a crew runs this land they get it; if nobody does yet, it waits for them. No account. No app to install, and once it is open it holds with no signal.',
-    ctaPrimary: 'Report an issue',
-    ctaSecondary: 'Claim your land',
-    ctaNote: 'No account needed. Your position finds who answers for this land — place it by hand if GPS will not answer. The free tier has no end date, whatever your organisation is.',
+    kicker: 'For trail stewards',
+    h1a: 'A downed tree, a washed-out trail, a broken sign on your land?',
+    h1b: 'Reported by your visitors',
+    lead: 'A QR code at the trailhead, and every hiker reports a problem to you in 30 seconds — geolocated, photographed, with no account and no app to install, even with no signal. Your crew gets it in a triage queue, on the map of your land.',
+    ctaPrimary: 'Claim your land',
+    ctaSecondary: 'Report an issue',
+    ctaNote: 'The free tier has no end date, whatever your organisation is. Just visiting? Reporting needs no account.',
   },
   sticker: {
     caption: 'The sticker at the trailhead — that is all the visitor has to do.',
