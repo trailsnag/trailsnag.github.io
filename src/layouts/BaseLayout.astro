@@ -43,8 +43,13 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta property="og:locale" content={lang === 'fr' ? 'fr_CA' : 'en_CA'} />
     <meta property="og:locale:alternate" content={lang === 'fr' ? 'en_CA' : 'fr_CA'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="google-site-verification" content="QZPP_uh-tVfb-5e23HI6TQbN5MSAtY-Tl9hCZaLrKac" />
     <!-- Cookieless visit counts (Plausible); the privacy page says exactly what it records. -->
-    <script is:inline defer data-domain="trailsnag.com" src="https://plausible.io/js/script.outbound-links.js"></script>
+    <script is:inline async src="https://plausible.io/js/pa-zok55Pen-rE6PSjP-cGN_.js"></script>
+    <script is:inline>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
   </head>
   <body class="min-h-screen font-body antialiased">
     <slot />
