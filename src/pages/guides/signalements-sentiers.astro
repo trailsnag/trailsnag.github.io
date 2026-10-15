@@ -1,0 +1,71 @@
+---
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { claimUrl } from '../../i18n/utils';
+---
+
+<LegalLayout
+  lang="fr"
+  title="Recevoir les signalements de problèmes sur vos sentiers"
+  description="Comment un club, un parc ou une municipalité peut apprendre par ses visiteurs qu'un arbre est tombé ou qu'un sentier est lessivé — sans compte, sans application, même sans réseau."
+>
+  <p>
+    Un arbre tombé en travers du sentier, un ponceau emporté, une pancarte arrachée : la plupart du temps,
+    l'équipe l'apprend à la patrouille suivante, ou par un message sur une page Facebook. Entre les deux,
+    des dizaines de visiteurs sont passés devant le problème sans moyen simple de le dire à qui de droit.
+  </p>
+
+  <h2>Le point de départ : un code QR au départ du sentier</h2>
+  <p>
+    Vous imprimez vous-même les autocollants depuis le tableau de bord : une planche prête à imprimer, à la
+    taille du vinyle adhésif, un code par départ de sentier. C'est toute l'installation — ni borne, ni
+    matériel, ni formation des visiteurs.
+  </p>
+  <p>
+    Le visiteur scanne le code : la carte s'ouvre dans son navigateur, là où il se trouve. Il choisit une
+    catégorie, ajoute une photo s'il le veut, et la position GPS est prise d'elle-même. Aucun compte, aucune
+    application à installer. Si le GPS ne répond pas, il place le point à la main. Les métadonnées cachées
+    des photos (position, appareil) sont retirées avant même qu'elles quittent le téléphone.
+  </p>
+
+  <h2>Sans réseau, rien ne se perd</h2>
+  <p>
+    En forêt, le réseau manque souvent. Le signalement est alors gardé dans le téléphone et part de lui-même
+    quand le réseau revient. Un signalement n'est jamais perdu, et jamais envoyé en double.
+  </p>
+
+  <h2>Ce que votre équipe reçoit</h2>
+  <ul>
+    <li>
+      <strong>Une file de tri, pas une boîte de courriels.</strong> Chaque signalement arrive sur la carte de
+      votre territoire, avec sa position et, le plus souvent, une photo. Vous le confirmez, le réglez ou le
+      rejetez, et l'historique reste.
+    </li>
+    <li>
+      <strong>Moins de doublons.</strong> Un second visiteur qui voit le même problème le confirme plutôt que
+      de le signaler à nouveau.
+    </li>
+    <li>
+      <strong>Vos propres mots.</strong> Le menu de signalement est le vôtre : ajoutez vos catégories, en
+      français et en anglais, par-dessus celles de départ.
+    </li>
+    <li>
+      <strong>Un résumé par courriel.</strong> Un résumé horaire tient les gestionnaires et les propriétaires
+      au courant.
+    </li>
+  </ul>
+
+  <h2>Et si personne ne gère encore ce terrain ?</h2>
+  <p>
+    La position du visiteur trouve qui répond de ce terrain. S'il n'y a encore personne, le signalement
+    attend : le jour où votre organisation réclame ce territoire et que la réclamation est vérifiée, les
+    signalements qui s'y trouvent vous reviennent.
+  </p>
+
+  <h2>Par où commencer</h2>
+  <p>
+    Réclamez votre territoire en le dessinant sur la carte : vous triez les signalements de votre terrain dès
+    le premier jour. Une fois la réclamation vérifiée, imprimez un code pour chaque départ de sentier. Le
+    palier gratuit n'a pas de date de fin.
+  </p>
+  <p><a href={claimUrl}>Réclamez votre territoire</a> · <a href="/tarifs/">Voir les tarifs</a></p>
+</LegalLayout>

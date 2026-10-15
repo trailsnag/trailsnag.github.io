@@ -1,0 +1,66 @@
+---
+import LegalLayout from '../../../layouts/LegalLayout.astro';
+import { claimUrl } from '../../../i18n/utils';
+---
+
+<LegalLayout
+  lang="en"
+  title="Getting trail problem reports from your visitors"
+  description="How a club, park or municipality can hear from its visitors that a tree is down or a trail is washed out — with no account, no app, and even with no signal."
+>
+  <p>
+    A tree across the trail, a culvert washed away, a sign torn off: most of the time the crew finds out at
+    the next patrol, or from a comment on a Facebook page. In between, dozens of visitors walked past the
+    problem with no simple way to tell the people responsible.
+  </p>
+
+  <h2>It starts with a QR code at the trailhead</h2>
+  <p>
+    You print the stickers yourself from the steward desk: a print-ready sheet sized for adhesive vinyl, one
+    code per trailhead. That is the whole install — no kiosk, no hardware, no visitor training.
+  </p>
+  <p>
+    The visitor scans the code: the map opens in their browser, where they are standing. They pick a
+    category, add a photo if they want, and the GPS position is captured on its own. No account, no app to
+    install. If GPS will not answer, they place the point by hand. Photos are scrubbed of their hidden
+    metadata (position, device) before they even leave the phone.
+  </p>
+
+  <h2>No signal, nothing lost</h2>
+  <p>
+    In the woods, signal is often missing. The report is then kept on the phone and sends itself when the
+    network comes back. A report is never lost, and never sent twice.
+  </p>
+
+  <h2>What your crew gets</h2>
+  <ul>
+    <li>
+      <strong>A triage queue, not an inbox.</strong> Every report lands on your territory's map, with its
+      position and, more often than not, a photo. Confirm it, fix it or reject it, and the history stays.
+    </li>
+    <li>
+      <strong>Fewer duplicates.</strong> A second visitor who sees the same problem confirms it rather than
+      reporting it again.
+    </li>
+    <li>
+      <strong>Your own words.</strong> The report menu is yours: add your own categories, in French and
+      English, on top of the defaults.
+    </li>
+    <li>
+      <strong>An email digest.</strong> An hourly digest keeps managers and owners in the loop.
+    </li>
+  </ul>
+
+  <h2>What if nobody runs this land yet?</h2>
+  <p>
+    The visitor's position finds who answers for the land. If nobody does yet, the report waits: the day your
+    organisation claims that territory and the claim is verified, the reports standing on it come to you.
+  </p>
+
+  <h2>Where to start</h2>
+  <p>
+    Claim your land by drawing it on the map: you triage the reports on your ground from day one. Once the
+    claim is verified, print a code for every trailhead. The free tier has no end date.
+  </p>
+  <p><a href={claimUrl}>Claim your land</a> · <a href="/en/pricing/">See pricing</a></p>
+</LegalLayout>
