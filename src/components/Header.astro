@@ -32,14 +32,14 @@ const home = lang === 'fr' ? '/' : '/en/';
             wait for the room; the comparison link is the one with a job. */}
         {anchors && (
           <span class="hidden items-center gap-5 xl:flex">
-            <a href="#how" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
-              {t.nav.how}
-            </a>
-            <a href="#rewards" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
-              {t.nav.rewards}
-            </a>
             <a href="#stewards" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
               {t.nav.stewards}
+            </a>
+            <a href="#audiences" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
+              {t.nav.audiences}
+            </a>
+            <a href="#how" class="text-sm font-semibold text-(--sub) hover:text-(--ink)">
+              {t.nav.how}
             </a>
           </span>
         )}
@@ -58,14 +58,14 @@ const home = lang === 'fr' ? '/' : '/en/';
           also the sign-in). Hiding these on phones left the visitor who is
           standing on the trail with no way in. */}
       <a
-        href={claimUrl}
+        href={appUrl}
         class="rounded-(--radius-control) border border-(--line) px-2 py-2 text-xs font-bold text-(--ink) transition-colors duration-200 hover:border-(--pine) sm:px-3 sm:text-sm"
-        >{t.nav.desk}</a
+        >{t.nav.open}</a
       >
       <a
-        href={appUrl}
+        href={claimUrl}
         class="rounded-(--radius-control) bg-(--blaze) px-2.5 py-2 text-xs font-bold text-white transition-colors duration-200 hover:bg-(--blaze-hover) active:bg-(--blaze-press) sm:px-4 sm:text-sm"
-        >{t.nav.open}</a
+        >{t.nav.desk}</a
       >
     </div>
   </div>
