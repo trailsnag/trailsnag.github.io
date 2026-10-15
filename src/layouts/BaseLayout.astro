@@ -50,6 +50,22 @@ const ogImage = new URL('/og.png', Astro.site);
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
       plausible.init()
     </script>
+    <!-- Funnel goals, named by where a link leads rather than by which page drew it,
+         so a new button pointing at the same door is counted without touching it here.
+         Each name must exist as a custom-event goal in the Plausible dashboard. -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var a = e.target instanceof Element ? e.target.closest('a[href]') : null;
+        if (!a || typeof window.plausible !== 'function') return;
+        var h = a.href;
+        var goal =
+          h.indexOf('https://trailsnag.app/steward') === 0 ? 'Claim' :
+          h.indexOf('https://buy.stripe.com/') === 0 ? 'Purchase' :
+          h.indexOf('mailto:') === 0 ? 'Contact email' :
+          h.indexOf('https://trailsnag.app') === 0 ? 'Open app' : null;
+        if (goal) window.plausible(goal, { props: { page: location.pathname } });
+      });
+    </script>
   </head>
   <body class="min-h-screen font-body antialiased">
     <slot />

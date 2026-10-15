@@ -11,8 +11,8 @@ const fr = {
       'Pour les clubs, parcs et municipalités qui entretiennent des sentiers : un code QR au départ, et chaque visiteur vous signale un arbre tombé, un sentier lessivé ou une pancarte brisée en 30 secondes, sans compte. Votre équipe trie, valide et corrige sur la carte. Palier gratuit sans date de fin.',
   },
   nav: {
-    how: 'Comment ça marche',
-    rewards: 'Récompenses',
+    how: 'Côté visiteur',
+    audiences: 'Pour qui',
     stewards: 'Pour les gestionnaires',
     contact: 'Contact',
     claim: 'Réclamez votre territoire',
@@ -39,7 +39,7 @@ const fr = {
     orCta: 'Ouvrir l’application',
   },
   how: {
-    kicker: 'Côté visiteur',
+    kicker: 'Ce que vivent vos visiteurs',
     title: 'Trois gestes, pas de compte',
     steps: [
       {
@@ -58,9 +58,9 @@ const fr = {
     note: 'Envie de garder vos points d’un appareil à l’autre ? Créez un compte dans l’application. Signaler n’en demande jamais ; seul l’échange d’une récompense en exige un. Et vos photos sont nettoyées de leurs métadonnées cachées (position, appareil) avant même de quitter votre téléphone.',
   },
   rewards: {
-    kicker: 'La boucle des récompenses',
-    title: 'Vos points deviennent des récompenses',
-    lead: 'Chaque signalement confirmé et chaque correctif validé donne des points. Les équipes vérifiées les transforment en vraies récompenses — offertes par ceux qui gèrent le terrain.',
+    kicker: 'Vos bénévoles, récompensés',
+    title: 'Leurs points deviennent vos récompenses',
+    lead: 'Chaque signalement confirmé et chaque correction validée rapporte des points à qui l’a fait. Votre équipe décide ce qu’ils valent — un laissez-passer, un rabais, un t-shirt aux couleurs du club — et TrailSnag tient le registre.',
     cards: [
       {
         title: 'Cumulés sur le terrain',
@@ -86,6 +86,7 @@ const fr = {
     // The four capabilities that lead with a screenshot on the home page; the
     // rest keep their compact line and carry their screen on the tour page.
     tourCta: 'Voir le tableau de bord en détail',
+    guidesCta: 'Lire les guides',
     moreLabel: 'Et aussi',
     // Alt text for every captured screen, beside the copy it describes and
     // inside the same FR/EN parity contract — a screenshot nobody can hear is
@@ -481,8 +482,8 @@ const en: Dict = {
       'For the clubs, parks and municipalities that maintain trails: a QR code at the trailhead, and every visitor reports a downed tree, a washed-out trail or a broken sign to you in 30 seconds, with no account. Your crew triages, validates and fixes on the map. Free tier with no end date.',
   },
   nav: {
-    how: 'How it works',
-    rewards: 'Rewards',
+    how: 'Visitor side',
+    audiences: 'Who it’s for',
     stewards: 'For stewards',
     contact: 'Contact',
     claim: 'Claim your land',
@@ -507,7 +508,7 @@ const en: Dict = {
     orCta: 'Open the app',
   },
   how: {
-    kicker: 'For visitors',
+    kicker: 'What your visitors do',
     title: 'Three moves, no account',
     steps: [
       {
@@ -526,9 +527,9 @@ const en: Dict = {
     note: 'Want your points to follow you across devices? Create an account in the app. Reporting never asks for one; only redeeming a reward does. And your photos are scrubbed of their hidden metadata (position, device) before they even leave your phone.',
   },
   rewards: {
-    kicker: 'The reward loop',
-    title: 'Your points become rewards',
-    lead: 'Every confirmed report and every validated fix earns points. Verified stewards turn them into real rewards — funded by the people who run the land.',
+    kicker: 'Your volunteers, rewarded',
+    title: 'Their points become your rewards',
+    lead: 'Every confirmed report and every validated fix earns points for the person who did it. Your crew decides what they are worth — a day pass, a discount, a t-shirt in the club’s colours — and TrailSnag keeps the ledger.',
     cards: [
       {
         title: 'Earned on the trail',
@@ -552,6 +553,7 @@ const en: Dict = {
     cta: 'Open the steward desk',
     ctaNote: 'Sign in with Google, a password, or a code sent to your email.',
     tourCta: 'See the steward desk in detail',
+    guidesCta: 'Read the guides',
     moreLabel: 'And also',
     alts: {
       triage:
