@@ -447,6 +447,7 @@ const fr = {
   },
   footer: {
     tagline: 'Pour ceux qui gardent leurs sentiers ouverts.',
+    madeBy: "Un produit d'",
     privacy: 'Confidentialité',
     terms: 'Conditions',
     contact: 'Contact',
@@ -867,6 +868,7 @@ const en: Dict = {
   },
   footer: {
     tagline: 'For those who keep their trails open.',
+    madeBy: 'A product of ',
     privacy: 'Privacy',
     terms: 'Terms',
     contact: 'Contact',

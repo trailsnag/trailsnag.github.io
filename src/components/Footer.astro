@@ -33,7 +33,10 @@ const paths =
       </nav>
     </div>
     <p class="mt-8 font-mono text-xs text-(--sub)">
-      © {new Date().getFullYear()} TrailSnag
+      © {new Date().getFullYear()} TrailSnag ·
+      {t.footer.madeBy}<a
+        href={lang === 'fr' ? 'https://async-io.live/fr/' : 'https://async-io.live/'}
+        class="underline underline-offset-2 hover:text-(--ink)">Async IO</a>
     </p>
   </div>
 </footer>
